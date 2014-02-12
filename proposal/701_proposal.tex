@@ -1,0 +1,81 @@
+\documentclass{article} % For LaTeX2e
+\usepackage{nips13submit_e,times}
+\usepackage{hyperref}
+\usepackage{url}
+
+\title{Identification of Songbird Species in Field Recordings
+%  \footnote{10-701 Machine Learning Final Project Proposal}
+}
+
+
+\author{
+Hsiao-Yu Tung \\
+%Carnegie Mellon University\\
+%\texttt{htung@andrew} \\
+\texttt{htung@andrew.cmu.edu} \\
+htung \\
+\And
+De-An Huang \\
+%Carnegie Mellon University\\
+%\texttt{deanh@andrew} \\
+\texttt{deanh@andrew.cmu.edu} \\
+deanh \\
+\And
+Xiao-Feng Xie \\
+%Carnegie Mellon University\\
+%\texttt{xfxie@cs} \\
+\texttt{xfxie@cs.cmu.edu} \\
+xfxie \\
+\And
+Yurui Zhou\\
+%\texttt{yuruiz@andrew}\\
+\texttt{yuruiz@andrew.cmu.edu}\\
+yuruiz \\
+\And
+Joseph Russino\\
+%\texttt{yuruiz@andrew}\\
+\texttt{jrussino@rec.ri.cmu.edu}\\
+jrussino \\
+}
+
+\newcommand{\fix}{\marginpar{FIX}}
+\newcommand{\new}{\marginpar{NEW}}
+
+\nipsfinalcopy % Uncomment for camera-ready version
+
+\begin{document}
+
+
+\maketitle
+
+% \begin{abstract}
+% \end{abstract}
+
+%\section{Introduction}
+Given the documented declines in many migrant songbird populations, there is a pressing need to gain a more complete understanding of all aspects of migration patterns.
+%Particularly, flight calling behavior is one of the least studied areas of migration biology.
+During migratory periods, many species of songbirds use flight calls, which are species-specific and are distinct from other vocalizations. Therefore, flight calls information can be used to determine the relative abundance of species and is important to understand long-term population trends. Identification of bird species from continuous audio recordings has been a hot topic in recent conference competitions
+\footnote{ICML 2013: \url{kaggle.com/c/the-icml-2013-bird-challenge}}$^,$\footnote{NIPS 2013: \url{kaggle.com/c/multilabel-bird-species-classification-nips2013}}$^,$\footnote{MLSP 2013: \url{kaggle.com/c/mlsp-2013-birds}}.
+
+{\bf Data Set} Large amounts of audio data (about 20 terabytes) for bird calls have been collected. The data contain flight calls from approximately 20-30 species of songbirds, examples of other background noises, and long audio files that contain flight calls (some of them might be too faint to identify them to species) and other background sounds. The software developed can be tested using long audio files where all the flight calls of songbirds have been detected, and with manual identification by Amy Tegeler, an Avian Ecologist from the Carnegie Museum of Natural History.
+
+%Flight calls vary in structure; some species have flight calls that are very similar while other species flight calls are very unique. For example, calls may differ in a variety of acoustic traits including whether they are pure or modulated tones, rise or fall during the call, and/or contain a single band or include harmonics. Warbler flight calls are commonly split into 6 flight call types based on similarity of structure: buzzy, single banded upsweep, double banded upsweep, double banded upsweep, down sweep, zeep, and irregular.
+
+{\bf Project Ideas \& Software} In this project, we will focus on two critical aspects of this problem. First, we will work on segmenting flight call vocalizations within long audio files that contain other types of sounds. Second, given labeled segments of bird flight calls, we will explore possible algorithms to extract useful features and classify the corresponding songbird species automatically.
+
+%\section{Plan of Action}
+
+We plan to start from some state-of-the-art algorithms \cite{briggs2013instance,Lasseck13,Massaron13,stattnersong13}, adapt components to the data we have, and finally develop a scalable, integrated software tool.
+The audio data are first preprocessed into spectrograms using Fourier transformation or existing sound analysis software (e.g., Raven). The spectrograms are further cleaned by applying background noise reduction and image processing techniques. Afterward, connected pixels (acoustic patterns) in the spectrograms are labeled into rectangle segments.  We then extract and select features from different sources, e.g., file statistics, segment statistics and probabilistics, and mel-frequency cepstral coefficients, etc. Finally, the classification can then be done using multiple algorithms, e.g., decision trees, support vector machines, and multi-instance multi-label learning algorithms, as well as some ensemble methods to further improve the overall performance, based on existing libraries (e.g., scikit-learn). %Hierarchical classification techniques might also be considered to utilize the domain-specific knowledge structure in flight calls across different species. 
+
+{\bf Work Division} Yurui Zhou will work on preprocessing and segmentation;Joseph Russino will tackle feature extraction and selection; Hsiao-Yu Tung and De-An Huang will focus on classification algorithms; and Xiao-Feng Xie will work on ensemble learning methods. Each group member will do assistance work on at least one task of others to gain experience and improve on the overall system.  
+
+{\bf Midterm Milestone} Develop an initial workable software version and perform basic tests based on indoor voice data, after selecting suitable algorithm components that might work scalable.
+
+%%We will be collaborating with Amy Tegeler, the Avian Ecologist and Bioacoustics Lab Manager at Powdermill Nature Reserve, the field station for the Carnegie Museum of Natural History.
+{\bf Project Outline} The software developed for this project will be used by the Carnegie Museum of Natural History, and possibly shared with other land managers, researchers, and educators to enhance the use of flight calls as a method to study the populations of migratory songbirds. %The software is scalable so that users could train it to identify flight calls from additional species and to exclude other types of background noise.
+
+\bibliographystyle{abbrv}
+\bibliography{ref}
+
+\end{document}
