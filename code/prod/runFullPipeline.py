@@ -25,3 +25,26 @@ import training
 import classification
 import training
 import evaluation
+
+
+# 1) Segment training data
+#TODO
+
+# 2) Extract features for training data
+#TODO
+
+# 3) Train classifier
+#TODO
+
+# 4) Segment test data
+#TODO
+
+# 5) Extract features for test data
+#TODO
+
+# 6) Run classifier on test data
+#TODO
+
+# 7) Evaluate classification output
+#TODO
+
