@@ -4,3 +4,34 @@ Probably with linear kernel if the features are not histograms.
 In this case, the output of SVM will be discrete class labels (1, 2, ... C),
 and the output of SVR will be a vector of length C. Each element in the
 vector will be a double from 0~1.
+
+
+I plan do some experiments using the 700mb data.
+I'll use MATLAB.
+I'll use MFCC based feature, where the 13 dimensional vectors are
+extracted by
+
+\url{http://www.mathworks.com/matlabcentral/fileexchange/32849-htk-mfcc-matlab/content/mfcc/mfcc.m}
+
+For the features, instead of assuming that the frame numbers are all the
+same (n=32) in p.165 of the NIPS book, I'll try some bag-of-feature models
+based on MFCC, which are independent of the frame number. If this doesn't
+work and I still have time, I'll try features similar to that in p.165.
+
+Since the lab data are labelled, multi-instance multi-label learning is
+not required. I'll use standard classifier like SVM and SVR.
+
+So the stuffs I might have are
+1. Recognition performances using bag-of-feature models
+2. A visualization of the MFCC based features (spreading of the data points).
+3. A paragraph about SVM \& SVR
+
+Any suggestions on the features? Do you think the assumption that the
+frame numbers are all the same is reasonable?
+
+If you are using MATLAB, I can provide a wrapper for the classifier. Or we
+can even use the simplest NN classifier.
+For lab data, it seems that the features should play an more important
+role than the classifier.
+13 dimensional MCFF should be a good starting point, since it is standard
+in speech recognition.
