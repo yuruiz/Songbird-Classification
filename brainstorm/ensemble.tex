@@ -38,7 +38,7 @@ species had high scores for each test MFCC matrix, pointing out the likelihood o
 positives) but were likely lacking the necessary precision to reach higher scores on the
 Kaggle’s leaderboard, the author decided to integrate the linear models by a different
 approach based on gradient boosting classifiers [3], as implemented in the Scikit-learn
-library in Python (using the function {\em GradientBoostingClassifier}).
+library in Python \cite{pedregosa2011scikit} (using the function {\em GradientBoostingClassifier}).
 
 The underlying idea was that gradient boosting classifier (GBC), allowing interactions, has
 surely less bias than the linear models (thus an increased precision) but were suffering from
@@ -49,8 +49,7 @@ in order to obtain, for each target species, all the examples of the target spec
 5\% of examples available in each training MFCC matrix.
 
 By examining some randomly chosen predictions from the test set, it can be observed that, as
-depicted in figure 1 for test sound file no. 500,
-an ensemble of logistic and hinge
+depicted in figure 1 for test sound file no. 500, an ensemble of logistic and hinge
 regressions tends to polarize the results in high and low probability ends and to mark many
 species as possibly present in the sound file.
 
