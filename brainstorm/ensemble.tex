@@ -1,21 +1,87 @@
-\subsubsection{Bootstrap aggregating (bagging)}
+\subsubsection{Existing Methods in ML}
+
+\paragraph{Bootstrap aggregating (bagging)}
 Bootstrap aggregating, often abbreviated as bagging \cite{breiman1996bagging}, involves having each model in the ensemble vote with equal weight.
 
-\subsubsection{Random forest}
+\paragraph{Random forest}
 
 Random forest \cite{breiman2001random}: operate by constructing a multitude of decision trees at training time and outputting the class that is the mode of the classes output by individual trees. 
 
-\subsubsection{AdaBoost}
-
-
+\paragraph{AdaBoost}
 
 AdaBoost \cite{freund1997decision}, short for "Adaptive Boosting", in the sense that subsequent classifiers built are tweaked in favor of those instances misclassified by previous classifiers. 
 
 
-\subsubsection{Bayesian model averaging}
+\paragraph{Bayesian model averaging}
 
 Bayesian model averaging (BMA) \cite{hoeting1999bayesian}  is a pratical ensemble technique that seeks to approximate the Bayes Optimal Classifier by sampling hypotheses from the hypothesis space, and combining them using Bayes' law.
 
-\subsubsection{unknown class}
+\subsubsection{Applications on Songbirds}
+
+\paragraph{Ensemble logistic regression and gradiant bootsting classfiers \cite{Massaron13}}
+
+After estimating the probabilities of species being present in a time unit in a
+sound file (as for as logistic regression models using its link function, as for as hinge
+regression models by rescaling and clipping the results), simply averaged logistic and hinge
+probability results and therefore obtained a first ensemble forecast of the presence of every
+singular species in every row of every target transposed test MFCC matrix.
+
+In order to turn the results relative to single time units into overall probabilities of species
+presence in each sound file, the author empirically experimented that using for each test
+matrix a moving average of 200 rows and retaining for each species the maximum
+probability result allowed to obtain a prediction whose public AUC was 0.87791 and its
+private one was 0.87120.
+
+Noticing, by direct inspection of the fitted results on the train set and on the test results, that
+the estimations had surely an high recall of the species (systematically a large number of
+species had high scores for each test MFCC matrix, pointing out the likelihood of many false
+positives) but were likely lacking the necessary precision to reach higher scores on the
+Kaggle’s leaderboard, the author decided to integrate the linear models by a different
+approach based on gradient boosting classifiers [3], as implemented in the Scikit-learn
+library in Python (using the function {\em GradientBoostingClassifier}).
+
+The underlying idea was that gradient boosting classifier (GBC), allowing interactions, has
+surely less bias than the linear models (thus an increased precision) but were suffering from
+an higher variance in estimates.
+
+The ensemble approach required to create a new training dataset, resampling the initial one,
+in order to obtain, for each target species, all the examples of the target species itself and a
+5\% of examples available in each training MFCC matrix.
+
+By examining some randomly chosen predictions from the test set, it can be observed that, as
+depicted in figure 1 for test sound file no. 500,
+an ensemble of logistic and hinge
+regressions tends to polarize the results in high and low probability ends and to mark many
+species as possibly present in the sound file.
+
+The same graphical inspection for the GBC model reveals a completely different patter,
+being the estimated probabilities limited in value, with spikes relative to only the most likely
+ones. Such a pattern, repeated all over the test file, confirms the author’s expectation of the
+gradient boosting approach to point out only the species certainly present with an high
+probability and confidence, thus penalizing the recall of other species whose presence is
+suspected, but with equivalent certainty, confirmed.
+
+Finally, on the basis of such an insight, it has therefore been created an ensemble bringing
+together the results from both the averaged linear models and the gradient boosting
+classifier, by means of an harmonic mean, brought the final result of a public AUC of
+0.89575 and a private one of 0.89041.
+
+It is observed in figure 3 how the previously polarized predictions have naturally arranged
+themselves into probability tiers, allowing a better probability estimation, as for as the AUC
+measure.
+
+The proposed approach highlights how an ensemble mixing high bias / low variance models
+and low bias / high variance ones may prove an effective strategy in bioacoustics problems.
+Moreover, the gradient boosting classifiers are a tree based machine learning methodology
+that should better explored. There are
+furthermore open opportunities in further tuning of models’ hyper-parameters and in
+simplifying the ensemble strategy.
+
+
+
+\subsubsection{Other Thoughts}
+
+\paragraph{unknown class}
 
 In practice, the rejection option selects the objects that cannot be assigned to any class with sufficient confidence.
+
