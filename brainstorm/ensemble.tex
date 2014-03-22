@@ -11,6 +11,9 @@ Random forest \cite{breiman2001random}: operate by constructing a multitude of d
 
 AdaBoost \cite{freund1997decision}, short for "Adaptive Boosting", in the sense that subsequent classifiers built are tweaked in favor of those instances misclassified by previous classifiers. 
 
+\paragraph{Gradient boosting}
+\label{sec:ml:GradientBoosting}
+Gradient boosting \cite{friedman2001greedy} is a machine learning technique for regression problems, which produces a prediction model in the form of an ensemble of weak prediction models, typically decision trees. It builds the model in a stage-wise fashion like other boosting methods do, and it generalizes them by allowing optimization of an arbitrary differentiable loss function. The gradient boosting method can also be used for classification problems by reducing them to regression with a suitable loss function.
 
 \paragraph{Bayesian model averaging}
 
@@ -37,7 +40,7 @@ the estimations had surely an high recall of the species (systematically a large
 species had high scores for each test MFCC matrix, pointing out the likelihood of many false
 positives) but were likely lacking the necessary precision to reach higher scores on the
 Kaggle’s leaderboard, the author decided to integrate the linear models by a different
-approach based on gradient boosting classifiers [3], as implemented in the Scikit-learn
+approach based on gradient boosting classifiers (Section \ref{sec:ml:GradientBoosting}), as implemented in the Scikit-learn
 library in Python \cite{pedregosa2011scikit} (using the function {\em GradientBoostingClassifier}).
 
 The underlying idea was that gradient boosting classifier (GBC), allowing interactions, has
@@ -76,7 +79,19 @@ that should better explored. There are
 furthermore open opportunities in further tuning of models’ hyper-parameters and in
 simplifying the ensemble strategy.
 
+\paragraph{Linear blending \cite{chennovel13}}
 
+Identify prominent features from windowing mfccs with overlap and leverage them to build an ensemble classifier which is a blend of different classifiers (Gradient Boosting Tree
+models, Random Forest models and Lasso and elastic-net regularized generalized linear model etc). 
+
+As blending algorithm we use a simple basic blending - linear blending. A linear blender is easy to
+implement. The most basic blending method is to compute the final prediction simply as the mean
+over all the predictions in the ensemble. Better results can be obtained, if the final prediction is
+given by a linear combination of the ensemble predictions. In this case, the combination coefficients
+have to be determined by optimization procedure, in general by regularized linear regression. In our
+case, All inputs (the predictions) are normalized to [0...+1]. We use linear blending approach and
+the coefficients are determined by cross-validation performance on average precision. For validation
+we use 10-fold cross-validation.
 
 \subsubsection{Other Thoughts}
 
