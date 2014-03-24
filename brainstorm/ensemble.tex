@@ -1,11 +1,37 @@
 The goal of ensemble methods is to combine the predictions of several models built with a given learning algorithm in order to improve generalizability / robustness over a single model.
 
-\subsubsection{Existing Methods in ML}
+\subsubsection{Characteristics}
+
+\paragraph{Ensemble theory}
+
+(WIKI) An ensemble is itself a supervised learning algorithm, because it can be trained and then used to make predictions. The trained ensemble, therefore, represents a single hypothesis. This hypothesis, however, is not necessarily contained within the hypothesis space of the models from which it is built. Thus, ensembles can be shown to have more flexibility in the functions they can represent. This flexibility can, in theory, enable them to over-fit the training data more than a single model would, but in practice, some ensemble techniques (especially bagging) tend to reduce problems related to over-fitting of the training data.
+
+\paragraph{Categories}
 
 Two families of ensemble methods are usually distinguished:
 In averaging methods, the driving principle is to build several models independently and then to average their predictions. On average, the combined model is usually better than any of the single model because its variance is reduced. Examples include Bagging methods, Forests of randomized trees...
 
 By contrast, in boosting methods, models are built sequentially and one tries to reduce the bias of the combined model. The motivation is to combine several weak models to produce a powerful ensemble. Examples include AdaBoost, Gradient Tree Boosting, ...
+
+
+\paragraph{Diversity}
+
+(WIKI) Empirically, ensembles tend to yield better results when there is a significant diversity among the models. Many ensemble methods, therefore, seek to promote diversity among the models they combine. Although perhaps non-intuitive, more random algorithms (like random decision trees) can be used to produce a stronger ensemble than very deliberate algorithms (like entropy-reducing decision trees).[8] Using a variety of strong learning algorithms, however, has been shown to be more effective than using techniques that attempt to dumb-down the models in order to promote diversity.
+
+
+\cite{kuncheva2003measures} Diversity among the members of a team of classifiers is deemed to be a key issue in classifier
+combination. However, measuring diversity is not straightforward because there is no generally accepted formal
+definition. We have found and studied ten statistics which can measure diversity among binary classifier outputs
+(correct or incorrect vote for the class label): four averaged pairwise measures (the Q statistic, the correlation,
+the disagreement and the double fault) and six non-pairwise measures (the entropy of the votes, the difficulty
+index, the Kohavi-Wolpert variance, the interrater agreement, the generalized diversity, and the coincident failure
+diversity). Four experiments have been designed to examine the relationship between the accuracy of the team and
+the measures of diversity, and among the measures themselves. Although there are proven connections between
+diversity and accuracy in some special cases, our results raise some doubts about the usefulness of diversity
+measures in building classifier ensembles in real-life pattern recognition problems.
+
+
+\subsubsection{Existing Methods in ML}
 
 Methods in Scikit-learn package: Forests of randomized trees; AdaBoost; Gradient Tree Boosting  (\url{http://scikit-learn.org/stable/modules/ensemble.html})
 
@@ -27,22 +53,6 @@ Gradient boosting \cite{friedman2001greedy} is a machine learning technique for 
 \paragraph{Bayesian model averaging}
 
 Bayesian model averaging (BMA) \cite{hoeting1999bayesian}  is a pratical ensemble technique that seeks to approximate the Bayes Optimal Classifier by sampling hypotheses from the hypothesis space, and combining them using Bayes' law.
-
-\subsubsection{Characteristics}
-
-\paragraph{Diversity}
-
-\cite{kuncheva2003measures} Diversity among the members of a team of classifiers is deemed to be a key issue in classifier
-combination. However, measuring diversity is not straightforward because there is no generally accepted formal
-definition. We have found and studied ten statistics which can measure diversity among binary classifier outputs
-(correct or incorrect vote for the class label): four averaged pairwise measures (the Q statistic, the correlation,
-the disagreement and the double fault) and six non-pairwise measures (the entropy of the votes, the difficulty
-index, the Kohavi-Wolpert variance, the interrater agreement, the generalized diversity, and the coincident failure
-diversity). Four experiments have been designed to examine the relationship between the accuracy of the team and
-the measures of diversity, and among the measures themselves. Although there are proven connections between
-diversity and accuracy in some special cases, our results raise some doubts about the usefulness of diversity
-measures in building classifier ensembles in real-life pattern recognition problems.
-
 
 \subsubsection{Applications on Songbirds}
 
