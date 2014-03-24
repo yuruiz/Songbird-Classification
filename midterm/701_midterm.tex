@@ -62,9 +62,24 @@ jrussino \\
 \end{abstract}
 
 \section{Introduction}
-Given the documented declines in many migrant songbird populations, there is a pressing need to gain a more complete understanding of all aspects of migration patterns.
-%Particularly, flight calling behavior is one of the least studied areas of migration biology.
-During migratory periods, many species of songbirds use flight calls, which are species-specific and are distinct from other vocalizations. Therefore, flight calls information can be used to determine the relative abundance of species and is important to understand long-term population trends. Identification of bird species from continuous audio recordings has been a hot topic in recent conference competitions.\footnote{\scriptsize ICML 2013: \href{http://www.kaggle.com/c/the-icml-2013-bird-challenge}{The Bird Challenge}; NIPS 2013: \href{http://www.kaggle.com/c/multi-label-bird-species-classification-nips2013}{
+%It is important to gain a better understanding of bird behavior
+% and population trends. Birds respond quickly to environmental change, and may also tell us about other organisms (e.g.,
+% insects they feed on), while being easier to detect. Traditional
+% methods for collecting data about birds involves costly hu-
+% man effort. A promising alternative is acoustic monitoring.
+% There are many advantages to recording audio of birds com-
+% pared to human surveys, including increased temporal and
+% spatial resolution and extent, applicability in remote sites, re-
+% duced observer bias, and potentially lower cost. However, it is
+% an open problem for signal processing and machine learning
+% to reliably identify bird sounds in real-world audio data col-
+% lected in an acoustic monitoring scenario. Some of the major
+% challenges include multiple simultaneously vocalizing birds,
+% other sources of non-bird sound (e.g., buzzing insects), and
+% background noise like wind, rain, and motor vehicles.
+
+It is important to gain a better understanding about the climate and ecological changes in the world. One way to address this is to study seasonal migration patterns in songbird populations, since birds respond quickly to environmental changes.
+During migratory periods, many species of songbirds use flight calls, which are species-specific and are distinct from other vocalizations. Therefore, flight calls information can be used to determine the relative abundance of species and is important to understand long-term population trends. Due to costly human effort to collect data about birds in traditional methods, using machine learing (ML) methods to identify bird species from continuous audio recordings has been a hot topic, as indicated in extensive competitions in recent conferences.\footnote{\scriptsize ICML 2013: \href{http://www.kaggle.com/c/the-icml-2013-bird-challenge}{The Bird Challenge}; NIPS 2013: \href{http://www.kaggle.com/c/multi-label-bird-species-classification-nips2013}{
 Multi-label Bird Species Classification}; MLSP 2013: \href{http://www.kaggle.com/c/mlsp-2013-birds}{Bird Classification Challenge}}.
 
 %\footnote{\href{http://www.kaggle.com/c/the-icml-2013-bird-challenge}{ICML 2013: The Bird Challenge}}$^,$\footnote{\href{http://www.kaggle.com/c/multi-label-bird-species-classification-nips2013}{
@@ -81,7 +96,7 @@ Multi-label Bird Species Classification}; MLSP 2013: \href{http://www.kaggle.com
 We plan to start from some state-of-the-art algorithms \cite{briggs2013instance,Lasseck13,Massaron13,stattnersong13}, adapt components to the data we have, and finally develop a scalable, integrated software tool.
 The audio data are first preprocessed into spectrograms using Fourier transformation or existing sound analysis software (e.g., \href{http://www.birds.cornell.edu/brp/raven/}{Raven}). The spectrograms are further cleaned by applying background noise reduction and image processing techniques. Afterward, connected pixels (acoustic patterns) in the spectrograms are labeled into rectangle segments.  We then extract and select features from different sources, e.g., file statistics, segment statistics and probabilistics, and mel-frequency cepstral coefficients, etc. Finally, the classification can then be done using multiple algorithms, e.g., decision trees, support vector machines, and multi-instance multi-label learning algorithms, as well as some ensemble methods to further improve the overall performance, based on existing libraries (e.g., \href{http://scikit-learn.org}{scikit-learn}). %Hierarchical classification techniques might also be considered to utilize the domain-specific knowledge structure in flight calls across different species. 
 
-{\bf Work Division} Yurui Zhou will work on preprocessing and segmentation;Joseph Russino will tackle feature extraction and selection; Hsiao-Yu Tung and De-An Huang will focus on classification algorithms; and Xiao-Feng Xie will work on ensemble learning methods. Each group member will do assistance work on at least one task of others to gain experience and improve on the overall system.  
+%{\bf Work Division} Yurui Zhou will work on preprocessing and segmentation;Joseph Russino will tackle feature extraction and selection; Hsiao-Yu Tung and De-An Huang will focus on classification algorithms; and Xiao-Feng Xie will work on ensemble learning methods. Each group member will do assistance work on at least one task of others to gain experience and improve on the overall system.  
 
 {\bf Midterm Milestone} Develop an initial workable software version and perform basic tests based on indoor voice data, after selecting suitable algorithm components that might work scalable.
 
@@ -153,7 +168,7 @@ one specific class or not. SVMs trained in a pairwise fashion has obtained state
 \textbf{Random Forest.} Random forests has been widely used for multi-label classification \cite{Lasseck13, chennovel13, Stowell_NIPSW13, Zhang_SDM2010}.
 Random Forest is operated by constructing decision tree structure by the training examples. One of the popular algorithm is tree bagging, in which the training process includes repeatedly selecting a bootstrap sample of the training set and  fitting the trees to them. After the training process, the label decision is made either on the majority of the votes or a weighted combination from all individual tree.
 
-%\textbf{Naive Bayes.} 
+\textbf{Naive Bayes.} 
 
 \textbf{Logistic Regression.} Ensemble of logistic regression has been used for multi-label bird song classification \cite{Massaron13} because of its simplicity. We also consider logistic regression as the baseline for soft output.
 
@@ -164,8 +179,7 @@ Random Forest is operated by constructing decision tree structure by the trainin
 
 We first evaluate our system on single-label data to see if the flight calls are separable using our method.
 
-\textbf{Data.} 
-We use the flight calls of songbirds manually segmented and labeled by Amy Tegeler, an Avian Ecologist from the Carnegie Museum of Natural History, to evaluate the performance of our system on indoor flight calls classification. We used the data from year 2008 to 2013. The total number of species is 32. But only 11 species has more than 100 data. Therefore, the experiment is performed on those 11 species, and 100 data points are randomly sampled from each species. The 100 data points are randomly partitioned into 20 testing data and 80 training data for each species.
+\textbf{Data.}  We use the flight calls of songbirds manually segmented and labeled by Amy Tegeler, an Avian Ecologist from the Carnegie Museum of Natural History, to evaluate the performance of our system on indoor flight calls classification. We used the data from year 2008 to 2013. The total number of species is 32. But only 11 species has more than 100 data. Therefore, the experiment is performed on those 11 species, and 100 data points are randomly sampled from each species. The 100 data points are randomly partitioned into 20 testing data and 80 training data for each species.
 
 \textbf{Segmentation.}
 Since the flight call segments are already manually identified, we do not perform segmentation in this experiment.
