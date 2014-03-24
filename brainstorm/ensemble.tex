@@ -150,6 +150,22 @@ reasonable to aggregate probabilities from each SISL
 classifier rather than 0/1 votes. The aggregated prob-
 abilities are used as the score-functions for each class.
 
+\paragraph{Ensemble of randomized decision trees}
+
+\cite{Lasseck13} For each sound class an ensemble of
+randomized decision trees (sklearn.ensemble.ExtraTreesRegressor) is applied. The number
+of estimators is chosen to be twice the number of selected features per class but not greater
+than 500. The winning solution considers 4 features when looking for the best split and
+requires a minimum of 3 samples to split an internal node. During 12 -fold cross validation
+the probability of each sound class in all test files is predicted and at the end, after removing
+the lowest and highest value, averaged.
+
+By ranking feature importance returned from the decision trees during training one can find
+important segments to identify each sound class. 
+
+
+
+
 \subsubsection{Other Thoughts}
 
 \paragraph{unknown class}
