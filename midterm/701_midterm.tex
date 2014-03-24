@@ -6,6 +6,7 @@
 \usepackage{subcaption}
 \usepackage{url}
 \usepackage{multirow} 
+\usepackage{cite} 
 
 \newcommand{\specialcell}[2][c]{%
   \begin{tabular}[#1]{@{}c@{}}#2\end{tabular}}
@@ -53,13 +54,13 @@ jrussino \\
 
 \maketitle
 
-\begin{abstract}
+%\begin{abstract}
 % The abstract paragraph should be indented 1/2~inch (3~picas) on both left and
 % right-hand margins. Use 10~point type, with a vertical spacing of 11~points.
 % The word \textbf{Abstract} must be centered, bold, and in point size 12. Two
 % line spaces precede the abstract. The abstract must be limited to one
 % paragraph.
-\end{abstract}
+%\end{abstract}
 
 \section{Introduction}
 %It is important to gain a better understanding of bird behavior
@@ -78,35 +79,28 @@ jrussino \\
 % other sources of non-bird sound (e.g., buzzing insects), and
 % background noise like wind, rain, and motor vehicles.
 
-It is important to gain a better understanding about the climate and ecological changes in the world. One way to address this is to study seasonal migration patterns in songbird populations, since birds respond quickly to environmental changes.
-During migratory periods, many species of songbirds use flight calls, which are species-specific and are distinct from other vocalizations. Therefore, flight calls information can be used to determine the relative abundance of species and is important to understand long-term population trends. Due to costly human effort to collect data about birds in traditional methods, using machine learing (ML) methods to identify bird species from continuous audio recordings has been a hot topic, as indicated in extensive competitions in recent conferences.\footnote{\scriptsize ICML 2013: \href{http://www.kaggle.com/c/the-icml-2013-bird-challenge}{The Bird Challenge}; NIPS 2013: \href{http://www.kaggle.com/c/multi-label-bird-species-classification-nips2013}{
-Multi-label Bird Species Classification}; MLSP 2013: \href{http://www.kaggle.com/c/mlsp-2013-birds}{Bird Classification Challenge}}.
+It is important to gain a better understanding about the climate and ecological changes in the world. One way to address this is to study seasonal migration patterns in songbird populations, since birds respond quickly to environmental changes \cite{walther2002ecological}.
+During migratory periods, many species of songbirds use flight calls, which are species-specific and are distinct from other vocalizations. Therefore, flight calls information can be used to determine the relative abundance of species and is important to understand long-term population trends. Due to costly human effort to collect data about birds in traditional methods, using machine learing (ML) methods to identify bird species from continuous audio recordings has been a hot topic in in recent conference competitions.\footnote{\scriptsize ICML 2013: \href{http://www.kaggle.com/c/the-icml-2013-bird-challenge}{The Bird Challenge}; NIPS 2013: \href{http://www.kaggle.com/c/multi-label-bird-species-classification-nips2013}{
+Multi-label Bird Species Classification}; MLSP 2013: \href{http://www.kaggle.com/c/mlsp-2013-birds}{Bird Classification Challenge}}. Although there are some recent advances \cite{briggs2013instance,Lasseck13,Massaron13,stattnersong13}, it is still an open ML problem to reliably identify bird sounds in field recordings data due to simultaneously vocalizing birds and various background noise \cite{BriggsMLSP13}.
 
-%\footnote{\href{http://www.kaggle.com/c/the-icml-2013-bird-challenge}{ICML 2013: The Bird Challenge}}$^,$\footnote{\href{http://www.kaggle.com/c/multi-label-bird-species-classification-nips2013}{
-%NIPS 2013: Multi-label Bird Species Classification}}$^,$\footnote{\href{http://www.kaggle.com/c/mlsp-2013-birds}{MLSP 2013: Bird Classification Challenge}}.
+In this project, we will focus on critical aspects of this problem. We start from some state-of-the-art algorithms, e.g., \cite{mlsp2,chennovel13,briggs2013instance,Lasseck13,Massaron13,stattnersong13}, adapt components to the data we have, and finally develop a scalable, integrated software tool. The total process is divided into four steps. First, Audio data are first preprocessed into spectrograms using Fourier transformation or existing sound analysis software. The spectrograms are further cleaned by applying background noise reduction and image processing techniques, and connected pixels (acoustic patterns) in the spectrograms are labeled into rectangle segments. Second, features are then extracted and selected from different sources, e.g., file statistics, segment statistics and probabilistics, and mel-frequency cepstral coefficients (MFCC). Third, the classification can then be done using multiple algorithms, e.g., naive Bayes, decision trees, $k$-nearest neighbors ($k$-NN) \cite{cover1967nearest}, support vector machines (SVM) \cite{cortes1995support}, etc. Finally, we will explore some ensemble methods \cite{breiman2001random,breiman1996bagging,freund1997decision,hoeting1999bayesian,read2011classifier} for furthering improve the overall performance by combining the predictions of models, as well as facilitating scalability in real-world usages. 
 
-{\bf Data Set} Large amounts of audio data (about 20 terabytes) for bird calls have been collected. The data contain flight calls from approximately 20-30 species of songbirds, examples of other background noises, and long audio files that contain flight calls (some of them might be too faint to identify them to species) and other background sounds. The software developed can be tested using long audio files where all the flight calls of songbirds have been detected, and with manual identification by Amy Tegeler, an Avian Ecologist from the Carnegie Museum of Natural History.
+The software developed for this project will be used by the Carnegie Museum of Natural History, and possibly shared with other land managers, researchers, and educators to enhance the use of flight calls as a method to study the populations of migratory songbirds. 
 
-%Flight calls vary in structure; some species have flight calls that are very similar while other species flight calls are very unique. For example, calls may differ in a variety of acoustic traits including whether they are pure or modulated tones, rise or fall during the call, and/or contain a single band or include harmonics. Warbler flight calls are commonly split into 6 flight call types based on similarity of structure: buzzy, single banded upsweep, double banded upsweep, double banded upsweep, down sweep, zeep, and irregular.
+% First, we will work on segmenting flight call vocalizations within long audio files that contain other types of sounds. Second, given labeled segments of bird flight calls, we will explore possible algorithms to extract useful features and classify the corresponding songbird species automatically.
+% 
+%  We then etc. Finally, the classification can then be done using multiple algorithms, e.g., decision trees, support vector machines, and multi-instance multi-label learning algorithms, as well as some ensemble methods to further improve the overall performance, based on existing libraries (e.g., \href{http://scikit-learn.org}{scikit-learn}). 
 
-{\bf Project Ideas \& Software} In this project, we will focus on two critical aspects of this problem. First, we will work on segmenting flight call vocalizations within long audio files that contain other types of sounds. Second, given labeled segments of bird flight calls, we will explore possible algorithms to extract useful features and classify the corresponding songbird species automatically.
+%{\bf Midterm Milestone} Develop an initial workable software version and perform basic tests based on indoor voice data, after selecting suitable algorithm components that might work scalable.
 
-%\section{Plan of Action}
+%The software is scalable so that users could train it to identify flight calls from additional species and to exclude other types of background noise.
 
-We plan to start from some state-of-the-art algorithms \cite{briggs2013instance,Lasseck13,Massaron13,stattnersong13}, adapt components to the data we have, and finally develop a scalable, integrated software tool.
-The audio data are first preprocessed into spectrograms using Fourier transformation or existing sound analysis software (e.g., \href{http://www.birds.cornell.edu/brp/raven/}{Raven}). The spectrograms are further cleaned by applying background noise reduction and image processing techniques. Afterward, connected pixels (acoustic patterns) in the spectrograms are labeled into rectangle segments.  We then extract and select features from different sources, e.g., file statistics, segment statistics and probabilistics, and mel-frequency cepstral coefficients, etc. Finally, the classification can then be done using multiple algorithms, e.g., decision trees, support vector machines, and multi-instance multi-label learning algorithms, as well as some ensemble methods to further improve the overall performance, based on existing libraries (e.g., \href{http://scikit-learn.org}{scikit-learn}). %Hierarchical classification techniques might also be considered to utilize the domain-specific knowledge structure in flight calls across different species. 
-
-%{\bf Work Division} Yurui Zhou will work on preprocessing and segmentation;Joseph Russino will tackle feature extraction and selection; Hsiao-Yu Tung and De-An Huang will focus on classification algorithms; and Xiao-Feng Xie will work on ensemble learning methods. Each group member will do assistance work on at least one task of others to gain experience and improve on the overall system.  
-
-{\bf Midterm Milestone} Develop an initial workable software version and perform basic tests based on indoor voice data, after selecting suitable algorithm components that might work scalable.
-
-%%We will be collaborating with Amy Tegeler, the Avian Ecologist and Bioacoustics Lab Manager at Powdermill Nature Reserve, the field station for the Carnegie Museum of Natural History.
-{\bf Project Outline} The software developed for this project will be used by the Carnegie Museum of Natural History, and possibly shared with other land managers, researchers, and educators to enhance the use of flight calls as a method to study the populations of migratory songbirds. %The software is scalable so that users could train it to identify flight calls from additional species and to exclude other types of background noise.
-
-[Yurui] Basically preprocessing and segmentation is the very first step of the bird song classification, and the methods used in preprocessing and segmentation have a big influence on classification results.
+%[Yurui] Basically preprocessing and segmentation is the very first step of the bird song classification, and the methods used in preprocessing and segmentation have a big influence on classification results.
 
 
 \section{Related work}
+
+
 [Yurui] The preprocessing and segmentation work is actually based on the method adopted in\cite{Lasseck13}. They firstly processed the audio files into grayscale image and then using standard processing techniques such as closing, dilation and median filter. With processed image they labeled connected pixels exceeding certain spatial threshold as a segment and add on it a small area rectangle to define size and position.
 
 \section{Methods}
@@ -118,7 +112,7 @@ Notice the case that in a processed grayscale image most area was occupied by th
 
 Such a algorithm, though perform well in noise removing and feature capturing, requires large amount of computation because the average and variance of each column of the row need to be calculated. Given the huge size of the processed grayscale image, we need a more efficient algorithm to segment the image. Thus further experiments is needed to explore an balance point between noise reduction effectivity and efficiency.
 
-Similar to the methods used in \cite{Lasseck13}, we apply standard image processing techniques to further reduce the residual noise dot. And Finally we would use find connected pixels from the image and label the segments.
+Similar to the methods used in \cite{Lasseck13}, we apply standard image processing techniques to further reduce residual noise dots. Finally we would use find connected pixels from the image and label the segments.
 
 \subsection{Features}
 
@@ -178,6 +172,8 @@ Random Forest is operated by constructing decision tree structure by the trainin
 \section{Experiments}
 
 We first evaluate our system on single-label data to see if the flight calls are separable using our method.
+
+{\bf Data Set} Large amounts of audio data (about 20 terabytes) for bird calls have been collected. The data contain flight calls from approximately 20-30 species of songbirds, examples of other background noises, and long audio files that contain flight calls (some of them might be too faint to identify them to species) and other background sounds. The software developed can be tested using long audio files where all the flight calls of songbirds have been detected, and with manual identification by Amy Tegeler, an Avian Ecologist from the Carnegie Museum of Natural History.
 
 \textbf{Data.}  We use the flight calls of songbirds manually segmented and labeled by Amy Tegeler, an Avian Ecologist from the Carnegie Museum of Natural History, to evaluate the performance of our system on indoor flight calls classification. We used the data from year 2008 to 2013. The total number of species is 32. But only 11 species has more than 100 data. Therefore, the experiment is performed on those 11 species, and 100 data points are randomly sampled from each species. The 100 data points are randomly partitioned into 20 testing data and 80 training data for each species.
 
