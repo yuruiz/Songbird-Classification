@@ -105,8 +105,8 @@ We use the BoW over MFCCs in Section \ref{sec:bow} as the features for this expe
 Before beginning with the training process, we first examine the property of the data. We can see that most of the value in the original data is zero. After taking the log value of the data, we can find that a small group of the data is separated from the others. In some of the dimension, this small contains only a number of specific species of birds, which might be helpful in the classification.
 \begin{figure}[ht!]
     \centering
-    {(a)\includegraphics[width=0.45\linewidth]{../Figure/Train_features.png}
-    (b)\includegraphics[width=0.45\linewidth]{../Figure/Train_features_log.png}}
+    {(a)\includegraphics[width=0.45\linewidth]{../Figure/Train_features}
+    (b)\includegraphics[width=0.45\linewidth]{../Figure/Train_features_log}}
     \caption{(a) is the histogram of second feature. Most of the values are close to zero. (b) is the histogram of the log value of the original data.}
     \label{fig:hist}
 \end{figure}
@@ -140,8 +140,8 @@ We can see from our results that kernel SVM has better performance than the othe
 
 \begin{figure}[ht!]
     \centering
-    {(a)\includegraphics[width=0.45\linewidth]{../Figure/RBF_cost_accuracy.png}
-    (b)\includegraphics[width=0.45\linewidth]{../Figure/RBF_gamma_accuracy.png}}
+    {(a)\includegraphics[width=0.45\linewidth]{../Figure/RBF_cost_accuracy}
+    (b)\includegraphics[width=0.45\linewidth]{../Figure/RBF_gamma_accuracy}}
     \caption{(a) Accuracy to penalty term c. (b) Accuracy to parameter $\gamma$. }
     \label{fig:RBF}
 \end{figure}
@@ -151,17 +151,17 @@ In considering that original feature distribution is not a Gaussian distribution
 
 \begin{figure}[ht!]
     \centering
-    \includegraphics[width=0.45\linewidth]{../Figure/RBF_cost_accuracy_log.png}
+    \includegraphics[width=0.45\linewidth]{../Figure/RBF_cost_accuracy_log}
      \centering
-    \caption{(a) accuracy to penalty C after log transformation on the original feature.}
+    \caption{Accuracy to penalty C after log transformation on the original feature.}
 \end{figure}
 
 Next, we show the results for applying SVM with polynomial kernel. Figure \ref{fig:poly} shows that the performance of accuracy to penalty C is similar to RBF kernel and the optimal value of this parameter is 16000. Besides, according to the experiment results, the optimal degree for the data is around 2. The reason might due to small data size that we use recently so that increasing model complexity will lead to overfitting problem. So we focus on simple model for recent data.  
  
 \begin{figure}[ht!]
     \centering
-    {(a)\includegraphics[width=0.45\linewidth]{../Figure/Poly_cost_accuracy.png}
-    (b)\includegraphics[width=0.45\linewidth]{../Figure/Poly_degree_accuracy.png}}
+    {(a)\includegraphics[width=0.45\linewidth]{../Figure/Poly_cost_accuracy}
+    (b)\includegraphics[width=0.45\linewidth]{../Figure/Poly_degree_accuracy}}
     \caption{(a) Accuracy to penalty term c. (b) Accuracy to parameter degree d}
     \label{fig:poly}
 \end{figure}
