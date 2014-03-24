@@ -62,10 +62,10 @@ jrussino \\
 \section{Introduction}
 Given the documented declines in many migrant songbird populations, there is a pressing need to gain a more complete understanding of all aspects of migration patterns.
 %Particularly, flight calling behavior is one of the least studied areas of migration biology.
-During migratory periods, many species of songbirds use flight calls, which are species-specific and are distinct from other vocalizations. Therefore, flight calls information can be used to determine the relative abundance of species and is important to understand long-term population trends. Identification of bird species from continuous audio recordings has been a hot topic in recent conference competitions.\footnote{\scriptsize ICML 2013: \href{http://www.kaggle.com/c/the-icml-2013-bird-challenge}{The Bird Challenge}; NIPS 2013: \href{http://www.kaggle.com/c/multilabel-bird-species-classification-nips2013}{
+During migratory periods, many species of songbirds use flight calls, which are species-specific and are distinct from other vocalizations. Therefore, flight calls information can be used to determine the relative abundance of species and is important to understand long-term population trends. Identification of bird species from continuous audio recordings has been a hot topic in recent conference competitions.\footnote{\scriptsize ICML 2013: \href{http://www.kaggle.com/c/the-icml-2013-bird-challenge}{The Bird Challenge}; NIPS 2013: \href{http://www.kaggle.com/c/multi-label-bird-species-classification-nips2013}{
 Multi-label Bird Species Classification}; MLSP 2013: \href{http://www.kaggle.com/c/mlsp-2013-birds}{Bird Classification Challenge}}.
 
-%\footnote{\href{http://www.kaggle.com/c/the-icml-2013-bird-challenge}{ICML 2013: The Bird Challenge}}$^,$\footnote{\href{http://www.kaggle.com/c/multilabel-bird-species-classification-nips2013}{
+%\footnote{\href{http://www.kaggle.com/c/the-icml-2013-bird-challenge}{ICML 2013: The Bird Challenge}}$^,$\footnote{\href{http://www.kaggle.com/c/multi-label-bird-species-classification-nips2013}{
 %NIPS 2013: Multi-label Bird Species Classification}}$^,$\footnote{\href{http://www.kaggle.com/c/mlsp-2013-birds}{MLSP 2013: Bird Classification Challenge}}.
 
 {\bf Data Set} Large amounts of audio data (about 20 terabytes) for bird calls have been collected. The data contain flight calls from approximately 20-30 species of songbirds, examples of other background noises, and long audio files that contain flight calls (some of them might be too faint to identify them to species) and other background sounds. The software developed can be tested using long audio files where all the flight calls of songbirds have been detected, and with manual identification by Amy Tegeler, an Avian Ecologist from the Carnegie Museum of Natural History.
@@ -95,7 +95,7 @@ The audio data are first preprocessed into spectrograms using Fourier transforma
 \section{Methods}
 
 \subsection{Preprocessing}
-[Yurui] In preprocessing we first re-sampled the audio files to 22050 Hz guarantee a uniform audio sample format for all training and test data. For each audio file we split it into 256 segments. The the Power Spectral Density of each segments can be calculated. For each segments we use a Hanning windows with \%75 overlap. Finally, the spectrogram of each audio file is treated as grayscale image for further noise reduction and segmentation.
+[Yurui] In preprocessing we first re-sampled the audio files to 22050 Hz guarantee a uniform audio sample format for all training and test data. For each audio file we split it into 256 segments. The the Power Spectral Density of each segments can be calculated. For each segments we use a Hanning windows with \%75 overlap. Finally, the spectrogram of each audio file is treated as gray-scale image for further noise reduction and segmentation.
 
 Notice the case that in a processed grayscale image most area was occupied by the random noise. What we want is to get rid of the background noise completely and increase the contrast between real signal and the background. Given the several different algorithm tested, the best one is the so called Median clipping algorithm. The idea is simple, for each pixel we compute the median and variance of its corresponding row and column. If the pixel is above the median plus three times variance we set the pixel value to 1, otherwise the value would be set to 0. The median clipping algorithm works best because it not only removes most background noise, but also capture the sound feature clearly and precisely.
 
@@ -108,7 +108,7 @@ Similar to the methods used in \cite{Lasseck13}, we apply standard image process
 [Joseph]  The features used can have a large impact on classification results. For this project, we've chosen to implement a
 large set of features that have been used in previous successful attempts at birdsong classification. We will ultimately
 choose a smaller subset of these features that provide the most discriminatory power. 
-  Our current prototype utilizes Mel frequency Cepstral Coefficient (MFCC) features. The MFCC features are common in
+  Our current prototype utilizes Mel Frequency Cepstral Coefficient (MFCC) features. The MFCC features are common in
 speech recognition, but can be sensitive to the presence of noise \cite{tyagi2005desensitizing}; for this reason, we expect that they may be
 useful features for classifying the clear lab data but less useful for the noisy outdoor data. 
   The other features that we intend to explore can be classified broadly into two categories: spectrum-wide features and
@@ -126,8 +126,8 @@ perimeter, non-compactness, and rectangularity; the profile statistics include p
 skewness, and kurtosis. The final set of segment features that we will explore are the Histogram of Gradients (HOG), 
 which have successfully been used for songbird classification by both Briggs in 2012 \cite{mlsp1} and Fodor in 2013 \cite{fodor2013ninth}. 
 
-\subsubsection{Mel-Frequency Cepstrum Coefficients }
-While flight calls recognition is a new application, audio recognition is a well developed area in signal processing. We will build features based on  mel-frequency cepstrum coefficients (MFCCs), which are commonly used as features in speech recognition systems. A temporal signal is first transformed into a series of frames where each frame consists of 13 MFCCs. Each frame represents a duration of 12ms. The step size is 4ms. We also include the fist and second derivatives of MFCCs, which results in a 39 (13$\times$3) dimensional vector for each frame.
+\subsubsection{Mel-Frequency Cepstral Coefficients}
+While flight calls recognition is a new application, audio recognition is a well developed area in signal processing. We will build features based on  mel-frequency cepstral coefficients (MFCCs), which are commonly used as features in speech recognition systems. A temporal signal is first transformed into a series of frames where each frame consists of 13 MFCCs. Each frame represents a duration of 12ms. The step size is 4ms. We also include the fist and second derivatives of MFCCs, which results in a 39 (13$\times$3) dimensional vector for each frame.
 
 \subsubsection{Bag-of-Words Model over MFCCs}
 \label{sec:bow}
@@ -143,18 +143,19 @@ We consider several classifiers/regressors.
 
 \textbf{Nearest Neighbor (NN).} For each testing data, the NN classifier finds the nearest training data point and transfer the corresponding label. The NN classifier directly reflect the effect of our features and is used as baseline. Depends on the features, different distance metric should be used. We will compare the performance of euclidean and $\chi^2$ distance on the BoW feature in the experiments.
 
-\textbf{Support Vector Machine (SVM).} The most common approach for multilabel classification is to use an ensemble of binary classifiers, where each classifier predicts if an instance belongs to
+\textbf{Support Vector Machine (SVM).} The most common approach for multi-label classification is to use an ensemble of binary classifiers, where each classifier predicts if an instance belongs to
 one specific class or not. SVMs trained in a pairwise fashion has obtained state-of-the-art results on standard multi-label benchmark datasets \cite{Mencia_NIPSW13}. Furthermore, we will be able to integrate different kernels to improve the performance using the SVM. For example, the $\chi^2$ kernel will have a better performance for histogram than the linear kernel. We also consider support vector regression to produce soft output for ensemble learning.
 
 %textbf{Support Vector Regression (SVR).} We use SVR to produce a soft output version of SVM
 
-\textbf{Random Forest.} Random forests has been widely used for multilabel classification \cite{Lasseck13, chennovel13, Stowell_NIPSW13, Zhang_SDM2010}.
+\textbf{Random Forest.} Random forests has been widely used for multi-label classification \cite{Lasseck13, chennovel13, Stowell_NIPSW13, Zhang_SDM2010}.
 Random Forest is operated by constructing decision tree structure by the training examples. One of the popular algorithm is tree bagging, in which the training process includes repeatedly selecting a bootstrap sample of the training set and  fitting the trees to them. After the training process, the label decision is made either on the majority of the votes or a weighted combination from all individual tree.
 
 %\textbf{Naive Bayes.} 
 
-\textbf{Logistic Regression.} Ensemble of logistic regression has been used for mutlilabel bird song classification \cite{Massaron13} because of its simplicity. We also consider logistic regression as the baseline for soft output.
+\textbf{Logistic Regression.} Ensemble of logistic regression has been used for multi-label bird song classification \cite{Massaron13} because of its simplicity. We also consider logistic regression as the baseline for soft output.
 
+\subsection{Ensemble Learning}
 
 
 \section{Experiments}
@@ -162,8 +163,7 @@ Random Forest is operated by constructing decision tree structure by the trainin
 We first evaluate our system on single-label data to see if the flight calls are separable using our method.
 
 \textbf{Data.} 
-We use the flight calls of songbirds manually segmented and labelled by Amy Tegeler, an Avian Ecologist from the Carnegie Museum of Natural History, to evaluate the performance of our system on indoor flight calls classification. We used the data from year 2008 to 2013. The total number of species is 32. But only 11 species has more than 100 data. Therefore, the experiment is performed on those 11 species, and 100 data points are randomly sampled from each species. The 100 data points are randomly partitioned into 20 testing data and 80 training data for each species.
-
+We use the flight calls of songbirds manually segmented and labeled by Amy Tegeler, an Avian Ecologist from the Carnegie Museum of Natural History, to evaluate the performance of our system on indoor flight calls classification. We used the data from year 2008 to 2013. The total number of species is 32. But only 11 species has more than 100 data. Therefore, the experiment is performed on those 11 species, and 100 data points are randomly sampled from each species. The 100 data points are randomly partitioned into 20 testing data and 80 training data for each species.
 
 \textbf{Segmentation.}
 Since the flight call segments are already manually identified, we do not perform segmentation in this experiment.
@@ -171,7 +171,7 @@ Since the flight call segments are already manually identified, we do not perfor
 \textbf{Features.}
 We use the BoW over MFCCs in Section \ref{sec:bow} as the features for this experiment. The size of the code book is 200, and the MFCCs consider the frequencies from 1500 Hz to 22000Hz.
 
-\textbf{Classifiers}
+\textbf{Classifiers.}
 Before beginning with the training process, we first examine the property of the data. We can see that most of the value in the original data is zero. After taking the log value of the data, we can find that a small group of the data is separated from the others. In some of the dimension, this small contains only a number of specific species of birds, which might be helpful in the classification.
 \begin{figure}[ht!]
     \centering
@@ -198,7 +198,7 @@ We compare the results using nearest neighbor, support vector machine, random fo
 \hline
 RandomForest &         & 7.27           &       & linear            &67.7273\\
 \hline
-Naive Bayes  & kernel densoty  & 15.91           &       & polynomial        &69.0909\\
+Naive Bayes  & kernel density  & 15.91           &       & polynomial        &69.0909\\
 \hline
         &               &           &       & Sigmoid           &70.9091\\
 \hline
@@ -236,7 +236,7 @@ Next, we show the results for applying SVM with polynomial kernel. Figure \ref{f
     \label{fig:poly}
 \end{figure}
 
-The reason why random forest and naive bayes failed is that the training example for each species is now limited to 80. From the predicted classification labels from the results of random forest, we found that the identities in some of the class are all misclassfied into another class, which means that the tree is ill-trained and biased such that many cases will be made to the same decision. 
+The reason why random forest and naive Bayes failed is that the training example for each species is now limited to 80. From the predicted classification labels from the results of random forest, we found that the identities in some of the class are all mis-classified into another class, which means that the tree is ill-trained and biased such that many cases will be made to the same decision. 
 
 
 
