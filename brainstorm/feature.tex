@@ -1,0 +1,41 @@
+  The features used can have a large impact on classification results. For this project, we've chosen to implement a
+large set of features that have been used in previous successful attempts at birdsong classification. We will ultimately
+choose a smaller subset of these features that provide the most discriminatory power. 
+  Our current prototype utilizes Mel frequency Cepstral Coefficient (MFCC) features. The MFCC features are common in
+speech recognition, but can be sensitive to the presence of noise [1]; for this reason, we expect that they may be
+useful features for classifying the clear lab data but less useful for the noisy outdoor data. 
+  The other features that we intend to explore can be classified broadly into two categories: spectrum-wide features and
+segment features. The spectrum-wide features describe qualities of the full spectrograph for a given recording, while
+the segment features describe qualities of individual segmented portions of the spectrograph.
+  For spectrum-wide features, we have already explored using 13-dimensional MFCC vector using Wojcicki's MATLAB
+implementation [2]. In addition, we plan on using the min, max, average, and standard deviation of frequency values over
+the entire spectrograph, and on dividing the spectrograph into N equally spaced frequency bands and taking the same
+statistics for each frequency band as features. Lasseck had success with this method in 2013 using N=16 [3].
+  For segment features, we will use the same basic statistics on a per-segment basis. In addition, we will explore the
+usefulness of many of the other segment features that were used successfully by Briggs et al. in 2012. These can be divided 
+into two different categories - "mask descriptors", which describe the general shape of a segment, and "profile statistics", 
+which describe the frequency and time profiles within segments. The mask descriptors include bandwidth,duration, area, 
+perimeter, non-compactness, and rectangularity; the profile statistics include profile uniformity, mean, variance,
+skewness, and kurtosis. The final set of segment features that we will explore are the Histogram of Gradients (HOG), 
+which have successfully been used for songbird classification by both Briggs in 2012 [4] and Fodor in 2013 [5]. 
+
+
+[1] Tyagi, V.; Wellekens, Christian, "On desensitizing the Mel-Cepstrum to spurious spectral components for Robust
+Speech Recognition," Acoustics, Speech, and Signal Processing, 2005. Proceedings. (ICASSP '05). IEEE International
+Conference on , vol.1, no., pp.529,532, March 18-23, 2005
+
+[2] http://www.mathworks.com/matlabcentral/fileexchange/32849-htk-mfcc-matlab/content/mfcc/mfcc.m
+
+[3] Lasseck, Mario. "Bird Song Classification in Field Recordings: Winning Solution for NIPS4B 2013 Competition."
+
+[4] F. Briggs, B. Lakshminarayanan, L. Neal, X. Z. Fern,
+R. Raich, S. J. K. Hadley, A. S. Hadley, and M. G.
+Betts. Acoustic classification of multiple simultane-
+ous bird species: A multi-instance multi-label approach.
+In The Journal of the Acoustical Society of America,
+131:4640, 2012.
+
+[5] Fodor G. (2013) The Ninth Annual MLSP Competition: First place. Machine Learning for Signal
+Processing (MLSP), 2013 IEEE International Workshop on, Digital Object Identifier:
+10.1109/MLSP.2013.6661932 Publication Year: 2013, Page(s): 1- 2
+
