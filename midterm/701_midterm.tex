@@ -5,10 +5,12 @@
 \usepackage{caption}
 \usepackage{subcaption}
 \usepackage{url}
+\usepackage{multirow} 
 
-\title{Identification of Songbird Species in Field Recordings
-%  \footnote{10-701 Machine Learning Final Project Proposal}
-}
+\newcommand{\specialcell}[2][c]{%
+  \begin{tabular}[#1]{@{}c@{}}#2\end{tabular}}
+
+\title{Identification of Songbird Species in Field Recordings}
 
 
 \author{
@@ -190,21 +192,32 @@ We compare the results using nearest neighbor, support vector machine, random fo
 \begin{center}
 \begin{tabular}{|c|c|c|c|c|c|}
 \hline
-    KNN & distance      &accuracy   &SVM    & kernel type       &accuracy\\
+   classifier  & setting      &accuracy   & classifier    & setting      & accuracy\\
 \hline
-        & chi-square    &62.27      &       &chi-square kernel  &72.73\\
-\hline
-        & euclidean     &54.09      &       & RBF               &70\\
-\hline
-RandomForest &         & 7.27           &       & linear            &67.7273\\
-\hline
-Naive Bayes  & kernel density  & 15.91           &       & polynomial        &69.0909\\
-\hline
-        &               &           &       & Sigmoid           &70.9091\\
-\hline
+KNN     & chi-square    &62.27      &     &chi-square kernel  &72.73\\ \cline{2-3} \cline{5-6}
+(distance) & euclidean     &54.09      &   SVM    & RBF               &70\\ \cline{1-3} \cline{5-6}
+       &               &     &    (kernel types)    & linear            &67.7273\\ \cline{1-3} \cline{5-6}
+Naive Bayes  & kernel density  & 15.91           &       & polynomial        &69.0909\\ \cline{1-3} \cline{5-6}
+ RandomForest &         & 7.27                 &       & Sigmoid           &70.9091\\ \hline
 \end{tabular}
 \end{center}
 \end{table}
+
+\begin{tabular}{ |l|l|l| }
+\hline
+Goalkeeper & GK & Paul Robinson \\ \hline
+\multirow{2}{*}{Defenders} & LB & Lucus Radebe \\
+ & DC & Michael Duberry \\
+ & DC & Dominic Matteo \\
+ & RB & Didier Domi \\ \hline
+\multirow{3}{*}{Midfielders} & MC & David Batty \\
+ & MC & Eirik Bakke \\
+ & MC & Jody Morris \\ \hline
+Forward & FW & Jamie McMaster \\ \hline
+\multirow{2}{*}{Strikers} & ST & Alan Smith \\
+ & ST & Mark Viduka \\
+\hline
+\end{tabular}
 
 We can see from our results that kernel SVM has better performance than the other method. First we show the parameter selection in using RBF kernel. Figure \ref{fig:RBF} shows the accuracy to the penalty term $C$ and the parameter $\gamma$. The parameter we selected are $\gamma = 15$ and $C = 4000$.
 
