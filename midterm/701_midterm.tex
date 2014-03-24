@@ -83,9 +83,7 @@ It is important to gain a better understanding about the climate and ecological 
 During migratory periods, many species of songbirds use flight calls, which are species-specific and are distinct from other vocalizations. Therefore, flight calls information can be used to determine the relative abundance of species and is important to understand long-term population trends. Due to costly human effort to collect data about birds in traditional methods, using machine learing (ML) methods to identify bird species from continuous audio recordings has been a hot topic in in recent conference competitions.\footnote{\scriptsize ICML 2013: \href{http://www.kaggle.com/c/the-icml-2013-bird-challenge}{The Bird Challenge}; NIPS 2013: \href{http://www.kaggle.com/c/multi-label-bird-species-classification-nips2013}{
 Multi-label Bird Species Classification}; MLSP 2013: \href{http://www.kaggle.com/c/mlsp-2013-birds}{Bird Classification Challenge}}. Although there are some recent advances \cite{briggs2013instance,Lasseck13,Massaron13,stattnersong13}, it is still an open ML problem to reliably identify bird sounds in field recordings data due to simultaneously vocalizing birds and various background noise \cite{BriggsMLSP13}.
 
-In this project, we will focus on critical aspects of this problem. We start from some state-of-the-art algorithms, e.g., \cite{mlsp2,chennovel13,briggs2013instance,Lasseck13,Massaron13,stattnersong13}, adapt components to the data we have, and finally develop a scalable, integrated software tool. The total process is divided into four steps. First, Audio data are first preprocessed into spectrograms using Fourier transformation or existing sound analysis software. The spectrograms are further cleaned by applying background noise reduction and image processing techniques, and connected pixels (acoustic patterns) in the spectrograms are labeled into rectangle segments. Second, features are then extracted and selected from different sources, e.g., file statistics, segment statistics and probabilistics, and mel-frequency cepstral coefficients (MFCC). Third, the classification can then be done using multiple algorithms, e.g., naive Bayes, decision trees, $k$-nearest neighbors ($k$-NN) \cite{cover1967nearest}, support vector machines (SVM) \cite{cortes1995support}, etc. Finally, we will explore some ensemble methods \cite{breiman2001random,breiman1996bagging,freund1997decision,hoeting1999bayesian,read2011classifier} for furthering improve the overall performance by combining the predictions of models, as well as facilitating scalability in real-world usages. 
-
-The software developed for this project will be used by the Carnegie Museum of Natural History, and possibly shared with other land managers, researchers, and educators to enhance the use of flight calls as a method to study the populations of migratory songbirds. 
+In this project, we will focus on critical aspects of this problem. We start from some state-of-the-art algorithms, e.g., \cite{mlsp2,chennovel13,briggs2013instance,Lasseck13,Massaron13,stattnersong13}, adapt components to the data we have, and finally develop a scalable, integrated software tool. The total process is divided into four steps. First, Audio data are first preprocessed into spectrograms. The spectrograms are further cleaned by applying background noise reduction and image processing techniques, and connected pixels (acoustic patterns) in the spectrograms are labeled into rectangle segments. Second, features are then extracted and selected from different sources, e.g., file statistics, segment statistics and probabilistics, and mel-frequency cepstral coefficients (MFCC). Third, the classification is then done by using multiple algorithms, e.g., naive Bayes, decision trees, $k$-nearest neighbors ($k$-NN) \cite{cover1967nearest}, support vector machines (SVM) \cite{cortes1995support}, etc. Finally, we will explore some ensemble methods \cite{breiman2001random,breiman1996bagging,freund1997decision,hoeting1999bayesian,read2011classifier} for furthering improve the overall performance by combining the predictions of models, as well as facilitating scalability in real-world usages. The software developed for this project will be used by the Carnegie Museum of Natural History, and possibly shared with other land managers, researchers, and educators to enhance the use of flight calls as a method to study the populations of migratory songbirds. 
 
 % First, we will work on segmenting flight call vocalizations within long audio files that contain other types of sounds. Second, given labeled segments of bird flight calls, we will explore possible algorithms to extract useful features and classify the corresponding songbird species automatically.
 % 
@@ -100,13 +98,42 @@ The software developed for this project will be used by the Carnegie Museum of N
 
 \section{Related work}
 
+As mentioned in the Introduction, the toal process is divided into standard steps of ML components.  
 
-[Yurui] The preprocessing and segmentation work is actually based on the method adopted in\cite{Lasseck13}. They firstly processed the audio files into grayscale image and then using standard processing techniques such as closing, dilation and median filter. With processed image they labeled connected pixels exceeding certain spatial threshold as a segment and add on it a small area rectangle to define size and position.
+The first part is about {\em preprocessing and segmentating} audio data of songbirds. Normally audio files are first processed into grayscale image by applying the Fourier transform using a Hanning or Hamming window of samples with some overlap \cite{Lasseck13, mlsp1}. Only relevent frequency range of the scope of domain interests are kept. The narrowed spectrograms are then treated as graysale images. To reduce the background noise, a {\em median clipping} method can be applied on each frequency band and time frame to not only remove most background noise, but also capture the sound feature clearly and precisely \cite{Lasseck13}. An alternative is to apply iterations of a whitening filter \cite{mlsp1}. A spectrogram can also be processed using a series of subprocesses including Gaussing filtering, local gradient, thresholding, and morphological nosing removal \cite{fodor2013ninth}. The resulting images can be further handled using standard image processing techniques such as diluation and median filter (e.g. using \href{http://scikit-image.org/}{scikit-image}). In \cite{Lasseck13}, neighboring pixels exceeding certain spatial threshold (acoustic patterns) in the spectrograms are labeled into rectangle segments. In \cite{fodor2013ninth}, small segements are discarded and remaing holes are filled. In \cite{mlsp1}, a supervised single-instance single-label classifier is used to label the probability of each pixel as bird sound or noise, and then obtain predicted segementations by applying a thershold.
+
+The second part is about {\em feature extraction and selection}, which can have a large impact on later classification results. In \cite{mlsp1}, segement features are dvidied into two different categories - "mask descriptors", which describe the general shape of a segment, and "profile statistics", 
+which describe the frequency and time profiles within segments. The Histogram of Gradients (HOG) have also been used for songbird classification \cite{mlsp1}. In \cite{fodor2013ninth}, features are obtained by applying the template matching function of scikit-image to compute the similarity at the maximum value of the normalized cross-correlation map with templates. In \cite{Lasseck13}, features come from three different sources, i.e., file statistics, segement statistics, and segment probabilities. The template matching in \href{http://opencv.org}{OpenCV library} is applied only on absolute-intensive spectrograms. Many existing work \cite{Stowell_NIPSW13,dufour2013clusterized,chennovel13,Massaron13} considers mel-frequency cepstral Coefficients (MFCC), which have been proved useful for speech recognition, as features. In \cite{dufour2013clusterized}, 
+
+In \cite{mlsp1}, feature rescaling is used to prevent some bias on weights of features.
+
+% The features used can have a large impact on classification results. For this project, we've chosen to implement a
+% large set of features that have been used in previous successful attempts at birdsong classification. We will ultimately
+% choose a smaller subset of these features that provide the most discriminatory power. 
+% 
+%   Our current prototype utilizes Mel Frequency Cepstral Coefficient (MFCC) features. The MFCC features are common in
+% speech recognition, but can be sensitive to the presence of noise \cite{tyagi2005desensitizing}; for this reason, we expect that they may be
+% useful features for classifying the clear lab data but less useful for the noisy outdoor data. 
+%   The other features that we intend to explore can be classified broadly into two categories: spectrum-wide features and
+% segment features. The spectrum-wide features describe qualities of the full spectrograph for a given recording, while
+% the segment features describe qualities of individual segmented portions of the spectrograph.
+%   For spectrum-wide features, we have already explored using 13-dimensional MFCC vector using Wojcicki's MATLAB
+% implementation. \footnote{\scriptsize \href{http://www.mathworks.com/matlabcentral/fileexchange/32849-htk-mfcc-matlab/content/mfcc/mfcc.m}{HTK MFCC MATLAB} by K. Wojcicki: Mel frequency cepstral coefficient feature extraction that closely matches that of HTK's HCopy.} In addition, we plan on using the min, max, average, and standard deviation of frequency values over
+% the entire spectrograph, and on dividing the spectrograph into N equally spaced frequency bands and taking the same
+% statistics for each frequency band as features. Lasseck had success with this method in 2013 using N=16 \cite{Lasseck13}.
+%   For segment features, we will use the same basic statistics on a per-segment basis. In addition, we will explore the
+% usefulness of many of the other segment features that were used successfully by Briggs et al. in 2012. These can be divided 
+% into two different categories - "mask descriptors", which describe the general shape of a segment, and "profile statistics", 
+% which describe the frequency and time profiles within segments. The mask descriptors include bandwidth,duration, area, 
+% perimeter, non-compactness, and rectangularity; the profile statistics include profile uniformity, mean, variance,
+% skewness, and kurtosis. The final set of segment features that we will explore are the Histogram of Gradients (HOG), 
+% which have successfully been used for songbird classification by both Briggs in 2012 \cite{mlsp1} and Fodor in 2013 \cite{fodor2013ninth}. 
+
 
 \section{Methods}
 
 \subsection{Preprocessing}
-[Yurui] In preprocessing we first re-sampled the audio files to 22050 Hz guarantee a uniform audio sample format for all training and test data. For each audio file we split it into 256 segments. The the Power Spectral Density of each segments can be calculated. For each segments we use a Hanning windows with \%75 overlap. Finally, the spectrogram of each audio file is treated as gray-scale image for further noise reduction and segmentation.
+[Yurui] In preprocessing we first re-sampled the audio files to 22050 Hz guarantee a uniform audio sample format for all training and test data. For each audio file we split it into 256 segments. Then the Power Spectral Density of each segments can be calculated. For each segments we use a Hanning window with \%75 overlap. Finally, the spectrogram of each audio file is treated as gray-scale image for further noise reduction and segmentation.
 
 Notice the case that in a processed grayscale image most area was occupied by the random noise. What we want is to get rid of the background noise completely and increase the contrast between real signal and the background. Given the several different algorithm tested, the best one is the so called Median clipping algorithm. The idea is simple, for each pixel we compute the median and variance of its corresponding row and column. If the pixel is above the median plus three times variance we set the pixel value to 1, otherwise the value would be set to 0. The median clipping algorithm works best because it not only removes most background noise, but also capture the sound feature clearly and precisely.
 
@@ -116,26 +143,6 @@ Similar to the methods used in \cite{Lasseck13}, we apply standard image process
 
 \subsection{Features}
 
-[Joseph]  The features used can have a large impact on classification results. For this project, we've chosen to implement a
-large set of features that have been used in previous successful attempts at birdsong classification. We will ultimately
-choose a smaller subset of these features that provide the most discriminatory power. 
-  Our current prototype utilizes Mel Frequency Cepstral Coefficient (MFCC) features. The MFCC features are common in
-speech recognition, but can be sensitive to the presence of noise \cite{tyagi2005desensitizing}; for this reason, we expect that they may be
-useful features for classifying the clear lab data but less useful for the noisy outdoor data. 
-  The other features that we intend to explore can be classified broadly into two categories: spectrum-wide features and
-segment features. The spectrum-wide features describe qualities of the full spectrograph for a given recording, while
-the segment features describe qualities of individual segmented portions of the spectrograph.
-  For spectrum-wide features, we have already explored using 13-dimensional MFCC vector using Wojcicki's MATLAB
-implementation. \footnote{\scriptsize \href{http://www.mathworks.com/matlabcentral/fileexchange/32849-htk-mfcc-matlab/content/mfcc/mfcc.m}{HTK MFCC MATLAB} by K. Wojcicki: Mel frequency cepstral coefficient feature extraction that closely matches that of HTK's HCopy.} In addition, we plan on using the min, max, average, and standard deviation of frequency values over
-the entire spectrograph, and on dividing the spectrograph into N equally spaced frequency bands and taking the same
-statistics for each frequency band as features. Lasseck had success with this method in 2013 using N=16 \cite{Lasseck13}.
-  For segment features, we will use the same basic statistics on a per-segment basis. In addition, we will explore the
-usefulness of many of the other segment features that were used successfully by Briggs et al. in 2012. These can be divided 
-into two different categories - "mask descriptors", which describe the general shape of a segment, and "profile statistics", 
-which describe the frequency and time profiles within segments. The mask descriptors include bandwidth,duration, area, 
-perimeter, non-compactness, and rectangularity; the profile statistics include profile uniformity, mean, variance,
-skewness, and kurtosis. The final set of segment features that we will explore are the Histogram of Gradients (HOG), 
-which have successfully been used for songbird classification by both Briggs in 2012 \cite{mlsp1} and Fodor in 2013 \cite{fodor2013ninth}. 
 
 \subsubsection{Mel-Frequency Cepstral Coefficients}
 While flight calls recognition is a new application, audio recognition is a well developed area in signal processing. We will build features based on  mel-frequency cepstral coefficients (MFCCs), which are commonly used as features in speech recognition systems. A temporal signal is first transformed into a series of frames where each frame consists of 13 MFCCs. Each frame represents a duration of 12ms. The step size is 4ms. We also include the fist and second derivatives of MFCCs, which results in a 39 (13$\times$3) dimensional vector for each frame.
