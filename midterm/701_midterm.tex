@@ -109,7 +109,7 @@ as features.  Features can also be extracted using unsupervised deep learning \c
 The third part is about {\em classification}. Typical methods include naive Bayes, neural networks, logistic regression, Gaussian mixture model, radial basis function (RBF), decision trees, $k$-NN \cite{cover1967nearest}, SVM \cite{cortes1995support}, etc. Binary classifers can be turned into multi-class ones by using ome general strategies, e.g., one-versus-all and pairwise decomposition, to classify instances into multiple classes. 
 Some existing methods have been used for songbird identification. In \cite{dufour2013clusterized}, a LibSVM is used in a one-versus-all fashion, and best scores have been obtained with C-SVC SVM type and linear kernel function. In \cite{mencialearning2013}, pairwise SVM, LibSVM, decision trees, and neural networks are used, and the merged SVM and RDT often leads to better results. Mutiple-instance multi-label (MIML) classsifers, e.g., MIML-SVM, MIML-RBF, MIML-$k$NN are considered in \cite{mlsp1}. 
 
-Finally, different {\em ensemble learing} methods have also been used for combining the predictions of several models. In theory, ensembles can be more flexibility in the functions they can represent. Typical methods including gradient boosting (GB) \cite{friedman2001greedy}, random forest (RF) \cite{breiman2001random}, extremely randomized trees (ERT) \cite{geurts2006extremely}, bootstrap aggregating (or bagging) \cite{breiman1996bagging}, bayesian model averaging (BMA) \cite{hoeting1999bayesian}, and ensemble of classifier chains (ECC) \cite{read2011classifier}. Some of them, e.g., GB \cite{chennovel13}, RF \cite{Stowell_NIPSW13,chennovel13,fodor2013ninth}, 
+Finally, different {\em ensemble learing} methods have also been used for combining the predictions of several models. In theory, ensembles have more flexibility in the functions they can represent. Typical methods including gradient boosting (GB) \cite{friedman2001greedy}, random forest (RF) \cite{breiman2001random}, extremely randomized trees (ERT) \cite{geurts2006extremely}, bootstrap aggregating (or bagging) \cite{breiman1996bagging}, bayesian model averaging (BMA) \cite{hoeting1999bayesian}, and ensemble of classifier chains (ECC) \cite{read2011classifier}. Some of them, e.g., GB \cite{chennovel13}, RF \cite{Stowell_NIPSW13,chennovel13,fodor2013ninth}, 
 ERT \cite{Lasseck13}, have been directly used for songbird identification. There are also some hybrid methods. In \cite{chennovel13}, GB and RF are combined by a simple linear blending method, where the final prediction is given by a linear combination of ensemble predictions, and the combination coefficients are determined by a Lasso and elastic-net regularizion of generalized linear model. In \cite{Massaron13}, an ensemble of logistic regression and GB classfiers are considered. In \cite{mlsp2}, an ensemble of classifier chains with RF is applied.
 
 Many classification and ensemble methods can be obtained in \href{http://scikit-learn.org}{scikit-learn library}. 
@@ -177,8 +177,22 @@ Random Forest is operated by constructing decision tree structure by the trainin
 
 \textbf{Logistic Regression.} Ensemble of logistic regression has been used for multi-label bird song classification \cite{Massaron13} because of its simplicity. We also consider this method as the baseline for soft output.
 
-\subsection{Ensemble Learning}
+\subsection{Ensembles}
 
+An ensemble combines the prediction power of a set of individually trained classifiers to produce a single classifier. Ensembles often are more accuracy as compared to individual classifers in the ensemble. We consider two polular ensemble methods, i.e., Bagging \cite{breiman1996bagging} and AdaBoost \cite{freund1997decision}.
+
+\textbf{Bagging} Bagging is an abbreviated term of bootstrap aggregating, which trains each member classifier on a random redistribution of the training set, and using these to get
+an aggregated predictor. It has shown that Bagging is effective on unstable learning algorithms that suffer from significant changes from small perturbations in the learning set.
+
+Bagging is an averaging method, and the principle is to build several models independently and then to average their predictions.
+
+\textbf{Boosting} AdaBoost is a short name for ``adaptive boosting''. In theory, boosting can be used to significantly reduce the error of ``weak'' classfiers. AdaBoost can be seen as a broad extension of on-line prediction model in a general decision-theoretic setting. By adapting the multiplicative weight-update rule, AdaBoost is adaptive and can turn weak classifers into a strong classifier.
+
+%It has been demonstrated that Ada-Boosting can be viewed as a form of additive modeling for optimizing a logistic
+%loss function. 
+
+
+%In practice, the rejection option selects the objects that cannot be assigned to any class with sufficient confidence.
 
 \section{Experiments}
 
