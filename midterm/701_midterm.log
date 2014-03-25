@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2013.5.30)  25 MAR 2014 09:59
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2013.5.30)  25 MAR 2014 10:26
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -319,11 +319,6 @@ File: babel.def 2013/05/16 v3.9f Babel common definitions
 \l@australian = a dialect from \language\l@british 
 \l@newzealand = a dialect from \language\l@british 
 ))
-(/usr/local/texlive/2013/texmf-dist/tex/latex/cite/cite.sty
-LaTeX Info: Redefining \cite on input line 302.
-LaTeX Info: Redefining \nocite on input line 373.
-Package: cite 2010/09/10  v 5.3
-)
 (/usr/local/texlive/2013/texmf-dist/tex/latex/graphics/graphicx.sty
 Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
 
@@ -514,13 +509,6 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 )
 \Hy@SectionHShift=\skip44
 )
-(/usr/local/texlive/2013/texmf-dist/tex/latex/oberdiek/grffile.sty
-Package: grffile 2012/04/05 v1.16 Extended file name support for graphics (HO)
-Package grffile Info: Option `multidot' is set to `true'.
-Package grffile Info: Option `extendedchars' is set to `false'.
-Package grffile Info: Option `space' is set to `true'.
-Package grffile Info: \Gin@ii of package `graphicx' fixed on input line 486.
-)
 (/usr/local/texlive/2013/texmf-dist/tex/latex/caption/caption.sty
 Package: caption 2013/05/02 v3.3-89 Customizing captions (AR)
 
@@ -555,52 +543,63 @@ ference \hbox to\hsize {\normalfont \footnotesize \hfil \box \@tempboxa \hfil }
 \fi .
 \c@ContinuedFloat=\count109
 Package caption Info: hyperref package is loaded.
+) (/usr/local/texlive/2013/texmf-dist/tex/latex/caption/subcaption.sty
+Package: subcaption 2013/02/03 v1.1-62 Sub-captions (AR)
+\c@subfigure=\count110
+\c@subtable=\count111
+)
+(/usr/local/texlive/2013/texmf-dist/tex/latex/multirow/multirow.sty
+\bigstrutjot=\dimen134
+)
+(/usr/local/texlive/2013/texmf-dist/tex/latex/cite/cite.sty
+LaTeX Info: Redefining \cite on input line 302.
+LaTeX Info: Redefining \nocite on input line 373.
+Package: cite 2010/09/10  v 5.3
 ) (./701_midterm.aux)
 \openout1 = `701_midterm.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 59.
-LaTeX Font Info:    ... okay on input line 59.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 59.
-LaTeX Font Info:    ... okay on input line 59.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 59.
-LaTeX Font Info:    ... okay on input line 59.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 59.
-LaTeX Font Info:    ... okay on input line 59.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 59.
-LaTeX Font Info:    ... okay on input line 59.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 59.
-LaTeX Font Info:    ... okay on input line 59.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 59.
-LaTeX Font Info:    ... okay on input line 59.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 67.
+LaTeX Font Info:    ... okay on input line 67.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 67.
+LaTeX Font Info:    ... okay on input line 67.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 67.
+LaTeX Font Info:    ... okay on input line 67.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 67.
+LaTeX Font Info:    ... okay on input line 67.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 67.
+LaTeX Font Info:    ... okay on input line 67.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 67.
+LaTeX Font Info:    ... okay on input line 67.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 67.
+LaTeX Font Info:    ... okay on input line 67.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <7> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 59.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 67.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <7> not available
-(Font)              Font shape `OT1/ptm/b/it' tried instead on input line 59.
+(Font)              Font shape `OT1/ptm/b/it' tried instead on input line 67.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <17.28> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 59.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 67.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <17.28> not available
-(Font)              Font shape `OT1/ptm/b/it' tried instead on input line 59.
+(Font)              Font shape `OT1/ptm/b/it' tried instead on input line 67.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <20.74> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 59.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 67.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <20.74> not available
-(Font)              Font shape `OT1/ptm/b/it' tried instead on input line 59.
+(Font)              Font shape `OT1/ptm/b/it' tried instead on input line 67.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <24.88> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 59.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 67.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <24.88> not available
-(Font)              Font shape `OT1/ptm/b/it' tried instead on input line 59.
-
-(/usr/local/texlive/2013/texmf-dist/tex/context/base/supp-pdf.mkii
+(Font)              Font shape `OT1/ptm/b/it' tried instead on input line 67.
+ (/usr/local/texlive/2013/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count110
-\scratchdimen=\dimen134
+\scratchcounter=\count112
+\scratchdimen=\dimen135
 \scratchbox=\box29
-\nofMPsegments=\count111
-\nofMParguments=\count112
+\nofMPsegments=\count113
+\nofMParguments=\count114
 \everyMPshowfont=\toks18
-\MPscratchCnt=\count113
-\MPscratchDim=\dimen135
-\MPnumerator=\count114
-\makeMPintoPDFobject=\count115
+\MPscratchCnt=\count115
+\MPscratchDim=\dimen136
+\MPnumerator=\count116
+\makeMPintoPDFobject=\count117
 \everyMPtoPDFconversion=\toks19
 ) (/usr/local/texlive/2013/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2010/02/09 v2.5 Base part for package epstopdf
@@ -617,7 +616,7 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
 \AtBeginShipoutBox=\box30
-Package hyperref Info: Link coloring OFF on input line 59.
+Package hyperref Info: Link coloring OFF on input line 67.
 
 (/usr/local/texlive/2013/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
@@ -625,11 +624,11 @@ Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
 (/usr/local/texlive/2013/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
 Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
-\c@section@level=\count116
+\c@section@level=\count118
 )
-LaTeX Info: Redefining \ref on input line 59.
-LaTeX Info: Redefining \pageref on input line 59.
-LaTeX Info: Redefining \nameref on input line 59.
+LaTeX Info: Redefining \ref on input line 67.
+LaTeX Info: Redefining \pageref on input line 67.
+LaTeX Info: Redefining \nameref on input line 67.
 
 (./701_midterm.out) (./701_midterm.out)
 \@outlinefile=\write3
@@ -638,70 +637,115 @@ LaTeX Info: Redefining \nameref on input line 59.
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 63.
+(Font)              <7> on input line 71.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 63.
-LaTeX Font Info:    Try loading font information for OT1+pcr on input line 63.
+(Font)              <5> on input line 71.
+LaTeX Font Info:    Try loading font information for OT1+pcr on input line 71.
 
 (/usr/local/texlive/2013/texmf-dist/tex/latex/psnfss/ot1pcr.fd
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
-) [0{/usr/local/texlive/2013/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-<"Cropped".png, id=35, 1405.25pt x 903.375pt>
-File: "Cropped".png Graphic file (type png)
- <use "Cropped".png>
-Package pdftex.def Info: "Cropped".png used on input line 84.
-(pdftex.def)             Requested size: 281.04501pt x 180.6718pt.
+)
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <9> on input line 100.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6> on input line 100.
+ [0{/usr/local/texlive/2013/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [1]
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
-<"Median_clipped".png, id=36, 1405.25pt x 903.375pt>
-File: "Median_clipped".png Graphic file (type png)
+ [2]
+<../Figure/Train_features.png, id=171, 562.1pt x 420.57124pt>
+File: ../Figure/Train_features.png Graphic file (type png)
 
-<use "Median_clipped".png>
-Package pdftex.def Info: "Median_clipped".png used on input line 92.
-(pdftex.def)             Requested size: 281.04501pt x 180.6718pt.
+<use ../Figure/Train_features.png>
+Package pdftex.def Info: ../Figure/Train_features.png used on input line 232.
+(pdftex.def)             Requested size: 151.04623pt x 113.01027pt.
 
-<"Eroded_and_propagated".png, id=37, 1405.25pt x 903.375pt>
-File: "Eroded_and_propagated".png Graphic file (type png)
+<../Figure/Train_features_log.png, id=172, 562.1pt x 420.57124pt>
+File: ../Figure/Train_features_log.png Graphic file (type png)
 
-<use "Eroded_and_propagated".png>
-Package pdftex.def Info: "Eroded_and_propagated".png used on input line 100.
-(pdftex.def)             Requested size: 281.04501pt x 180.6718pt.
+<use ../Figure/Train_features_log.png>
+Package pdftex.def Info: ../Figure/Train_features_log.png used on input line 23
+3.
+(pdftex.def)             Requested size: 151.04623pt x 113.01027pt.
 
-<"segmented".png, id=38, 832.10875pt x 350.30875pt>
-File: "segmented".png Graphic file (type png)
- <use "segmented".png>
-Package pdftex.def Info: "segmented".png used on input line 108.
-(pdftex.def)             Requested size: 332.8376pt x 140.12102pt.
+<../Figure/RBF_cost_accuracy.png, id=175, 562.1pt x 420.57124pt>
+File: ../Figure/RBF_cost_accuracy.png Graphic file (type png)
 
-(./701_midterm.bbl)
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 122.
- [1 <./Cropped.png (PNG copy)> <./Median_clipped.png (PNG copy)>] [2 <./Eroded_
-and_propagated.png (PNG copy)> <./segmented.png>]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 122.
+<use ../Figure/RBF_cost_accuracy.png>
+Package pdftex.def Info: ../Figure/RBF_cost_accuracy.png used on input line 263
+.
+(pdftex.def)             Requested size: 151.04623pt x 113.01027pt.
 
-(./701_midterm.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 122.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 122.
+<../Figure/RBF_gamma_accuracy.png, id=176, 562.1pt x 420.57124pt>
+File: ../Figure/RBF_gamma_accuracy.png Graphic file (type png)
+
+<use ../Figure/RBF_gamma_accuracy.png>
+Package pdftex.def Info: ../Figure/RBF_gamma_accuracy.png used on input line 26
+4.
+(pdftex.def)             Requested size: 151.04623pt x 113.01027pt.
+ [3]
+<../Figure/RBF_cost_accuracy_log.png, id=185, 562.1pt x 420.57124pt>
+File: ../Figure/RBF_cost_accuracy_log.png Graphic file (type png)
+
+<use ../Figure/RBF_cost_accuracy_log.png>
+Package pdftex.def Info: ../Figure/RBF_cost_accuracy_log.png used on input line
+ 274.
+(pdftex.def)             Requested size: 151.04623pt x 113.01027pt.
+
+<../Figure/Poly_cost_accuracy.png, id=187, 562.1pt x 420.57124pt>
+File: ../Figure/Poly_cost_accuracy.png Graphic file (type png)
+
+<use ../Figure/Poly_cost_accuracy.png>
+Package pdftex.def Info: ../Figure/Poly_cost_accuracy.png used on input line 28
+3.
+(pdftex.def)             Requested size: 151.04623pt x 113.01027pt.
+
+<../Figure/Poly_degree_accuracy.png, id=188, 562.1pt x 420.57124pt>
+File: ../Figure/Poly_degree_accuracy.png Graphic file (type png)
+
+<use ../Figure/Poly_degree_accuracy.png>
+Package pdftex.def Info: ../Figure/Poly_degree_accuracy.png used on input line 
+284.
+(pdftex.def)             Requested size: 151.04623pt x 113.01027pt.
+ (./701_midterm.bbl [4 <../Figure/Train_features.png (PNG copy)> <../Figure/Tra
+in_features_log.png (PNG copy)>]
+[5 <../Figure/RBF_cost_accuracy.png (PNG copy)> <../Figure/RBF_gamma_accuracy.p
+ng (PNG copy)> <../Figure/RBF_cost_accuracy_log.png (PNG copy)> <../Figure/Poly
+_cost_accuracy.png (PNG copy)> <../Figure/Poly_degree_accuracy.png (PNG copy)>]
+)
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 295.
+ [6]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 295.
+ (./701_midterm.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 295.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 295.
 Package rerunfilecheck Info: File `701_midterm.out' has not changed.
-(rerunfilecheck)             Checksum: 4B17C1F9DC2791B1A90810B7D5C5D7C7;227.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 122.
+(rerunfilecheck)             Checksum: 6DE47045018C5FD8874A1A4F485899C3;465.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 295.
  ) 
 Here is how much of TeX's memory you used:
- 8122 strings out of 493315
- 125311 string characters out of 6137904
- 219216 words of memory out of 5000000
- 11474 multiletter control sequences out of 15000+600000
- 39788 words of font info for 76 fonts, out of 8000000 for 9000
+ 8235 strings out of 493315
+ 127322 string characters out of 6137904
+ 225328 words of memory out of 5000000
+ 11525 multiletter control sequences out of 15000+600000
+ 43825 words of font info for 84 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
- 37i,8n,39p,738b,330s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 37i,9n,39p,1624b,472s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2013/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/t
-exlive/2013/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/local/texlive/2
-013/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2013/texmf-
-dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2013/texmf-dist/fonts
-/type1/urw/times/utmri8a.pfb>
-Output written on 701_midterm.pdf (3 pages, 571379 bytes).
+exlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/te
+xlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texl
+ive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/local/texliv
+e/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/
+2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/201
+3/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2013
+/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/local/texlive/2013/texmf-d
+ist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2013/texmf-dist/fonts/
+type1/urw/times/utmr8a.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/urw/
+times/utmri8a.pfb>
+Output written on 701_midterm.pdf (7 pages, 160584 bytes).
 PDF statistics:
- 73 PDF objects out of 1000 (max. 8388607)
- 59 compressed objects within 1 object stream
- 14 named destinations out of 1000 (max. 500000)
- 61 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 257 PDF objects out of 1000 (max. 8388607)
+ 228 compressed objects within 3 object streams
+ 53 named destinations out of 1000 (max. 500000)
+ 108 words of extra memory for PDF output out of 10000 (max. 10000000)
 

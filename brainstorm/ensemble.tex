@@ -1,36 +1,30 @@
 The goal of ensemble methods is to combine the predictions of several models built with a given learning algorithm in order to improve generalizability / robustness over a single model.
 
-\subsubsection{Existing Methods in ML}
+Ensembles are well known for their effect of increasing overall accuracy and
+overcoming over-ﬁtting, as well as allowing parallelism. They have successfully
+been used in various multi-label problems.
 
-Two families of ensemble methods are usually distinguished:
+\subsubsection{Ensemble theory}
+
+(WIKI) An ensemble is itself a supervised learning algorithm, because it can be trained and then used to make predictions. The trained ensemble, therefore, represents a single hypothesis. This hypothesis, however, is not necessarily contained within the hypothesis space of the models from which it is built. Thus, ensembles can be shown to have more flexibility in the functions they can represent. This flexibility can, in theory, enable them to over-fit the training data more than a single model would, but in practice, some ensemble techniques (especially bagging) tend to reduce problems related to over-fitting of the training data.
+
+\paragraph{Categories}
+
+(Scikit-learn website) Two families of ensemble methods are usually distinguished:
 In averaging methods, the driving principle is to build several models independently and then to average their predictions. On average, the combined model is usually better than any of the single model because its variance is reduced. Examples include Bagging methods, Forests of randomized trees...
 
 By contrast, in boosting methods, models are built sequentially and one tries to reduce the bias of the combined model. The motivation is to combine several weak models to produce a powerful ensemble. Examples include AdaBoost, Gradient Tree Boosting, ...
 
-Methods in Scikit-learn package: Forests of randomized trees; AdaBoost; Gradient Tree Boosting  (\url{http://scikit-learn.org/stable/modules/ensemble.html})
-
-\paragraph{Bootstrap aggregating (bagging)}
-Bootstrap aggregating, often abbreviated as bagging \cite{breiman1996bagging}, involves having each model in the ensemble vote with equal weight.
-
-\paragraph{Random forest}
-
-Random forest \cite{breiman2001random}: operate by constructing a multitude of decision trees at training time and outputting the class that is the mode of the classes output by individual trees. 
-
-\paragraph{AdaBoost}
-
-AdaBoost \cite{freund1997decision}, short for "Adaptive Boosting", in the sense that subsequent classifiers built are tweaked in favor of those instances misclassified by previous classifiers. 
-
-\paragraph{Gradient boosting}
-\label{sec:ml:GradientBoosting}
-Gradient boosting \cite{friedman2001greedy} is a machine learning technique for regression problems, which produces a prediction model in the form of an ensemble of weak prediction models, typically decision trees. It builds the model in a stage-wise fashion like other boosting methods do, and it generalizes them by allowing optimization of an arbitrary differentiable loss function. The gradient boosting method can also be used for classification problems by reducing them to regression with a suitable loss function.
-
-\paragraph{Bayesian model averaging}
-
-Bayesian model averaging (BMA) \cite{hoeting1999bayesian}  is a pratical ensemble technique that seeks to approximate the Bayes Optimal Classifier by sampling hypotheses from the hypothesis space, and combining them using Bayes' law.
-
-\subsubsection{Characteristics}
+\paragraph{Comparisons}
+\cite{freund1996experiments} For either error or pseudo-loss, the differences between bagging and boosting can be summarized
+as follows: (1) bagging always uses resampling rather than reweighting; (2) bagging does not
+modify the distribution over examples or mislabels, but instead always uses the uniform distribution;
+and (3) in forming the ﬁnal hypothesis, bagging gives equal weight to each of the weak hypotheses.
 
 \paragraph{Diversity}
+
+(WIKI) Empirically, ensembles tend to yield better results when there is a significant diversity among the models. Many ensemble methods, therefore, seek to promote diversity among the models they combine. Although perhaps non-intuitive, more random algorithms (like random decision trees) can be used to produce a stronger ensemble than very deliberate algorithms (like entropy-reducing decision trees).[8] Using a variety of strong learning algorithms, however, has been shown to be more effective than using techniques that attempt to dumb-down the models in order to promote diversity.
+
 
 \cite{kuncheva2003measures} Diversity among the members of a team of classifiers is deemed to be a key issue in classifier
 combination. However, measuring diversity is not straightforward because there is no generally accepted formal
@@ -43,6 +37,41 @@ the measures of diversity, and among the measures themselves. Although there are
 diversity and accuracy in some special cases, our results raise some doubts about the usefulness of diversity
 measures in building classifier ensembles in real-life pattern recognition problems.
 
+
+\subsubsection{Existing Methods in ML}
+
+Methods in Scikit-learn package: Forests of randomized trees; AdaBoost; Gradient Tree Boosting  (\url{http://scikit-learn.org/stable/modules/ensemble.html})
+
+\paragraph{Bootstrap aggregating (bagging)}
+Bootstrap aggregating, often abbreviated as bagging \cite{breiman1996bagging}, involves having each model in the ensemble vote with equal weight.
+
+\paragraph{Random forest}
+
+Random forest \cite{breiman2001random}: operate by constructing a multitude of decision trees at training time and outputting the class that is the mode of the classes output by individual trees. 
+
+\paragraph{Extremely randomized trees}
+
+Extremely randomized trees \cite{geurts2006extremely}
+
+\paragraph{AdaBoost}
+
+AdaBoost \cite{freund1997decision}, short for "Adaptive Boosting", in the sense that subsequent classifiers built are tweaked in favor of those instances misclassified by previous classifiers. 
+
+\paragraphG{radient boosting}
+\label{sec:ml:GradientBoosting}
+Gradient boosting \cite{friedman2001greedy} is a machine learning technique for regression problems, which produces a prediction model in the form of an ensemble of weak prediction models, typically decision trees. It builds the model in a stage-wise fashion like other boosting methods do, and it generalizes them by allowing optimization of an arbitrary differentiable loss function. The gradient boosting method can also be used for classification problems by reducing them to regression with a suitable loss function.
+
+\paragraph{Bayesian model averaging}
+
+Bayesian model averaging (BMA) \cite{hoeting1999bayesian}  is a pratical ensemble technique that seeks to approximate the Bayes Optimal Classifier by sampling hypotheses from the hypothesis space, and combining them using Bayes' law.
+
+\paragraph{Ensemble of Classifier Chains}
+
+Classifier chains is a machine learning method for problem transformation in multi-label classification. It combines computational efficiency of Binary Relevance method and possibility to use dependencies between labels for classification.  
+
+\cite{read2011classifier} In Ensemble of Classifier Chains (ECC) several CC classifiers can be trained with random order of chains (i.e. random order of labels) on a random subset of data set. Labels of a new instance are predicted by each classifier separately. After that, the total number of predictions or "votes" is counted for each label. The label is accepted if it was predicted by a percentage of classifiers that is bigger than some threshold value.
+
+ECC achieves better performance than binary relevance because it can exploit correlations in the label sets.\cite{mlsp2}
 
 \subsubsection{Applications on Songbirds}
 
@@ -117,6 +146,34 @@ have to be determined by optimization procedure, in general by regularized linea
 case, All inputs (the predictions) are normalized to [0...+1]. We use linear blending approach and
 the coefficients are determined by cross-validation performance on average precision. For validation
 we use 10-fold cross-validation.
+
+\paragraph{Ensemble of Classifier Chains with Random Forest}
+
+\cite{mlsp2} implement ECC \cite{read2011classifier} with a Random Forest (RF) as
+the base-SISL classifier, hence we call the proposed
+classifier ECC-RF. Because RF outputs a probability,
+the ensemble can be viewed as an instance of the En-
+semble of Probabilistic Classifier Chains (EPCC) al-
+gorithm. Therefore it is
+reasonable to aggregate probabilities from each SISL
+classifier rather than 0/1 votes. The aggregated prob-
+abilities are used as the score-functions for each class.
+
+\paragraph{Ensemble of randomized decision trees}
+
+\cite{Lasseck13} For each sound class an ensemble of
+randomized decision trees (sklearn.ensemble.ExtraTreesRegressor) is applied. The number
+of estimators is chosen to be twice the number of selected features per class but not greater
+than 500. The winning solution considers 4 features when looking for the best split and
+requires a minimum of 3 samples to split an internal node. During 12 -fold cross validation
+the probability of each sound class in all test files is predicted and at the end, after removing
+the lowest and highest value, averaged.
+
+By ranking feature importance returned from the decision trees during training one can find
+important segments to identify each sound class. 
+
+
+
 
 \subsubsection{Other Thoughts}
 

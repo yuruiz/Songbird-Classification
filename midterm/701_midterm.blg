@@ -3,44 +3,52 @@ Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: 701_midterm.aux
 The style file: abbrv.bst
 Database file #1: ../bib/birds.bib
-You've used 1 entry,
+Database file #2: ../bib/ml.bib
+Repeated entry---line 101 of file ../bib/ml.bib
+ : @article{freund1997decision
+ :                            ,
+I'm skipping whatever remains of this entry
+Warning--there's a number but no volume in mlsp2
+Warning--empty journal in mencialearning2013
+You've used 29 entries,
             2118 wiz_defined-function locations,
-            504 strings with 3921 characters,
-and the built_in function-call counts, 435 in all, are:
-= -- 44
-> -- 7
-< -- 1
-+ -- 3
-- -- 2
-* -- 22
-:= -- 64
-add.period$ -- 3
-call.type$ -- 1
-change.case$ -- 4
+            668 strings with 8458 characters,
+and the built_in function-call counts, 11876 in all, are:
+= -- 1187
+> -- 530
+< -- 15
++ -- 215
+- -- 180
+* -- 807
+:= -- 1842
+add.period$ -- 91
+call.type$ -- 29
+change.case$ -- 176
 chr.to.int$ -- 0
-cite$ -- 1
-duplicate$ -- 23
-empty$ -- 42
-format.name$ -- 2
-if$ -- 100
+cite$ -- 31
+duplicate$ -- 487
+empty$ -- 933
+format.name$ -- 180
+if$ -- 2584
 int.to.chr$ -- 0
-int.to.str$ -- 1
-missing$ -- 1
-newline$ -- 8
-num.names$ -- 2
-pop$ -- 7
+int.to.str$ -- 29
+missing$ -- 30
+newline$ -- 148
+num.names$ -- 58
+pop$ -- 200
 preamble$ -- 1
-purify$ -- 3
+purify$ -- 148
 quote$ -- 0
-skip$ -- 20
+skip$ -- 382
 stack$ -- 0
-substring$ -- 37
-swap$ -- 11
-text.length$ -- 1
+substring$ -- 821
+swap$ -- 170
+text.length$ -- 15
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 4
-warning$ -- 0
-while$ -- 5
-width$ -- 2
-write$ -- 13
+type$ -- 114
+warning$ -- 2
+while$ -- 118
+width$ -- 31
+write$ -- 322
+(There was 1 error message)
