@@ -118,6 +118,7 @@ Many classification and ensemble methods can be obtained in \href{http://scikit-
 
 \subsection{Preprocessing}
 
+[Yurui]
 % In preprocessing we first re-sampled the audio files to 22050 Hz guarantee a uniform audio sample format for all training and test data. For each audio file we split it into 256 segments. Then the Power Spectral Density of each segments can be calculated. For each segments we use a Hanning window with \%75 overlap. Finally, the spectrogram of each audio file is treated as gray-scale image for further noise reduction and segmentation.
 % 
 % Notice the case that in a processed grayscale image most area was occupied by the random noise. What we want is to get rid of the background noise completely and increase the contrast between real signal and the background. Given the several different algorithm tested, the best one is the so called Median clipping algorithm. The idea is simple, for each pixel we compute the median and variance of its corresponding row and column. If the pixel is above the median plus three times variance we set the pixel value to 1, otherwise the value would be set to 0. The median clipping algorithm works best because it not only removes most background noise, but also capture the sound feature clearly and precisely.
@@ -127,39 +128,37 @@ Many classification and ensemble methods can be obtained in \href{http://scikit-
 % Similar to the methods used in \cite{Lasseck13}, we apply standard image processing techniques to further reduce residual noise dots. Finally we would use find connected pixels from the image and label the segments.
 
 \subsection{Features}
+\label{sec:Features}
 
 Features can have a large impact on classification results. For this project, we have chosen to implement a large set of features used in previous successful attempts at birdsong classification. We will ultimately choose a smaller subset of these features that provide the most discriminatory power. 
 
 
-\subsubsection{Mel-Frequency Cepstral Coefficients}
+\textbf{Mel-Frequency Cepstral Coefficients}
 While flight calls recognition is a new application, audio recognition is a well developed area in signal processing. We will build features based on MFCCs, which are commonly used as features in speech recognition systems, but can be sensitive to the presence of noise \cite{tyagi2005desensitizing}; for this reason, we expect that they may be
 useful features for classifying the clear lab data but less useful for the noisy outdoor data. A temporal signal is first transformed into a series of frames where each frame consists of a 13-dimensional MFCC vector, using Wojcicki's MATLAB
 implementation. \footnote{\scriptsize \href{http://www.mathworks.com/matlabcentral/fileexchange/32849-htk-mfcc-matlab/content/mfcc/mfcc.m}{HTK MFCC MATLAB} by K. Wojcicki: Mel frequency cepstral coefficient feature extraction that closely matches that of HTK's HCopy.}. Each frame represents a duration of 12ms. The step size is 4ms. We also include the fist and second derivatives of MFCCs, which results in a 39 (13$\times$3) dimensional vector for each frame.
 
-\subsubsection{Bag-of-Words Model over MFCCs}
+\textbf{Bag-of-Words Model over MFCCs}
 \label{sec:bow}
-
 In contrast to \cite{Dufour_NIPSW13}, which assumes that the number of frames is fixed for all audio segments to classify, we make no assumption on the length of the audio segment, since the length of flight calls might variate. In this case, we want a feature that is temporally scale invariant. Intuitively, even when a flight call is temporally scaled (extended or shorten), it should still be classified as the flight call of the same species. We leverage the progress in image classification and applied the bag-of-words (BoW) model \cite{Li_CVPR05} over our MFCCs. By treating audio features (MFCCs in our case) as `words', each audio segment is represented by a sparse vector of occurrence counts of words in BoW model; that is, a sparse histogram over the vocabulary.
 
 We learn the vocabulary, also called the codebook, by performing k-means clustering over sampled training MFCCs. Codewords are then defined as the centers of the learned clusters. In test time, we extract MFCCs from the test audio segment and quantize the 39 dimensional MFCCs to a learned codeword. The audio segment is represented by a $K$ dimensional histogram over the codeword, where $K$ is the size of the codebook. 
 
 One limitation of BoW model on audio segment is that the temporal information are lost in the model. However, as shown in the experiments, BoW is able to achieve satisfactory classification result on single-label single-instance case. We are considering to build higher order N-gram model on the learned vocabulary to capture the temporal information.
 
-\subsubsection{Other features}
-\label{sec:bow}
-
-The other features that we intend to explore can be classified broadly into two categories: spectrum-wide features and
-segment features. The spectrum-wide features describe qualities of the full spectrograph for a given recording, while
-the segment features describe qualities of individual segmented portions of the spectrograph. In addition, we plan on using the min, max, average, and standard deviation of frequency values over
-the entire spectrograph, and on dividing the spectrograph into N equally spaced frequency bands and taking the same
-statistics for each frequency band as features. Lasseck had success with this method in 2013 using N=16 \cite{Lasseck13}.
-  For segment features, we will use the same basic statistics on a per-segment basis. In addition, we will explore the
-usefulness of many of the other segment features that were used successfully in \cite{mlsp1}. These can be divided 
-into two different categories - ``mask descriptors'', which describe the general shape of a segment, and ``profile statistics'', 
-which describe the frequency and time profiles within segments. The mask descriptors include bandwidth,duration, area, 
-perimeter, non-compactness, and rectangularity; the profile statistics include profile uniformity, mean, variance,
-skewness, and kurtosis. The final set of segment features that we will explore are the Histogram of Gradients (HOG), 
-which have successfully been used for songbird classification by both Briggs \cite{mlsp1} and Fodor \cite{fodor2013ninth}. 
+% \textbf{Other features}
+% The other features that we intend to explore can be classified broadly into two categories: spectrum-wide features and
+% segment features. The spectrum-wide features describe qualities of the full spectrograph for a given recording, while
+% the segment features describe qualities of individual segmented portions of the spectrograph. In addition, we plan on using the min, max, average, and standard deviation of frequency values over
+% the entire spectrograph, and on dividing the spectrograph into $N$ equally spaced frequency bands and taking the same
+% statistics for each frequency band as features. Lasseck had success with this method in 2013 using $N=16$ \cite{Lasseck13}.
+%   For segment features, we will use the same basic statistics on a per-segment basis. In addition, we will explore the
+% usefulness of many of the other segment features that were used successfully in \cite{mlsp1}. These can be divided 
+% into two different categories - ``mask descriptors'', which describe the general shape of a segment, and ``profile statistics'', 
+% which describe the frequency and time profiles within segments. The mask descriptors include bandwidth,duration, area, 
+% perimeter, non-compactness, and rectangularity; the profile statistics include profile uniformity, mean, variance,
+% skewness, and kurtosis. The final set of segment features that we will explore are the Histogram of Gradients (HOG), 
+% which have successfully been used for songbird classification \cite{mlsp1,fodor2013ninth}. 
 
 \subsection{Classifiers}
 We consider several classifiers/regressors.
@@ -172,11 +171,11 @@ one specific class or not. SVMs trained in a pairwise fashion has obtained state
 %textbf{Support Vector Regression (SVR).} We use SVR to produce a soft output version of SVM
 
 \textbf{Random Forest.} Random forests has been widely used for multi-label classification \cite{Lasseck13, chennovel13, Stowell_NIPSW13, Zhang_SDM2010}.
-Random Forest is operated by constructing decision tree structure by the training examples. One of the popular algorithm is tree bagging, in which the training process includes repeatedly selecting a bootstrap sample of the training set and  fitting the trees to them. After the training process, the label decision is made either on the majority of the votes or a weighted combination from all individual tree.
+Random Forest is operated by constructing decision tree structure by the training examples. One of the popular algorithm is tree bagging, in which the training process includes repeatedly selecting a bootstrap sample of the training set and  fitting the trees to them. After the training process, the label decision is made either on the majority of the votes or a weighted combination from individual trees.
 
 %\textbf{Naive Bayes.} 
 
-\textbf{Logistic Regression.} Ensemble of logistic regression has been used for multi-label bird song classification \cite{Massaron13} because of its simplicity. We also consider logistic regression as the baseline for soft output.
+\textbf{Logistic Regression.} Ensemble of logistic regression has been used for multi-label bird song classification \cite{Massaron13} because of its simplicity. We also consider this method as the baseline for soft output.
 
 \subsection{Ensemble Learning}
 
@@ -193,7 +192,7 @@ We first evaluate our system on single-label data to see if the flight calls are
 Since the flight call segments are already manually identified, we do not perform segmentation in this experiment.
 
 \textbf{Features.}
-We use the BoW over MFCCs in Section \ref{sec:bow} as the features for this experiment. The size of the code book is 200, and the MFCCs consider the frequencies from 1500 Hz to 22000Hz.
+We use the BoW over MFCCs in Section \ref{sec:Features} as the features for this experiment. The size of the code book is 200, and the MFCCs consider the frequencies from 1500 Hz to 22000Hz.
 
 \textbf{Classifiers.}
 Before beginning with the training process, we first examine the property of the data. We can see that most of the value in the original data is zero. After taking the log value of the data, we can find that a small group of the data is separated from the others. In some of the dimension, this small contains only a number of specific species of birds, which might be helpful in the classification.
@@ -256,8 +255,6 @@ Next, we show the results for applying SVM with polynomial kernel. Figure \ref{f
 \end{figure}
 
 The reason why random forest and naive Bayes failed is that the training example for each species is now limited to 80. From the predicted classification labels from the results of random forest, we found that the identities in some of the class are all mis-classified into another class, which means that the tree is ill-trained and biased such that many cases will be made to the same decision. 
-
-
 
 \bibliographystyle{abbrv}
 \bibliography{../bib/birds,../bib/ml}
