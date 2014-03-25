@@ -104,13 +104,25 @@ The first part is about {\em preprocessing and segmentating} audio data of songb
 The second part is about {\em feature extraction and selection}, which can have a large impact on later classification results. In \cite{mlsp1}, segement features are divided into two different categories - ``mask descriptors'', which describe the general shape of a segment, and ``profile statistics'', 
 which describe the frequency and time profiles within segments. Histogram of gradients (HOG) have also been used \cite{mlsp1}. In \cite{fodor2013ninth}, features are obtained by applying the template matching function of scikit-image to compute the similarity at the maximum value of the normalized cross-correlation map with templates. In \cite{Lasseck13}, features come from three different sources, i.e., file statistics, segement statistics, and segment probabilities. The template matching in \href{http://opencv.org}{OpenCV library} is applied only on absolute-intensive spectrograms. Many existing work \cite{Stowell_NIPSW13,dufour2013clusterized,chennovel13,Massaron13} considers mel-frequency cepstral Coefficients (MFCC), which have been proved useful for speech recognition, as features.  Features can also be extracted using unsupervised deep learning \cite{mencialearning2013}. Addtional methods, e.g., rescaling\cite{mlsp1}, concatenation\cite{dufour2013clusterized}, bag-of-words (BoW) model \cite{Li_CVPR05}, and principal component analysis (PCA) \cite{jolliffe2005principal}, can also be used for feature engineering. 
 
-The third part is about {\em classification}. Typical methods include naive Bayes, neural networks, logistic regression, Gaussian mixture model, radial basis function (RBF), decision trees, $k$-NN \cite{cover1967nearest}, SVM \cite{cortes1995support}, etc. Binary classifers can be turned into multi-class ones by using ome general strategies, e.g., one-versus-all and pairwise decomposition, to classify instances into multiple classes. 
-Some existing methods have been used for songbird identification. In \cite{dufour2013clusterized}, a LibSVM is used in a one-versus-all fashion, and best scores have been obtained with C-SVC SVM type and linear kernel function. In \cite{mencialearning2013}, pairwise SVM, LibSVM, decision trees, and neural networks are used, and the merged SVM and RDT often leads to better results. Mutiple-instance multi-label (MIML) classsifers, e.g., MIML-SVM, MIML-RBF, MIML-$k$NN are considered in \cite{mlsp1}. 
+The third part is about {\em multilabel classification}. Typical methods include naive Bayes, neural networks, logistic regression, decision trees, $k$-NN \cite{cover1967nearest}, SVM \cite{cortes1995support}, etc. 
+Some existing methods have been used for songbird identification. In \cite{dufour2013clusterized}, SVM is used in a one-versus-all fashion. In \cite{mencialearning2013}, pairwise SVM, multilabel LibSVM, random dicision trees, and neural networks are used. Mutiple-instance multi-label (MIML) classsifers are used in \cite{mlsp1}. Most of these methods can be obtained in \href{http://scikit-learn.org}{scikit-learn library}. 
 
-Finally, different {\em ensemble learing} methods have also been used for combining the predictions of several models. In theory, ensembles can be more flexibility in the functions they can represent. Typical methods including gradient boosting (GB) \cite{friedman2001greedy}, random forest (RF) \cite{breiman2001random}, extremely randomized trees (ERT) \cite{geurts2006extremely}, bootstrap aggregating (or bagging) \cite{breiman1996bagging}, bayesian model averaging (BMA) \cite{hoeting1999bayesian}, and ensemble of classifier chains (ECC) \cite{read2011classifier}. Some of them, e.g., GB \cite{chennovel13}, RF \cite{Stowell_NIPSW13,chennovel13,fodor2013ninth}, 
-ERT \cite{Lasseck13}, have been directly used for songbird identification. There are also some hybrid methods. In \cite{chennovel13}, a simple linear blending is ued to combine GB, RF, and a Lasso and elastic-net regularizion of generalized linear model. In \cite{Massaron13}, an ensemble of logistic regression and GB classfiers are considered. In \cite{mlsp2}, an ensemble of classifier Chains with Random Forest is applied.
+Different ensemble methods have also been used for combining the predictions of several models. In theory, ensembles can be more flexibility in the functions they can represent. Typical methods including gradient boosting (GB) \cite{friedman2001greedy}, random forest (RF) \cite{breiman2001random}, extremely randomized trees (ERT) \cite{geurts2006extremely}, bagging \cite{breiman1996bagging}, bayesian model averaging (BMA) \cite{hoeting1999bayesian}, and ensemble of classifier chains (ECC) \cite{read2011classifier}. Some of them, e.g., GB \cite{chennovel13}, RF \cite{Stowell_NIPSW13,chennovel13,fodor2013ninth}, 
+ERT \cite{Lasseck13}, have been directly used for songbird identification. There are also some hybrid methods. In \cite{chennovel13}, 
 
-Many classification and ensemble methods can be obtained in \href{http://scikit-learn.org}{scikit-learn library}. 
+Ensemble logistic regression and GB classfiers \cite{Massaron13}.
+
+Ensemble of Classifier Chains with Random Forest \cite{mlsp2}
+
+
+Linear blending 
+
+
+
+
+
+Bootstrap aggregating, often abbreviated as 
+
 % The features used can have a large impact on classification results. For this project, we've chosen to implement a
 % large set of features that have been used in previous successful attempts at birdsong classification. We will ultimately
 % choose a smaller subset of these features that provide the most discriminatory power. 
