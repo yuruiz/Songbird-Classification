@@ -11,6 +11,10 @@
 \newcommand{\specialcell}[2][c]{%
   \begin{tabular}[#1]{@{}c@{}}#2\end{tabular}}
 
+\newcommand{\changespace}[1]{\renewcommand{\baselinestretch}{#1}\normalsize}
+\changespace{0.9655}
+
+
 \title{Identification of Songbird Species in Field Recordings}
 
 
@@ -196,9 +200,9 @@ In real-world usages of songbird identification, people would perfer nearly a 10
 
 \section{Experiments}
 
-We first evaluate our system on single-label data to see if the flight calls are separable using our method.
+We first evaluate our system on single-label data to see if the data are separable using our method.
 
-{\bf Data Set} Large amounts of audio data (about 20 terabytes) for bird calls have been collected. The data contain flight calls from approximately 20-30 species of songbirds, examples of other background noises, and long audio files that contain flight calls (some of them might be too faint to identify them to species) and other background sounds. The software developed can be tested using long audio files where all the flight calls of songbirds have been detected, and with manual identification by Amy Tegeler, an Avian Ecologist from the Carnegie Museum of Natural History.
+%{\bf Data Set} Large amounts of audio data (about 20 terabytes) for bird calls have been collected. The data contain flight calls from approximately 20-30 species of songbirds, examples of other background noises, and long audio files that contain flight calls (some of them might be too faint to identify them to species) and other background sounds. The software developed can be tested using long audio files where all the flight calls of songbirds have been detected, and with manual identification by Amy Tegeler, an Avian Ecologist from the Carnegie Museum of Natural History.
 
 \textbf{Data.}  We use the flight calls of songbirds manually segmented and labeled by Amy Tegeler, an Avian Ecologist from the Carnegie Museum of Natural History, to evaluate the performance of our system on indoor flight calls classification. We used the data from year 2008 to 2013. The total number of species is 32. But only 11 species has more than 100 data. Therefore, the experiment is performed on those 11 species, and 100 data points are randomly sampled from each species. The 100 data points are randomly partitioned into 20 testing data and 80 training data for each species.
 
@@ -210,16 +214,17 @@ We use the BoW over MFCCs in Section \ref{sec:Features} as the features for this
 
 \textbf{Classifiers.}
 Before beginning with the training process, we first examine the property of the data. We can see that most of the value in the original data is zero. After taking the log value of the data, we can find that a small group of the data is separated from the others. In some of the dimension, this small contains only a number of specific species of birds, which might be helpful in the classification.
-\begin{figure}[ht!]
+
+\begin{figure}[b!]
     \centering
-    {(a)\includegraphics[width=0.45\linewidth]{../Figure/Train_features}
-    (b)\includegraphics[width=0.45\linewidth]{../Figure/Train_features_log}}
+    {(a)\includegraphics[width=0.38\linewidth]{../Figure/Train_features}
+    (b)\includegraphics[width=0.38\linewidth]{../Figure/Train_features_log}}
     \caption{(a) is the histogram of second feature. Most of the values are close to zero. (b) is the histogram of the log value of the original data.}
     \label{fig:hist}
 \end{figure}
 
 
-We compare the results using nearest neighbor, support vector machine, random forest and naive bayes classifier.
+We compare the results using $k$-NN, SVN, random forest and naive Bayes classifier.
 
 
 \begin{table}[t]
@@ -229,7 +234,7 @@ We compare the results using nearest neighbor, support vector machine, random fo
 \hline
    classifier  & setting      &accuracy   & classifier    & setting      & accuracy\\
 \hline
-KNN     & chi-square    &62.27      &     &chi-square kernel  &72.73\\ \cline{2-3} \cline{5-6}
+$k$-NN     & chi-square    &62.27      &     &chi-square kernel  &72.73\\ \cline{2-3} \cline{5-6}
 (distance) & euclidean     &54.09      &   SVM    & RBF               &70\\ \cline{1-3} \cline{5-6}
        &               &     &    (kernel types)    & linear            &67.7273\\ \cline{1-3} \cline{5-6}
 Naive Bayes  & kernel density  & 15.91           &       & polynomial        &69.0909\\ \cline{1-3} \cline{5-6}
@@ -242,8 +247,8 @@ We can see from our results that kernel SVM has better performance than the othe
 
 \begin{figure}[ht!]
     \centering
-    {(a)\includegraphics[width=0.45\linewidth]{../Figure/RBF_cost_accuracy}
-    (b)\includegraphics[width=0.45\linewidth]{../Figure/RBF_gamma_accuracy}}
+    {(a)\includegraphics[width=0.38\linewidth]{../Figure/RBF_cost_accuracy}
+    (b)\includegraphics[width=0.38\linewidth]{../Figure/RBF_gamma_accuracy}}
     \caption{(a) Accuracy to penalty term c. (b) Accuracy to parameter $\gamma$. }
     \label{fig:RBF}
 \end{figure}
@@ -253,7 +258,7 @@ In considering that original feature distribution is not a Gaussian distribution
 
 \begin{figure}[ht!]
     \centering
-    \includegraphics[width=0.45\linewidth]{../Figure/RBF_cost_accuracy_log}
+    \includegraphics[width=0.38\linewidth]{../Figure/RBF_cost_accuracy_log}
      \centering
     \caption{Accuracy to penalty C after log transformation on the original feature.}
 \end{figure}
@@ -262,8 +267,8 @@ Next, we show the results for applying SVM with polynomial kernel. Figure \ref{f
  
 \begin{figure}[ht!]
     \centering
-    {(a)\includegraphics[width=0.45\linewidth]{../Figure/Poly_cost_accuracy}
-    (b)\includegraphics[width=0.45\linewidth]{../Figure/Poly_degree_accuracy}}
+    {(a)\includegraphics[width=0.38\linewidth]{../Figure/Poly_cost_accuracy}
+    (b)\includegraphics[width=0.38\linewidth]{../Figure/Poly_degree_accuracy}}
     \caption{(a) Accuracy to penalty term c. (b) Accuracy to parameter degree d}
     \label{fig:poly}
 \end{figure}
