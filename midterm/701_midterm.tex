@@ -186,11 +186,11 @@ an aggregated predictor. It has shown that Bagging is effective on unstable lear
 
 Bagging is an averaging method, and the principle is to build several models independently and then to average their predictions.
 
-\textbf{Boosting} AdaBoost is a short name for ``adaptive boosting''. In theory, boosting can be used to significantly reduce the error of ``weak'' classfiers. AdaBoost can be seen as a broad extension of on-line prediction model in a general decision-theoretic setting. By adapting the multiplicative weight-update rule, AdaBoost is adaptive and can turn weak classifers into a strong classifier.
+\textbf{AdaBoost} AdaBoost is a short name for ``Adaptive Boosting''. AdaBoost can be seen as a broad extension of on-line prediction model in a general decision-theoretic setting. By adapting the multiplicative weight-update rule \cite{littlestone1994weighted}, In theory, boosting can be used to significantly reduce the error of ``weak'' classfiers. AdaBoost is adaptive and can turn weak classifers into a strong one.
 
-%It has been demonstrated that Ada-Boosting can be viewed as a form of additive modeling for optimizing a logistic
-%loss function. 
+We will try to exploit the differences between Bagging and Boosting methods: (1) Bagging only uses resampling whereas Boosting uses reweighting; (2) Bagging always uses the uniform distribution whereas Boosting might modify the distribution over examples or mislabels.
 
+In real-world usages of songbird identification, people would perfer nearly a 100\% precision rate, but can tolerate a  recall rate that is not very high, as the prediction accuracy cannot approach 100\%. Furthermore, scalability is strongly encouraged as the labels (bird species) might change over time. We will accomodate the real-world requirements at the ensemble level, by defining one label as ``UNKNOWN'', and try to improve the precision on all other known labels. 
 
 %In practice, the rejection option selects the objects that cannot be assigned to any class with sufficient confidence.
 
