@@ -164,13 +164,9 @@ We will try to exploit the differences between Bagging and Boosting methods: (1)
 
 In real-world usages of songbird identification, people would perfer nearly a 100\% precision rate, but can tolerate a  recall rate that is not very high, as the prediction accuracy cannot approach 100\%. Furthermore, scalability is strongly encouraged as the labels (bird species) might change over time. We will accommodate the real-world requirements at the ensemble level, by defining one label as ``UNKNOWN'', and try to improve the precision on all other known labels. 
 
-%In practice, the rejection option selects the objects that cannot be assigned to any class with sufficient confidence.
-
 \section{Experiments}
 
 We first evaluate our system on single-label data to see if the data are separable using our method.
-
-%{\bf Data Set} Large amounts of audio data (about 20 terabytes) for bird calls have been collected. The data contain flight calls from approximately 20-30 species of songbirds, examples of other background noises, and long audio files that contain flight calls (some of them might be too faint to identify them to species) and other background sounds. The software developed can be tested using long audio files where all the flight calls of songbirds have been detected, and with manual identification by Amy Tegeler, an Avian Ecologist from the Carnegie Museum of Natural History.
 
 \textbf{Data.}  We use the flight calls of songbirds manually segmented and labeled by Amy Tegeler, an Avian Ecologist from the Carnegie Museum of Natural History, to evaluate the performance of our system on indoor flight calls classification. We used the data from year 2008 to 2013. The total number of species is 32. But only 11 species has more than 100 data. Therefore, the experiment is performed on those 11 species, and 100 data points are randomly sampled from each species. The 100 data points are randomly partitioned into 20 testing data and 80 training data for each species.
 
