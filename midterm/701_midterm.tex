@@ -12,7 +12,7 @@
   \begin{tabular}[#1]{@{}c@{}}#2\end{tabular}}
 
 \newcommand{\changespace}[1]{\renewcommand{\baselinestretch}{#1}\normalsize}
-\changespace{0.9655}
+\changespace{0.903}
 
 
 \title{Identification of Songbird Species in Field Recordings}
@@ -67,21 +67,6 @@ jrussino \\
 %\end{abstract}
 
 \section{Introduction}
-%It is important to gain a better understanding of bird behavior
-% and population trends. Birds respond quickly to environmental change, and may also tell us about other organisms (e.g.,
-% insects they feed on), while being easier to detect. Traditional
-% methods for collecting data about birds involves costly hu-
-% man effort. A promising alternative is acoustic monitoring.
-% There are many advantages to recording audio of birds com-
-% pared to human surveys, including increased temporal and
-% spatial resolution and extent, applicability in remote sites, re-
-% duced observer bias, and potentially lower cost. However, it is
-% an open problem for signal processing and machine learning
-% to reliably identify bird sounds in real-world audio data col-
-% lected in an acoustic monitoring scenario. Some of the major
-% challenges include multiple simultaneously vocalizing birds,
-% other sources of non-bird sound (e.g., buzzing insects), and
-% background noise like wind, rain, and motor vehicles.
 
 It is important to gain a better understanding about the climate and ecological changes in the world. One way to address this is to study seasonal migration patterns in songbird populations, since birds respond quickly to environmental changes \cite{walther2002ecological}.
 During migratory periods, many species of songbirds use flight calls, which are species-specific and are distinct from other vocalizations. Therefore, flight calls information can be used to determine the relative abundance of species and is important to understand long-term population trends. Due to costly human effort to collect data about birds in traditional methods, using machine learing (ML) methods to identify bird species from continuous audio recordings has been a hot topic in in recent conference competitions.\footnote{\scriptsize ICML 2013: \href{http://www.kaggle.com/c/the-icml-2013-bird-challenge}{The Bird Challenge}; NIPS 2013: \href{http://www.kaggle.com/c/multi-label-bird-species-classification-nips2013}{
@@ -89,15 +74,6 @@ Multi-label Bird Species Classification}; MLSP 2013: \href{http://www.kaggle.com
 
 In this project, we will focus on critical aspects of this problem. We start from some state-of-the-art algorithms, e.g., \cite{mlsp2,chennovel13,briggs2013instance,Lasseck13,Massaron13,stattnersong13}, adapt components to the data we have, and finally develop a scalable, integrated software tool. The total process is divided into four steps. First, Audio data are first preprocessed into spectrograms. The spectrograms are further cleaned by applying background noise reduction and image processing techniques, and connected pixels (acoustic patterns) in the spectrograms are labeled into rectangle segments. Second, features are then extracted and selected from different sources, e.g., file statistics, segment statistics and probabilistics, and mel-frequency cepstral coefficients (MFCC). Third, the classification is then done by using multiple algorithms, e.g., naive Bayes, decision trees, $k$-nearest neighbors ($k$-NN) \cite{cover1967nearest}, support vector machines (SVM) \cite{cortes1995support}, etc. Finally, we will explore some ensemble methods \cite{breiman2001random,breiman1996bagging,freund1997decision,hoeting1999bayesian,read2011classifier} for furthering improve the overall performance by combining the predictions of models, as well as facilitating scalability in real-world usages. The software developed for this project will be used by the Carnegie Museum of Natural History, and possibly shared with other land managers, researchers, and educators to enhance the use of flight calls as a method to study the populations of migratory songbirds. 
 
-% First, we will work on segmenting flight call vocalizations within long audio files that contain other types of sounds. Second, given labeled segments of bird flight calls, we will explore possible algorithms to extract useful features and classify the corresponding songbird species automatically.
-% 
-%  We then etc. Finally, the classification can then be done using multiple algorithms, e.g., decision trees, support vector machines, and multi-instance multi-label learning algorithms, as well as some ensemble methods to further improve the overall performance, based on existing libraries (e.g., \href{http://scikit-learn.org}{scikit-learn}). 
-
-%{\bf Midterm Milestone} Develop an initial workable software version and perform basic tests based on indoor voice data, after selecting suitable algorithm components that might work scalable.
-
-%The software is scalable so that users could train it to identify flight calls from additional species and to exclude other types of background noise.
-
-%[Yurui] Basically preprocessing and segmentation is the very first step of the bird song classification, and the methods used in preprocessing and segmentation have a big influence on classification results.
 
 \section{Related work}
 
@@ -122,14 +98,11 @@ Many classification and ensemble methods can be obtained in \href{http://scikit-
 
 \subsection{Preprocessing}
 
-[Yurui]
-% In preprocessing we first re-sampled the audio files to 22050 Hz guarantee a uniform audio sample format for all training and test data. For each audio file we split it into 256 segments. Then the Power Spectral Density of each segments can be calculated. For each segments we use a Hanning window with \%75 overlap. Finally, the spectrogram of each audio file is treated as gray-scale image for further noise reduction and segmentation.
-% 
-% Notice the case that in a processed grayscale image most area was occupied by the random noise. What we want is to get rid of the background noise completely and increase the contrast between real signal and the background. Given the several different algorithm tested, the best one is the so called Median clipping algorithm. The idea is simple, for each pixel we compute the median and variance of its corresponding row and column. If the pixel is above the median plus three times variance we set the pixel value to 1, otherwise the value would be set to 0. The median clipping algorithm works best because it not only removes most background noise, but also capture the sound feature clearly and precisely.
-% 
-% Such a algorithm, though perform well in noise removing and feature capturing, requires large amount of computation because the average and variance of each column of the row need to be calculated. Given the huge size of the processed grayscale image, we need a more efficient algorithm to segment the image. Thus further experiments is needed to explore an balance point between noise reduction effectivity and efficiency.
-% 
-% Similar to the methods used in \cite{Lasseck13}, we apply standard image processing techniques to further reduce residual noise dots. Finally we would use find connected pixels from the image and label the segments.
+Similar to the methods used in \cite{Lasseck13}, we first convert audio files into spectrogram images, and for each segments we use Hanning windows with \%75 overlap. Notice the case that in a processed grayscale image most area was occupied by the random noise. What we want is to get rid of the background noise completely and increase the contrast between real signal and the background. Given the several different algorithm tested, the median clipping algorithm \cite{mlsp1} works best because it not only removes most background noise, but also capture the sound feature clearly and precisely. 
+
+Such a algorithm, though perform well in noise removing and feature capturing, requires large amount of computation because the average and variance of each column of the row need to be calculated. Given the huge size of the processed grayscale image, we need a more efficient algorithm to segment the image. Further experiments is also needed to explore an balance point between noise reduction effectivity and efficiency.
+
+Finally, we apply standard image processing techniques to further reduce the residual noise dot. And then we would use find connected pixels from the image and label the segments, as in \cite{Lasseck13}.
 
 \subsection{Features}
 \label{sec:Features}
