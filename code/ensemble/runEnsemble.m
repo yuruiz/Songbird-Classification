@@ -8,9 +8,9 @@ DevName = 'Basic';
 DevName = 'Disagreement';
 TYPE=3;
 
+DevName = 'Double_Fault';
 DevName = 'Q_Test';
 DevName = 'Correlation';
-DevName = 'Double_Fault';
 TYPE=2;
 
 k=6;

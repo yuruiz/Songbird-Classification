@@ -1,4 +1,4 @@
-function trainEnsemble(WeiName, DevName, TYPE, k)
+function accuracy = trainEnsemble(WeiName, DevName, TYPE, k)
 % Author: Xiao-Feng Xie (xfxie@cs.cmu.edu)
 % Created/Modified: Apr 24, 2014
 
@@ -9,6 +9,9 @@ C = load('data/train.data');
 
 fprintf('Loading training labels...\n');
 T = load('data/train.label');
+
+fprintf('Loading classifier indices...\n');
+indices = load('data/train.ind');
 
 m=size(C, 1);
 L=size(C, 2);
@@ -38,7 +41,7 @@ CO = WeightedMajority(C, weights);
 accuracy = PrintAccuracy(CO, T);
 fprintf('Accuracy is %0.2f\n', accuracy);
 
-results(1,:)= subIndices;
+results(1,:)= GetSubSubIndices(indices,subIndices);
 results(2,:)= weights;
 
 weightFileName = GetWeightFileName(WeiName, DevName, TYPE, k);

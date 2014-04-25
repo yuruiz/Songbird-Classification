@@ -1,4 +1,4 @@
-function testEnsemble(WeiName, DevName, TYPE, k)
+function accuracy = testEnsemble(WeiName, DevName, TYPE, k)
 % Author: Xiao-Feng Xie (xfxie@cs.cmu.edu)
 % Created/Modified: Apr 24, 2014
 
@@ -8,10 +8,10 @@ weightFileName = GetWeightFileName(WeiName, DevName, TYPE, k);
 fprintf('Loading training weights...\n');
 trainWeights = load(weightFileName);
 
-fprintf('Loading training data...\n');
+fprintf('Loading data data...\n');
 C = load('data/test.data');
 
-fprintf('Loading training labels...\n');
+fprintf('Loading data labels...\n');
 T = load('data/test.label');
 
 fprintf('Loading classifer indices...\n');
