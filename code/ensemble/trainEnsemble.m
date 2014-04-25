@@ -13,11 +13,13 @@ T = load('data/train.label');
 fprintf('Loading classifier indices...\n');
 indices = load('data/train.ind');
 
+C = GetSubMatrix(C, indices); 
+
 m=size(C, 1);
 L=size(C, 2);
 
 #Systematic Search
-if strcmp(DevName, 'Basic')
+if strcmp(DevName, 'Basic') || L<=k
   subIndices = (1:L)';
   TYPE = -1;
 else
