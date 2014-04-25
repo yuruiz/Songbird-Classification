@@ -21,7 +21,8 @@ else
   L = length(subIndices);
 end
 
-
+WeiName
+strcmp(WeiName, 'Basic')
 if strcmp(WeiName, 'Basic')
   weights=ones(1, L);
 else

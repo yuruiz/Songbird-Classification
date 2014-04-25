@@ -3,33 +3,29 @@
 
 clear;
 
-DevName = 'Basic';
+DevNames = ['Basic';'Disagreement'; 'Correlation'; 'Q_Test'; 'Double_Fault'; 'Coincident_Failure'; 'entropy'; 'Interrater_k'; 'Kohavi_Wolpert'];
+TYPEs=[-1; 3; 2; 2; 2; 4; 1; 1; 0];
+WeiNames = ['Basic';'PerformanceWeighting'];
 
-DevName = 'Disagreement';
-TYPE=3;
-
-DevName = 'Correlation';
-DevName = 'Q_Test';
-DevName = 'Double_Fault';
-TYPE=2;
-
-DevName = 'Coincident_Failure';
-TYPE=4;
-
-
-DevName = 'entropy';
-TYPE=1;
-
-DevName = 'difficulty';
-DevName = 'Interrater_k';
-DevName = 'Kohavi_Wolpert';
-TYPE=0;
-
-k=5;
-
-WeiName = 'PerformanceWeighting';
-
-trainEnsemble(WeiName, DevName, TYPE, k);
+k=7;
+TSIZE=size(DevNames, 1);
+WSIZE=size(WeiNames, 1);
+n =0;
+for k=3:8
+filename=sprintf('result/errors_%d.csv', k);
+fid = fopen(filename, 'w');
+for j=1:WSIZE
+WeiName = strtrim(WeiNames(j,:));
+for i=1:TSIZE
+DevName = strtrim(DevNames(i,:));
+TYPE = TYPEs(i);
+WeiName, DevName, TYPE, k
+TrainError=trainEnsemble(WeiName, DevName, TYPE, k);
 #testEnsembleTag(WeiName, DevName, TYPE, k, 'train');
-testEnsembleTag(WeiName, DevName, TYPE, k, 'test');
+TestError=testEnsembleTag(WeiName, DevName, TYPE, k, 'test');
+fprintf(fid, '%s,%s,%d,%d,%0.2f,%0.2f\n', WeiName, DevName, TYPE, k, TrainError, TestError);
+end
+end
+fclose(fid);
+end
 
