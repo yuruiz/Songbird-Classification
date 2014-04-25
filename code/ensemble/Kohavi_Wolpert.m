@@ -9,4 +9,4 @@ function k=Kohavi_Wolpert(C)
 % classifiers, T is the labels of the objects (0 represents  false, 1 true)
 
 L=size(C,2); 
-k=(L-1)*Convert_To_Pair_Disagreement(C)/(2*L);
+k=(L-1)*Pairwise_Diversity(C, @Disagreement)/(2*L);

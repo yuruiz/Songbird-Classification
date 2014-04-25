@@ -49,4 +49,5 @@ CFD=0;
 for i=1: (size(C,2))
    CFD=CFD+((size(C,2)-i) /(size(C,2)-1))*Pr(1,i+1);
 end
-CFD=CFD1*CFD;
+CFD=-CFD1*CFD;
+

@@ -4,25 +4,25 @@ function E=entropy(C);
 % El Shorouk Academy
 % engalaatharwat@hotmail.com  +201006091638
 %
-% C (MxN) M represents number of objects, N represents number of
-% classifiers, T is the labels of the objects (0 represents  false, 1 true)
+% C (MxN) M represem number of objects, N represem number of
+% classifiers, T is the labels of the objects (0 represem  false, 1 true)
 
 
 
-Nts=size(C,1);
+m=size(C,1);
 L=size(C,2);
 Nt=0;
 Nf=0;
 S=0;
-for i=1:size(C,1)
-    for j=1:size(C,2)
+for i=1:m
+    for j=1:L
         if(C(i,j)==1)
-            Nt=Nt+1;
+            Nt++;
         else
-            Nf=Nf+1;
+            Nf++;
         end 
     end
-    A=min(Nt,Nf)
+    A=min(Nt,Nf);
     S=S+A;
     Nt=0;
     Nf=0;
@@ -30,4 +30,4 @@ for i=1:size(C,1)
 end
 
 
-E=(1/Nts)*(2/(L-1))*(S);
+E=(1/m)*(2/(L-1))*(S);
