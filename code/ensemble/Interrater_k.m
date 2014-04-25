@@ -7,16 +7,23 @@ function k=Interrater_k(C)
 %
 % C (MxN) M represents number of objects, N represents number of
 % classifiers, T is the labels of the objects (0 represents  false, 1 true)
+%
+% ------------------------------------------------------------------------
+% Author: Xiao-Feng Xie (xfxie@cs.cmu.edu)
+% Created/Modified: Apr 25, 2014
 
-P=zeros(1,size(C,2));
-for i=1:size(C,1)
-   for j=1:size(C,2)
+m=size(C,1);
+L=size(C,2);
+
+P=zeros(1,L);
+for i=1:m
+   for j=1:L
        if(C(i,j)==1)
             P(1,j)=P(1,j)+1;
        end
    end
 end
     
-P=P/(size(C,1));
+P=P/m;
 P=mean(P);
-k=1-(Convert_To_Pair_Disagreement(C,T)/((size(C,2)-1)*P*(1-P)));
+k=1-(Pairwise_Diversity(C, @Disagreement)/((L-1)*P*(1-P)));

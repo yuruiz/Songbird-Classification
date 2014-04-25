@@ -4,14 +4,7 @@ function accuracy = trainEnsemble(WeiName, DevName, TYPE, k)
 
 #clear;
 
-fprintf('Loading training data...\n');
-C = load('data/train.data');
-
-fprintf('Loading training labels...\n');
-T = load('data/train.label');
-
-fprintf('Loading classifier indices...\n');
-indices = load('data/train.ind');
+[C, T, indices] = LoadInputs('train');
 
 C = GetSubMatrix(C, indices); 
 
@@ -21,7 +14,6 @@ L=size(C, 2);
 #Systematic Search
 if strcmp(DevName, 'Basic') || L<=k
   subIndices = (1:L)';
-  TYPE = -1;
 else
   DevMethod = str2func(DevName);
   subIndices = SystematicSearchK(C,T, DevMethod, TYPE, k);

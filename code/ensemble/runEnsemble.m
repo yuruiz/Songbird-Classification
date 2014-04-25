@@ -8,15 +8,19 @@ DevName = 'Basic';
 DevName = 'Disagreement';
 TYPE=3;
 
-DevName = 'Double_Fault';
-DevName = 'Q_Test';
 DevName = 'Correlation';
+DevName = 'Q_Test';
+DevName = 'Double_Fault';
 TYPE=2;
 
-k=6;
+DevName = 'Interrater_k';
+TYPE=0;
+
+k=5;
 
 WeiName = 'PerformanceWeighting';
 
 trainEnsemble(WeiName, DevName, TYPE, k);
-testEnsemble(WeiName, DevName, TYPE, k);
+testEnsembleTag(WeiName, DevName, TYPE, k, 'train');
+testEnsembleTag(WeiName, DevName, TYPE, k, 'test');
 
