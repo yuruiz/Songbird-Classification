@@ -7,6 +7,7 @@ Basic,Coincident_Failure,4,6,72.41,71.82
 Basic,entropy,1,6,72.41,71.82
 Basic,Interrater_k,1,6,74.00,70.00
 Basic,Kohavi_Wolpert,0,6,72.41,71.82
+Basic,Generalized,1,6,72.41,71.82
 PerformanceWeighting,Basic,-1,6,74.00,71.36
 PerformanceWeighting,Disagreement,3,6,72.06,71.36
 PerformanceWeighting,Correlation,2,6,73.55,71.36
@@ -16,3 +17,4 @@ PerformanceWeighting,Coincident_Failure,4,6,72.06,71.36
 PerformanceWeighting,entropy,1,6,72.06,71.36
 PerformanceWeighting,Interrater_k,1,6,73.55,71.36
 PerformanceWeighting,Kohavi_Wolpert,0,6,72.06,71.36
+PerformanceWeighting,Generalized,1,6,72.06,71.36
