@@ -21,8 +21,6 @@ else
   L = length(subIndices);
 end
 
-WeiName
-strcmp(WeiName, 'Basic')
 if strcmp(WeiName, 'Basic')
   weights=ones(1, L);
 else
@@ -32,6 +30,7 @@ end
 weights = normalize(weights);
 
 CO = WeightedMajority(C, weights);
+%CO = PriorWeightedMajority(C, T, weights);
 %//csvwrite('majvotes.csv', CO);
 accuracy = PrintAccuracy(CO, T);
 fprintf('Accuracy is %0.2f\n', accuracy);

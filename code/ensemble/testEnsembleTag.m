@@ -22,6 +22,7 @@ for l=1:L,
 end;
 
 CO = WeightedMajority(C, weights);
+%CO = PriorWeightedMajority(C, T, weights);
 %csvwrite('result/majvotes.csv', CO);
 accuracy = PrintAccuracy(CO, T);
 fprintf('Accuracy is %0.2f\n', accuracy);
