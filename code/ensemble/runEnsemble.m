@@ -20,9 +20,9 @@ TYPE=4;
 DevName = 'entropy';
 TYPE=1;
 
+DevName = 'difficulty';
 DevName = 'Interrater_k';
 DevName = 'Kohavi_Wolpert';
-DevName = 'difficulty';
 TYPE=0;
 
 k=5;
