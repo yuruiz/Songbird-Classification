@@ -1,0 +1,15 @@
+http://www.xeno-canto.org/ bird sounds
+http://ebird.org  bird records
+http://bna.birds.cornell.edu/ Birds of North America (BNA) 
+http://www.allaboutbirds.org All about birds
+http://checklist.aou.org/        AOU Checklist of North and Middle American Birds
+
+Software:
+http://www-3.unipv.it/cibra/res_software_uk.html  Software for sound analysis
+http://www.birds.cornell.edu/brp/raven/ravenoverview.html Raven Lite
+http://ofer.sci.ccny.cuny.edu/sound_analysis_pro  Free
+http://science.ehc.edu/~shopp/sound.html Sound Analysis Software: Software for bioacoustics
+
+http://scikit-learn.org classification
+Mel-Frequency Cepstral Coefficients
+
