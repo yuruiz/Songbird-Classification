@@ -1,4 +1,4 @@
-function [labels] = PriorWeightedMajority(C, T, weights);
+function [labels, maxval] = PriorWeightedMajority(C, T, weights);
 % Author: Xiao-Feng Xie (xfxie@cs.cmu.edu)
 % Created/Modified: Apr 24, 2014
 
@@ -8,6 +8,7 @@ L=size(C, 2);
 options = unique(C);
 O = size(options, 1);
 labels = zeros(m, 1);
+maxval = zeros(m, 1);
 
 Priors = zeros(O,O,L);
 
@@ -21,8 +22,10 @@ for i=1:m
     index = find(options==row(l));
     VoteArray += weights(l)*Priors(:, index, l);
   end
+  VoteArray = normalize(VoteArray);
   [xx, id] = max(VoteArray);
   labels(i, 1) = options(id);
+  maxval(i, 1) = xx;
   VoteArray = 0;
 end
 end

@@ -3,8 +3,8 @@
 
 clear;
 
-DevNames = ['Basic';'Disagreement'; 'Correlation'; 'Q_Test'; 'Double_Fault'; 'Coincident_Failure'; 'entropy'; 'Interrater_k'; 'Kohavi_Wolpert'; 'Generalized'];
-TYPEs=[-1; 3; 2; 2; 2; 4; 1; 1; 0; 1];
+DevNames = ['Disagreement'; 'Correlation'; 'Q_Test'; 'Double_Fault'; 'Coincident_Failure'; 'entropy'; 'Interrater_k'; 'Kohavi_Wolpert'; 'Generalized'];
+TYPEs=[3; 2; 2; 2; 4; 1; 1; 0; 1];
 #DevNames = ['Basic'];
 #TYPEs=[-1];
 WeiNames = ['Basic';'PerformanceWeighting'];
@@ -25,7 +25,7 @@ TYPE = TYPEs(i);
 WeiName, DevName, TYPE, k
 TrainError=trainEnsemble(WeiName, DevName, TYPE, k);
 #testEnsembleTag(WeiName, DevName, TYPE, k, 'train');
-TestError=testEnsembleTag(WeiName, DevName, TYPE, k, 'test');
+TestError=testEnsembleTag(WeiName, DevName, TYPE, k, 'test', 0);
 fprintf(fid, '%s,%s,%d,%d,%0.2f,%0.2f\n', WeiName, DevName, TYPE, k, TrainError, TestError);
 end
 end

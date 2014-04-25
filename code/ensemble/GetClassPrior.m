@@ -13,4 +13,8 @@ for i=1:m
   prior(ci, ti)++; 
 end
 
+#for i=1:o
+#  prior(i, :) = normalize(prior(i, :));
+#end
+
 end

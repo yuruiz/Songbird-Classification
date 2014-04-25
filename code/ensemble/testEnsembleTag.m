@@ -1,4 +1,4 @@
-function accuracy = testEnsembleTag(WeiName, DevName, TYPE, k, tag)
+function accuracy = testEnsembleTag(WeiName, DevName, TYPE, k, tag, threshold)
 % Author: Xiao-Feng Xie (xfxie@cs.cmu.edu)
 % Created/Modified: Apr 24, 2014
 
@@ -22,10 +22,13 @@ for l=1:L,
 end;
 
 CO = WeightedMajority(C, weights);
-%CO = PriorWeightedMajority(C, T, weights);
-%csvwrite('result/majvotes.csv', CO);
 accuracy = PrintAccuracy(CO, T);
 fprintf('Accuracy is %0.2f\n', accuracy);
+%[CO, MO] = PriorWeightedMajority(C, T, weights);
+%[accuracy, rate] = ThreshAccuracy(CO, T, MO, threshold);
+%fprintf('Accuracy is %0.2f, %0.2f\n', accuracy, rate);
+
+%csvwrite('result/majvotes.csv', CO);
 
 end
 
