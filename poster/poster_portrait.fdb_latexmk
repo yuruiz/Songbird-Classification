@@ -1,5 +1,5 @@
 # Fdb version 3
-["pdflatex"] 1398530926 "poster_portrait.tex" "poster_portrait.pdf" "poster_portrait" 1398530927
+["pdflatex"] 1398534866 "poster_portrait.tex" "poster_portrait.pdf" "poster_portrait" 1398534867
   "/usr/local/texlive/2013/texmf-dist/tex/context/base/supp-pdf.mkii" 1337017135 71627 94eb9990bed73c364d7f53f960cc8c5b ""
   "/usr/local/texlive/2013/texmf-dist/tex/generic/ifxetex/ifxetex.sty" 1284331290 1458 43ab4710dc82f3edeabecd0d099626b2 ""
   "/usr/local/texlive/2013/texmf-dist/tex/generic/oberdiek/etexcmds.sty" 1335995445 7612 c47308d923ec19888707b0f1792b326a ""
@@ -121,10 +121,14 @@
   "/usr/local/texlive/2013/texmf-dist/tex/latex/xcolor/xcolor.sty" 1169481954 55224 a43bab84e0ac5e6efcaf9a98bde73a94 ""
   "/usr/local/texlive/2013/texmf-dist/tex/latex/xkeyval/xkeyval.sty" 1350473462 4934 09bb8eb3760faa4ffb6107a36e5b3d76 ""
   "baposter.cls" 1317305614 48744 be689fb62b90a56c8b0d0c008559b7ff ""
+  "images/Eroded_and_propagated.png" 1398532684 5985 d733363d93301025f356d0c5eb763490 ""
+  "images/Median_clipped.png" 1398532684 7295 8b4f22d0b41bfb1210a66c190efa1a10 ""
   "images/graph_occluded.pdf" 1316172067 30361 bd44aaba545040f8585766b3868b90d7 ""
+  "images/labeled.png" 1398532685 667017 6df29f1d10c34c332be59a3b6baad089 ""
   "images/logo.jpg" 1398530511 1861276 edb6d48b502a933ba2ff051534bf804a ""
-  "poster_portrait.aux" 1398530927 50 584990270b9d7f417411a5bc705e3497 ""
-  "poster_portrait.tex" 1398530925 7546 d3876ae4b4a1fc0cb0fa877c1adbd06e ""
+  "images/original.png" 1398533436 433703 9409c90dd458a65f207d69069e2c308a ""
+  "poster_portrait.aux" 1398534867 50 584990270b9d7f417411a5bc705e3497 ""
+  "poster_portrait.tex" 1398534866 8616 53489b69b71eac23567bc77f4006d6a0 ""
   (generated)
   "poster_portrait.aux"
   "poster_portrait.log"

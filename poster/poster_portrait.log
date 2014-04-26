@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2013.5.30)  26 APR 2014 12:48
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2013.5.30)  26 APR 2014 13:54
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -784,6 +784,82 @@ Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
+
+
+! LaTeX Error: Not in outer par mode.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.209 }
+       
+You've lost some text.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+! Undefined control sequence.
+\@xfloat ...@fltovf \fi \global \setbox \@currbox 
+                                                  \color@vbox \normalcolor \...
+l.209 }
+       
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Missing number, treated as zero.
+<to be read again> 
+                   \vbox 
+l.209 }
+       
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+<images/original.png, id=23, 1405.25pt x 903.375pt>
+File: images/original.png Graphic file (type png)
+ <use images/original.png>
+Package pdftex.def Info: images/original.png used on input line 209.
+(pdftex.def)             Requested size: 112.40085pt x 72.26999pt.
+
+Overfull \hbox (3.99585pt too wide) in paragraph at lines 209--209
+[][] 
+ []
+
+<images/Median_clipped.png, id=24, 1405.25pt x 903.375pt>
+File: images/Median_clipped.png Graphic file (type png)
+
+<use images/Median_clipped.png>
+Package pdftex.def Info: images/Median_clipped.png used on input line 209.
+(pdftex.def)             Requested size: 112.40085pt x 72.26999pt.
+
+Overfull \hbox (3.99585pt too wide) in paragraph at lines 209--209
+[][] 
+ []
+
+<images/Eroded_and_propagated.png, id=25, 1405.25pt x 903.375pt>
+File: images/Eroded_and_propagated.png Graphic file (type png)
+
+<use images/Eroded_and_propagated.png>
+Package pdftex.def Info: images/Eroded_and_propagated.png used on input line 20
+9.
+(pdftex.def)             Requested size: 112.40085pt x 72.26999pt.
+
+Overfull \hbox (40.13086pt too wide) in paragraph at lines 209--209
+[][] 
+ []
+
+<images/labeled.png, id=26, 1405.25pt x 903.375pt>
+File: images/labeled.png Graphic file (type png)
+ <use images/labeled.png>
+Package pdftex.def Info: images/labeled.png used on input line 209.
+(pdftex.def)             Requested size: 112.40085pt x 72.26999pt.
+
+Overfull \hbox (3.99585pt too wide) in paragraph at lines 209--209
+[][] 
+ []
+
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
@@ -793,28 +869,28 @@ Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
- [2
+[2
 
 {/usr/local/texlive/2013/texmf-var/fonts/map/pdftex/updmap/pdftex.map} <./image
 s/graph_occluded.pdf> <./images/logo.jpg>] (./poster_portrait.aux) ) 
 Here is how much of TeX's memory you used:
- 13767 strings out of 493315
- 267242 string characters out of 6137904
- 326742 words of memory out of 5000000
- 16879 multiletter control sequences out of 15000+600000
+ 13787 strings out of 493315
+ 267760 string characters out of 6137904
+ 329529 words of memory out of 5000000
+ 16895 multiletter control sequences out of 15000+600000
  23046 words of font info for 48 fonts, out of 8000000 for 9000
  959 hyphenation exceptions out of 8191
- 63i,8n,70p,756b,974s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 63i,19n,70p,756b,1055s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local
 /texlive/2013/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/texlive/2013/t
 exmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2013/tex
 mf-dist/fonts/type1/urw/palatino/uplb8a.pfb></usr/local/texlive/2013/texmf-dist
 /fonts/type1/urw/palatino/uplr8a.pfb></usr/local/texlive/2013/texmf-dist/fonts/
 type1/urw/times/utmr8a.pfb>
-Output written on poster_portrait.pdf (1 page, 1918890 bytes).
+Output written on poster_portrait.pdf (1 page, 1920477 bytes).
 PDF statistics:
- 53 PDF objects out of 1000 (max. 8388607)
+ 57 PDF objects out of 1000 (max. 8388607)
  24 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 125 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 145 words of extra memory for PDF output out of 10000 (max. 10000000)
 
