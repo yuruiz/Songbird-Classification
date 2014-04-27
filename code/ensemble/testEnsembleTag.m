@@ -1,10 +1,10 @@
-function accuracy = testEnsembleTag(WeiName, DevName, TYPE, k, tag, threshold)
+function [accuracy, rate] = testEnsembleTag(WeiName, DevName, TYPE, k, tag, threshold, usePrior)
 % Author: Xiao-Feng Xie (xfxie@cs.cmu.edu)
 % Created/Modified: Apr 24, 2014
 
 #clear;
 
-weightFileName = GetWeightFileName(WeiName, DevName, TYPE, k);
+weightFileName = GetWeightFileName(WeiName, DevName, TYPE, k, usePrior);
 fprintf('Loading training weights...\n');
 trainWeights = load(weightFileName);
 
@@ -21,12 +21,12 @@ for l=1:L,
   end
 end;
 
-CO = WeightedMajority(C, weights);
-accuracy = PrintAccuracy(CO, T);
-fprintf('Accuracy is %0.2f\n', accuracy);
-%[CO, MO] = PriorWeightedMajority(C, T, weights);
-%[accuracy, rate] = ThreshAccuracy(CO, T, MO, threshold);
-%fprintf('Accuracy is %0.2f, %0.2f\n', accuracy, rate);
+%[CO, MO] = WeightedMajority(C, weights);
+%accuracy = PrintAccuracy(CO, T);
+%fprintf('Accuracy is %0.2f\n', accuracy);
+[CO, MO] = PriorWeightedMajority(C, T, weights, usePrior);
+[accuracy, rate] = ThreshAccuracy(CO, T, MO, threshold);
+fprintf('Accuracy is %0.2f, %0.2f\n', accuracy, rate);
 
 %csvwrite('result/majvotes.csv', CO);
 

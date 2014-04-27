@@ -1,4 +1,4 @@
-function [labels] = WeightedMajority(C,weights);
+function [labels, xx] = WeightedMajority(C,weights);
 % Author: Xiao-Feng Xie (xfxie@cs.cmu.edu)
 % Created/Modified: Apr 24, 2014
 
