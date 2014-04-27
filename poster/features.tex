@@ -1,0 +1,29 @@
+\begin{itemize}
+	\item Spectrogram based (cite Briggs):
+	\begin{itemize}
+		\item Mask descriptors: 
+		\begin{itemize}
+			\item min-$f$, max-$f$, bandwidth (min-max), duration (T)
+			\item area, perimeter, non-compactness, rectangularity		
+		\end{itemize}
+		\item Profile statistics:
+		\begin{itemize}
+			\item gini, mean, variance, skewness, kurtosis, 
+			\item area, perimeter, non-compactness, rectangularity		
+		\end{itemize}
+		\item Histogram of gradients (HOG)
+	\end{itemize}
+	\item Mel-Frequency Cepstrum Coefficients (MFCC) based: 
+	\begin{itemize}
+		\item Has been successful in speech recognition.
+		\item 39 dimensional vector. First dimension is energy.
+		\item $ T \times 39$ matrix $M$ for each audio file ($T$ is not fixed.)
+		\item Continuous features: $\frac{1}{T}\sum_t M_t$, $M_{t_{max}}$, and first PC of $M$
+		\item Discretized features: Quantize MFCC by k-means. ($K=200$)
+		\begin{itemize}
+			\item Bag-of-words: 200-D histogram
+			\item N-gram ($N=2,3$): $200^N$-D histogram. Select occurrence $\geq 3$. 
+		\end{itemize}
+		\item Denoising: Only use $t$ with energy above threshold.	
+	\end{itemize}
+\end{itemize}
