@@ -5,10 +5,10 @@
 \usepackage{caption}
 \usepackage{subcaption}
 \usepackage{url}
-\usepackage{multirow}
-\usepackage{cite}
+\usepackage{multirow} 
+\usepackage{cite} 
 \usepackage{amsmath} % Required for Math Stuff
-\usepackage{bm}
+\usepackage{bm} 
 \usepackage{bbm}
 
 \newcommand{\specialcell}[2][c]{%
@@ -70,33 +70,33 @@ It is important to gain a better understanding about the climate and ecological 
 During migratory periods, many species of songbirds use flight calls, which are species-specific and are distinct from other vocalizations. Therefore, flight calls information can be used to determine the relative abundance of species and is important to understand long-term population trends. Due to costly human effort to collect data about birds in traditional methods, using machine learing (ML) methods to identify bird species from continuous audio recordings has been a hot topic in in recent conference competitions.\footnote{\scriptsize ICML 2013: \href{http://www.kaggle.com/c/the-icml-2013-bird-challenge}{The Bird Challenge}; NIPS 2013: \href{http://www.kaggle.com/c/multi-label-bird-species-classification-nips2013}{
 Multi-label Bird Species Classification}; MLSP 2013: \href{http://www.kaggle.com/c/mlsp-2013-birds}{Bird Classification Challenge}} Although there are some recent advances \cite{briggs2013instance,Lasseck13,Massaron13,stattnersong13}, it is still an open ML problem to reliably identify bird sounds in field recordings data due to simultaneously vocalizing birds and various background noise \cite{BriggsMLSP13}.
 
-In this project, we will focus on critical aspects of this problem. We start from some state-of-the-art algorithms, e.g., \cite{mlsp2,chennovel13,briggs2013instance,Lasseck13,Massaron13,stattnersong13}, adapt components to the data we have, and finally develop a scalable, integrated software tool. The total process is divided into four steps. First, Audio data are first preprocessed into spectrograms. The spectrograms are further cleaned by applying background noise reduction and image processing techniques, and connected pixels (acoustic patterns) in the spectrograms are labeled into rectangle segments. Second, features are then extracted and selected from different sources, e.g., file statistics, segment statistics and probabilities, and mel-frequency cepstral coefficients (MFCCs). Third, the classification is then done by using multiple algorithms, e.g., naive Bayes, decision trees, $k$-nearest neighbors ($k$-NN) \cite{cover1967nearest}, support vector machines (SVM) \cite{cortes1995support}, etc. Finally, we will explore some ensemble methods \cite{breiman2001random,breiman1996bagging,freund1997decision,hoeting1999bayesian,read2011classifier} for furthering improve the overall performance by combining the predictions of models, as well as facilitating scalability in real-world usages. The software developed for this project will be used by the Carnegie Museum of Natural History, and possibly shared with other land managers, researchers, and educators to enhance the use of flight calls as a method to study the populations of migratory songbirds.
+In this project, we will focus on critical aspects of this problem. We start from some state-of-the-art algorithms, e.g., \cite{mlsp2,chennovel13,briggs2013instance,Lasseck13,Massaron13,stattnersong13}, adapt components to the data we have, and finally develop a scalable, integrated software tool. The total process is divided into four steps. First, Audio data are first preprocessed into spectrograms. The spectrograms are further cleaned by applying background noise reduction and image processing techniques, and connected pixels (acoustic patterns) in the spectrograms are labeled into rectangle segments. Second, features are then extracted and selected from different sources, e.g., file statistics, segment statistics and probabilities, and mel-frequency cepstral coefficients (MFCCs). Third, the classification is then done by using multiple algorithms, e.g., naive Bayes, decision trees, $k$-nearest neighbors ($k$-NN) \cite{cover1967nearest}, support vector machines (SVM) \cite{cortes1995support}, etc. Finally, we will explore some ensemble methods \cite{breiman2001random,breiman1996bagging,freund1997decision,hoeting1999bayesian,read2011classifier} for furthering improve the overall performance by combining the predictions of models, as well as facilitating scalability in real-world usages. The software developed for this project will be used by the Carnegie Museum of Natural History, and possibly shared with other land managers, researchers, and educators to enhance the use of flight calls as a method to study the populations of migratory songbirds. 
 
 
 \section{Related work}
 
-As mentioned in the Introduction, the toal process is divided into standard steps of ML components.
+As mentioned in the Introduction, the toal process is divided into standard steps of ML components.  
 
 The first part is about {\em preprocessing and segmentating} audio data of songbirds. Normally audio files are first processed into grayscale image by applying the Fourier transform using a Hanning or Hamming window of samples with some overlap \cite{Lasseck13, mlsp1}. Only relevant frequency range of the scope of domain interests are kept. The narrowed spectrograms are then treated as graysale images. To reduce the background noise, a {\em median clipping} method can be applied on each frequency band and time frame
-% to not only remove most background noise, but also capture the sound feature clearly and precisely \cite{Lasseck13}. An alternative is to apply iterations of a whitening filter
+% to not only remove most background noise, but also capture the sound feature clearly and precisely \cite{Lasseck13}. An alternative is to apply iterations of a whitening filter 
 \cite{mlsp1}. A spectrogram can also be processed using a series of sub-processes including Gaussian filtering, local gradient, thresholding, and morphological nosing removal \cite{fodor2013ninth}. The resulting images can be further handled using standard image processing techniques such as diluation and median filter (e.g. using \href{http://scikit-image.org/}{scikit-image}). In \cite{Lasseck13}, neighboring pixels exceeding certain spatial threshold (acoustic patterns) in the spectrograms are labeled into rectangle segments. In \cite{fodor2013ninth}, small segments are discarded and remaining holes are filled. In \cite{mlsp1}, a supervised single-instance single-label classifier is used to label the probability of each pixel as bird sound or noise, and then obtain predicted segementations by applying a threshold.
 
-The second part is about {\em feature extraction and selection}, which can have a large impact on later classification results. In \cite{mlsp1}, segment features are divided into two different categories - ``mask descriptors'' and ``profile statistics''. Histogram of gradients (HOG) have also been used \cite{mlsp1}. In \cite{fodor2013ninth}, features are obtained by applying the template matching function of scikit-image to compute the similarity at the maximum value of the normalized cross-correlation map with templates. In \cite{Lasseck13}, features come from three different sources, i.e., file statistics, segment statistics, and segment probabilities. The template matching in \href{http://opencv.org}{OpenCV library} is applied only on absolute-intensive spectrograms. Many existing work \cite{Stowell_NIPSW13,dufour2013clusterized,chennovel13,Massaron13} considers MFCCs%, which have been proved useful for speech recognition,
-as features.  Features can also be extracted using unsupervised deep learning \cite{Mencia_NIPSW13}. Additional methods, e.g., rescaling\cite{mlsp1}, concatenation\cite{dufour2013clusterized}, bag-of-words (BoW) model \cite{Li_CVPR05}, and principal component analysis (PCA) \cite{jolliffe2005principal}, can also be used for feature engineering.
+The second part is about {\em feature extraction and selection}, which can have a large impact on later classification results. In \cite{mlsp1}, segment features are divided into two different categories - ``mask descriptors'' and ``profile statistics''. Histogram of gradients (HOG) have also been used \cite{mlsp1}. In \cite{fodor2013ninth}, features are obtained by applying the template matching function of scikit-image to compute the similarity at the maximum value of the normalized cross-correlation map with templates. In \cite{Lasseck13}, features come from three different sources, i.e., file statistics, segment statistics, and segment probabilities. The template matching in \href{http://opencv.org}{OpenCV library} is applied only on absolute-intensive spectrograms. Many existing work \cite{Stowell_NIPSW13,dufour2013clusterized,chennovel13,Massaron13} considers MFCCs%, which have been proved useful for speech recognition, 
+as features.  Features can also be extracted using unsupervised deep learning \cite{Mencia_NIPSW13}. Additional methods, e.g., rescaling\cite{mlsp1}, concatenation\cite{dufour2013clusterized}, bag-of-words (BoW) model \cite{Li_CVPR05}, and principal component analysis (PCA) \cite{jolliffe2005principal}, can also be used for feature engineering. 
 
-The third part is about {\em classification}. Typical methods include naive Bayes, neural networks, logistic regression, Gaussian mixture model, radial basis function (RBF), decision trees, $k$-NN \cite{cover1967nearest}, SVM \cite{cortes1995support}, etc. Binary classifiers can be turned into multi-class ones by using general strategies, e.g., one-versus-all and pairwise decomposition, to classify instances into multiple classes.
-Some existing methods have been used for songbird identification. In \cite{dufour2013clusterized}, a LibSVM is used in a one-versus-all fashion, and best scores have been obtained with C-SVC SVM type and linear kernel function. In \cite{Mencia_NIPSW13}, pairwise SVM, LibSVM, decision trees, and neural networks are used, and the merged SVM and RDT often leads to better results. Mutiple-instance multi-label (MIML) classifiers, e.g., MIML-SVM, MIML-RBF, MIML-$k$NN are considered in \cite{mlsp1}.
+The third part is about {\em classification}. Typical methods include naive Bayes, neural networks, logistic regression, Gaussian mixture model, radial basis function (RBF), decision trees, $k$-NN \cite{cover1967nearest}, SVM \cite{cortes1995support}, etc. Binary classifiers can be turned into multi-class ones by using general strategies, e.g., one-versus-all and pairwise decomposition, to classify instances into multiple classes. 
+Some existing methods have been used for songbird identification. In \cite{dufour2013clusterized}, a LibSVM is used in a one-versus-all fashion, and best scores have been obtained with C-SVC SVM type and linear kernel function. In \cite{Mencia_NIPSW13}, pairwise SVM, LibSVM, decision trees, and neural networks are used, and the merged SVM and RDT often leads to better results. Mutiple-instance multi-label (MIML) classifiers, e.g., MIML-SVM, MIML-RBF, MIML-$k$NN are considered in \cite{mlsp1}. 
 
-Finally, {\em ensemble learning} methods have also been used for combining the predictions of several models. In theory, ensembles have more flexibility in the functions they can represent. Typical methods including gradient boosting (GB) \cite{friedman2001greedy}, random forest (RF) \cite{breiman2001random}, extremely randomized trees (ERT) \cite{geurts2006extremely}, bootstrap aggregating (or bagging) \cite{breiman1996bagging}, Bayesian model averaging (BMA) \cite{hoeting1999bayesian}, and ensemble of classifier chains (ECC) \cite{read2011classifier}. Some of them, e.g., GB \cite{chennovel13}, RF \cite{Stowell_NIPSW13,chennovel13,fodor2013ninth},
+Finally, {\em ensemble learning} methods have also been used for combining the predictions of several models. In theory, ensembles have more flexibility in the functions they can represent. Typical methods including gradient boosting (GB) \cite{friedman2001greedy}, random forest (RF) \cite{breiman2001random}, extremely randomized trees (ERT) \cite{geurts2006extremely}, bootstrap aggregating (or bagging) \cite{breiman1996bagging}, Bayesian model averaging (BMA) \cite{hoeting1999bayesian}, and ensemble of classifier chains (ECC) \cite{read2011classifier}. Some of them, e.g., GB \cite{chennovel13}, RF \cite{Stowell_NIPSW13,chennovel13,fodor2013ninth}, 
 ERT \cite{Lasseck13}, have been directly used for songbird identification. There are also some hybrid methods. In \cite{chennovel13}, GB and RF are combined by a simple linear blending method, where the final prediction is given by a linear combination of ensemble predictions, and the combination coefficients are determined by a Lasso and elastic-net regularization of generalized linear model. In \cite{Massaron13}, an ensemble of logistic regression and GB classifiers are considered. In \cite{mlsp2}, an ensemble of classifier chains with RF is applied.
 
-Many classification and ensemble methods can be obtained in \href{http://scikit-learn.org}{scikit-learn library}.
+Many classification and ensemble methods can be obtained in \href{http://scikit-learn.org}{scikit-learn library}. 
 
 \section{Methods}
 
 \subsection{Preprocessing}
 
-Similar to the methods used in \cite{Lasseck13}, we first convert audio files into spectrogram images, and for each segments we use Hanning windows with 75\% overlap. Notice the case that in a processed grayscale image most area was occupied by the random noise. What we want is to get rid of the background noise completely and increase the contrast between real signal and the background. Given the several different algorithm tested, the median clipping algorithm \cite{mlsp1} works best because it not only removes most background noise, but also capture the sound feature clearly and precisely.
+Similar to the methods used in \cite{Lasseck13}, we first convert audio files into spectrogram images, and for each segments we use Hanning windows with 75\% overlap. Notice the case that in a processed grayscale image most area was occupied by the random noise. What we want is to get rid of the background noise completely and increase the contrast between real signal and the background. Given the several different algorithm tested, the median clipping algorithm \cite{mlsp1} works best because it not only removes most background noise, but also capture the sound feature clearly and precisely. 
 
 Such a algorithm, though perform well in noise removing and feature capturing, requires large amount of computation because the average and variance of each column of the row need to be calculated. Given the huge size of the processed grayscale image, we need a more efficient algorithm to segment the image. Further experiments is also needed to explore an balance point between noise reduction effectivity and efficiency.
 
@@ -105,7 +105,7 @@ Finally, we apply standard image processing techniques to further reduce the res
 \subsection{Features}
 \label{sec:Features}
 
-Features can have a large impact on classification results. For this project, we have chosen to implement a large set of features used in previous successful attempts at birdsong classification. We will ultimately choose a smaller subset of these features that provide the most discriminatory power.
+Features can have a large impact on classification results. For this project, we have chosen to implement a large set of features used in previous successful attempts at birdsong classification. We will ultimately choose a smaller subset of these features that provide the most discriminatory power. 
 
 
 \textbf{Mel-Frequency Cepstral Coefficients}
@@ -117,7 +117,7 @@ implementation. \footnote{\scriptsize \href{http://www.mathworks.com/matlabcentr
 \label{sec:bow}
 In contrast to \cite{Dufour_NIPSW13}, which assumes that the number of frames is fixed for all audio segments to classify, we make no assumption on the length of the audio segment, since the length of flight calls might variate. In this case, we want a feature that is temporally scale invariant. Intuitively, even when a flight call is temporally scaled (extended or shorten), it should still be classified as the flight call of the same species. We leverage the progress in image classification and applied the bag-of-words (BoW) model \cite{Li_CVPR05} over our MFCCs. By treating audio features (MFCCs in our case) as `words', each audio segment is represented by a sparse vector of occurrence counts of words in BoW model; that is, a sparse histogram over the vocabulary.
 
-We learn the vocabulary, also called the codebook, by performing k-means clustering over sampled training MFCCs. Codewords are then defined as the centers of the learned clusters. In test time, we extract MFCCs from the test audio segment and quantize the 39 dimensional MFCCs to a learned codeword. The audio segment is represented by a $K$ dimensional histogram over the codeword, where $K$ is the size of the codebook.
+We learn the vocabulary, also called the codebook, by performing k-means clustering over sampled training MFCCs. Codewords are then defined as the centers of the learned clusters. In test time, we extract MFCCs from the test audio segment and quantize the 39 dimensional MFCCs to a learned codeword. The audio segment is represented by a $K$ dimensional histogram over the codeword, where $K$ is the size of the codebook. 
 
 One limitation of BoW model on audio segment is that the temporal information are lost in the model. However, as shown in the experiments, BoW is able to achieve satisfactory classification result on single-label single-instance case. We are considering to build higher order N-gram model on the learned vocabulary to capture the temporal information.
 
@@ -128,12 +128,12 @@ One limitation of BoW model on audio segment is that the temporal information ar
 % the entire spectrograph, and on dividing the spectrograph into $N$ equally spaced frequency bands and taking the same
 % statistics for each frequency band as features. Lasseck had success with this method in 2013 using $N=16$ \cite{Lasseck13}.
 %   For segment features, we will use the same basic statistics on a per-segment basis. In addition, we will explore the
-% usefulness of many of the other segment features that were used successfully in \cite{mlsp1}. These can be divided
-% into two different categories - ``mask descriptors'', which describe the general shape of a segment, and ``profile statistics'',
-% which describe the frequency and time profiles within segments. The mask descriptors include bandwidth,duration, area,
+% usefulness of many of the other segment features that were used successfully in \cite{mlsp1}. These can be divided 
+% into two different categories - ``mask descriptors'', which describe the general shape of a segment, and ``profile statistics'', 
+% which describe the frequency and time profiles within segments. The mask descriptors include bandwidth,duration, area, 
 % perimeter, non-compactness, and rectangularity; the profile statistics include profile uniformity, mean, variance,
-% skewness, and kurtosis. The final set of segment features that we will explore are the Histogram of Gradients (HOG),
-% which have successfully been used for songbird classification \cite{mlsp1,fodor2013ninth}.
+% skewness, and kurtosis. The final set of segment features that we will explore are the Histogram of Gradients (HOG), 
+% which have successfully been used for songbird classification \cite{mlsp1,fodor2013ninth}. 
 
 \subsection{Classifiers}
 We consider several classifiers/regressors.
@@ -148,13 +148,13 @@ one specific class or not. SVMs trained in a pairwise fashion has obtained state
 \textbf{Random Forest.} Random forests has been widely used for multi-label classification \cite{Lasseck13, chennovel13, Stowell_NIPSW13, Zhang_SDM2010}.
 Random Forest is operated by constructing decision tree structure by the training examples. One of the popular algorithm is tree bagging, in which the training process includes repeatedly selecting a bootstrap sample of the training set and  fitting the trees to them. After the training process, the label decision is made either on the majority of the votes or a weighted combination from individual trees.
 
-%\textbf{Naive Bayes.}
+%\textbf{Naive Bayes.} 
 
 \textbf{Logistic Regression.} Ensemble of logistic regression has been used for multi-label bird song classification \cite{Massaron13} because of its simplicity. We also consider this method as the baseline for soft output.
 
 \subsection{Ensembles}
 
-\input{ensemble1}
+\input{ensemble1} 
 
 \section{Experiments}
 
@@ -180,7 +180,7 @@ Before beginning with the training process, we first examine the property of the
 \end{figure}
 
 
-In Table \ref{tbl:classifers}, we compare the results using $k$-NN, SVN, random forest and naive Bayes classifier.
+In Table \ref{tbl:classifers}, we compare the results using $k$-NN, SVM, random forest and naive Bayes classifier.
 
 
 \begin{table}[t]
@@ -191,11 +191,11 @@ In Table \ref{tbl:classifers}, we compare the results using $k$-NN, SVN, random 
 \hline
    classifier  & setting      &accuracy   & classifier    & setting      & accuracy\\
 \hline
-$k$-NN     & chi-square    &62.27      &     &chi-square kernel  &72.73\\ \cline{2-3} \cline{5-6}
-(distance) & euclidean     &54.09      &   SVM    & RBF               &70\\ \cline{1-3} \cline{5-6}
-       &               &     &    (kernel types)    & linear            &67.7273\\ \cline{1-3} \cline{5-6}
-Naive Bayes  & kernel density  & 15.91           &       & polynomial        &69.0909\\ \cline{1-3} \cline{5-6}
- Random Forest &         & 7.27                 &       & Sigmoid           &70.9091\\ \hline
+Naive Bayes  & kernel density  & 15.91       &     &$\chi^2$  &72.73\\ \cline{1-3} \cline{5-6}
+Random Forest &                & 7.27     &   SVM    & RBF               &70\\ \cline{1-3} \cline{5-6}
+$k$-NN     & chi-square        & 62.27    &    (kernel types)    & linear            &67.7273\\ \cline{2-3} \cline{5-6}
+(distance) & euclidean         & 54.09   &       & polynomial        &69.0909\\ \cline{1-3} \cline{5-6}
+SVM& Linear  &42.87   &    & Sigmoid           &70.9091\\ \hline
 \end{tabular}
 \end{center}
 \end{table}
@@ -220,8 +220,8 @@ In considering that original feature distribution is not a Gaussian distribution
     \caption{Accuracy to penalty C after log transformation on the original feature.}
 \end{figure}
 
-Next, we show the results for applying SVM with polynomial kernel. Figure \ref{fig:poly} shows that the performance of accuracy to penalty C is similar to RBF kernel and the optimal value of this parameter is 16000. Besides, according to the experiment results, the optimal degree for the data is around 2. The reason might due to small data size that we use recently so that increasing model complexity will lead to overfitting problem. So we focus on simple model for recent data.
-
+Next, we show the results for applying SVM with polynomial kernel. Figure \ref{fig:poly} shows that the performance of accuracy to penalty C is similar to RBF kernel and the optimal value of this parameter is 16000. Besides, according to the experiment results, the optimal degree for the data is around 2. The reason might due to small data size that we use recently so that increasing model complexity will lead to overfitting problem. So we focus on simple model for recent data.  
+ 
 \begin{figure}[ht!]
     \centering
     {(a)\includegraphics[width=0.38\linewidth]{../Figure/Poly_cost_accuracy}
@@ -230,13 +230,13 @@ Next, we show the results for applying SVM with polynomial kernel. Figure \ref{f
     \label{fig:poly}
 \end{figure}
 
-The reason why random forest and naive Bayes failed is that the training example for each species is now limited to 80. From the predicted classification labels from the results of random forest, we found that the identities in some of the class are all mis-classified into another class, which means that the tree is ill-trained and biased such that many cases will be made to the same decision.
+The reason why random forest and naive Bayes failed is that the training example for each species is now limited to 80. From the predicted classification labels from the results of random forest, we found that the identities in some of the class are all mis-classified into another class, which means that the tree is ill-trained and biased such that many cases will be made to the same decision. 
 
 \input{ensemble2}
 
-Ensemble learning is then performed on 8 classifers, including $k$-NN with euclidean, $k$-NN with chi-square, SVM-linear (-t 0), SVM-$\chi^2$ (-t 5), SVM-RBF (-c 4000 -g 15 -t 2), linear SVM (-c 40), polynomial SVM (-c 1000 -g 1 -d 2 -t 1), sigmoid SVM (-c 1000 -g 1 -d 2 -t 3).
+Ensemble learning is then performed on 8 classifers, including $k$-NN with euclidean, $k$-NN with chi-square, SVM-linear (-t 0), SVM-$\chi^2$ (-t 5), SVM-RBF (-c 4000 -g 15 -t 2), linear SVM (-c 40), polynomial SVM (-c 1000 -g 1 -d 2 -t 1), sigmoid SVM (-c 1000 -g 1 -d 2 -t 3). 
 
-Figure \ref{fig:} gives
+Figure \ref{fig:} gives 
 
 \begin{figure}[ht!]
     \centering
