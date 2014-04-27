@@ -1,0 +1,17 @@
+An ensemble combines the prediction power of a set of individually trained classifiers $H$ to produce a single classifier. Ensembles often are more accuracy as compared to base classifiers in the ensemble. %For combining the outputs of base classifiers, there are two main types, i.e., weighting methods and meta-learning methods \cite{rokach2010ensemble}. %Popular ensemble methods include Bagging \cite{breiman1996bagging} and AdaBoost \cite{freund1997decision}.
+
+We focus on investigating \emph{weighting} methods, as one of the two main methods discussed in \cite{rokach2010ensemble}, for combining the outputs of base classifiers. The basic idea is to assign a different weight (function) $w_i$ for each base classfier $h_i\in H$, based on training and true labels on training examples. For each testing instance $X$, the ensemble classifier predicts $\tilde{h}(X)$ outputs the class receiving the highest weighted votes, based on the labels obtained by the base classifiers. 
+
+One can also obtain weights by searching to in the weighting space. We consider DEPSO, a cooperative group optimizer \cite{xie2014cooperative}, to obtain optimal weights. Without loss of generality, the weighting space is defined as $w_i\in [0, 1]$ for each weight.
+
+%\textbf{Bagging} Bagging is an abbreviated term of bootstrap aggregating, which trains each member classifier on a random redistribution of the training set, and using these to get
+%an aggregated predictor. It has shown that Bagging is effective on unstable learning algorithms that suffer from significant changes from small perturbations in the learning set.
+
+%Bagging is an averaging method, and the principle is to build several models independently and then to average their predictions.
+
+%\textbf{AdaBoost} AdaBoost is a short name for ``Adaptive Boosting''. AdaBoost can be seen as a broad extension of on-line prediction model in a general decision-theoretic setting. By adapting the multiplicative weight-update rule \cite{littlestone1994weighted}, In theory, boosting can be used to significantly reduce the error of ``weak'' classifiers. AdaBoost is adaptive and can turn weak classifiers into a strong one.
+
+%We will try to exploit the differences between Bagging and Boosting methods: (1) Bagging only uses resampling whereas Boosting uses reweighting; (2) Bagging always uses the uniform distribution whereas Boosting might modify the distribution over examples or mislabels.
+
+%In real-world usages of songbird identification, people would prefer nearly a 100\% precision rate, but can tolerate a  recall rate that is not very high, as the prediction accuracy cannot approach 100\%. Furthermore, scalability is strongly encouraged as the labels (bird species) might change over time. We will accommodate the real-world requirements at the ensemble level, by defining one label as ``UNKNOWN'', and try to improve the precision on all other known labels. 
+
