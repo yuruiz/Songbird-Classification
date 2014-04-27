@@ -8,6 +8,7 @@
 \usepackage{multirow}
 \usepackage{rotating}
 \usepackage{bm}
+\usepackage{bbm}
 \usepackage{url}
 
 \usepackage{graphicx}
@@ -111,7 +112,7 @@
   linewidth=2pt
   }
   % Eye Catcher
-  {\includegraphics[height=5em]{images/graph_occluded.pdf}}
+  {\includegraphics[height=5.5em]{images/graph_occluded.pdf}}
   % Title
   {\bf\textsc{Identification of Songbird Species \\ in Field Recordings}\vspace{0.5em}}
   % Authors
@@ -147,7 +148,7 @@
   %   }}
   % University logo
   {% The makebox allows the title to flow into the logo, this is a hack because of the L shaped logo.
-    \includegraphics[height=6.0em]{images/logo}
+    \includegraphics[height=8.0em]{images/cmuseal}
   }
 
 
@@ -161,10 +162,6 @@
 %%% have to specify the top and bottom boxes before you specify the middle
 %%% box.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    %
-    % A coloured circle useful as a bullet with an adjustably strong filling
-    % \newcommand{\colouredcircle}{%
-    %   \tikz{\useasboundingbox (-0.2em,-0.32em) rectangle(0.2em,0.32em); \draw[draw=black,fill=lightblue,line width=0.03em] (0,0) circle(0.18em);}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \headerbox{Introduction}{name=Introduction,column=0,row=0}{
@@ -182,10 +179,6 @@
 \headerbox{Preprocessing/Segmentation}{name=Preprocessing,column=1,row=0}{
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \input{preprocessing}
-
-% \begin{center}
-%   \fbox{}
-% \end{center}
 }
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \headerbox{Classifiers/Ensembles}{name=Classifiers,column=1,below=Preprocessing}{

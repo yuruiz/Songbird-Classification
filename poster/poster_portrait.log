@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (TeX Live 2011) (format=pdflatex 2012.7.29)  27 APR 2014 00:17
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (TeX Live 2011) (format=pdflatex 2012.7.29)  27 APR 2014 00:32
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -549,6 +549,13 @@ Package: bm 2004/02/26 v1.1c Bold Symbol Support (DPC/FMi)
 LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 138.
 LaTeX Info: Redefining \bm on input line 204.
 )
+(/usr/share/texmf/tex/latex/bbm/bbm.sty
+Package: bbm 1999/03/15 V 1.2 provides fonts for set symbols - TH
+LaTeX Font Info:    Overwriting math alphabet `\mathbbm' in version `bold'
+(Font)                  U/bbm/m/n --> U/bbm/bx/n on input line 33.
+LaTeX Font Info:    Overwriting math alphabet `\mathbbmss' in version `bold'
+(Font)                  U/bbmss/m/n --> U/bbmss/bx/n on input line 35.
+)
 (/usr/share/texmf/tex/latex/ltxmisc/url.sty
 \Urlmuskip=\muskip11
 Package: url 2006/04/12  ver 3.3  Verb mode for urls, etc.
@@ -610,19 +617,19 @@ LaTeX Warning: Unused global option(s):
 (./poster_portrait.aux)
 \openout1 = `poster_portrait.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 65.
-LaTeX Font Info:    ... okay on input line 65.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 65.
-LaTeX Font Info:    ... okay on input line 65.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 65.
-LaTeX Font Info:    ... okay on input line 65.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 65.
-LaTeX Font Info:    ... okay on input line 65.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 65.
-LaTeX Font Info:    ... okay on input line 65.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 65.
-LaTeX Font Info:    ... okay on input line 65.
-LaTeX Font Info:    Try loading font information for T1+ppl on input line 65.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 66.
+LaTeX Font Info:    ... okay on input line 66.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 66.
+LaTeX Font Info:    ... okay on input line 66.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 66.
+LaTeX Font Info:    ... okay on input line 66.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 66.
+LaTeX Font Info:    ... okay on input line 66.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 66.
+LaTeX Font Info:    ... okay on input line 66.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 66.
+LaTeX Font Info:    ... okay on input line 66.
+LaTeX Font Info:    Try loading font information for T1+ppl on input line 66.
  (/usr/share/texmf/tex/latex/psnfss/t1ppl.fd
 File: t1ppl.fd 2001/06/04 font definitions for T1/ppl.
 )
@@ -678,26 +685,26 @@ File: t1ppl.fd 2001/06/04 font definitions for T1/ppl.
 File: images/graph_occluded.pdf Graphic file (type pdf)
 
 <use images/graph_occluded.pdf>
-Package pdftex.def Info: images/graph_occluded.pdf used on input line 151.
-(pdftex.def)             Requested size: 75.416pt x 50.0pt.
+Package pdftex.def Info: images/graph_occluded.pdf used on input line 152.
+(pdftex.def)             Requested size: 82.95813pt x 55.0pt.
 
-<images/logo.jpg, id=21, 1167.36125pt x 1167.36125pt>
-File: images/logo.jpg Graphic file (type jpg)
- <use images/logo.jpg>
-Package pdftex.def Info: images/logo.jpg used on input line 151.
-(pdftex.def)             Requested size: 59.99242pt x 60.0pt.
+<images/cmuseal.pdf, id=21, 241.90375pt x 241.90375pt>
+File: images/cmuseal.pdf Graphic file (type pdf)
+
+<use images/cmuseal.pdf>
+Package pdftex.def Info: images/cmuseal.pdf used on input line 152.
+(pdftex.def)             Requested size: 79.99828pt x 80.0pt.
 LaTeX Font Info:    Font shape `T1/ppl/bx/n' in size <10> not available
-(Font)              Font shape `T1/ppl/b/n' tried instead on input line 151.
+(Font)              Font shape `T1/ppl/b/n' tried instead on input line 152.
 LaTeX Font Info:    Font shape `T1/ppl/bx/n' in size <24.88> not available
-(Font)              Font shape `T1/ppl/b/n' tried instead on input line 151.
+(Font)              Font shape `T1/ppl/b/n' tried instead on input line 152.
 LaTeX Font Info:    Font shape `T1/ppl/bx/sc' in size <24.88> not available
-(Font)              Font shape `T1/ppl/b/sc' tried instead on input line 151.
-LaTeX Font Info:    Try loading font information for U+msa on input line 151.
-
-(/usr/share/texmf/tex/latex/amsfonts/umsa.fd
+(Font)              Font shape `T1/ppl/b/sc' tried instead on input line 152.
+LaTeX Font Info:    Try loading font information for U+msa on input line 152.
+ (/usr/share/texmf/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2009/06/22 v3.00 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 151.
+LaTeX Font Info:    Try loading font information for U+msb on input line 152.
 
 (/usr/share/texmf/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2009/06/22 v3.00 AMS symbols B
@@ -705,9 +712,9 @@ File: umsb.fd 2009/06/22 v3.00 AMS symbols B
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 LaTeX Font Info:    Font shape `T1/ppl/bx/n' in size <14.4> not available
-(Font)              Font shape `T1/ppl/b/n' tried instead on input line 173.
+(Font)              Font shape `T1/ppl/b/n' tried instead on input line 170.
 LaTeX Font Info:    Font shape `T1/ppl/bx/sc' in size <14.4> not available
-(Font)              Font shape `T1/ppl/b/sc' tried instead on input line 173.
+(Font)              Font shape `T1/ppl/b/sc' tried instead on input line 170.
 Missing character: There is no ; in font nullfont!
 
 (./features.tex)
@@ -775,25 +782,25 @@ Missing character: There is no ; in font nullfont!
  [2
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./images/graph_occluded.pd
-f> <./images/logo.jpg> <./images/original.png (PNG copy)> <./images/Median_clip
-ped.png (PNG copy)> <./images/Eroded_and_propagated.png (PNG copy)> <./images/l
-abeled.png>] (./poster_portrait.aux) ) 
+f> <./images/cmuseal.pdf> <./images/original.png (PNG copy)> <./images/Median_c
+lipped.png (PNG copy)> <./images/Eroded_and_propagated.png (PNG copy)> <./image
+s/labeled.png>] (./poster_portrait.aux) ) 
 Here is how much of TeX's memory you used:
- 13428 strings out of 493633
- 256139 string characters out of 3151198
- 317857 words of memory out of 3500000
- 16392 multiletter control sequences out of 15000+200000
+ 13447 strings out of 493633
+ 256419 string characters out of 3151198
+ 318008 words of memory out of 3500000
+ 16408 multiletter control sequences out of 15000+200000
  23046 words of font info for 48 fonts, out of 3000000 for 9000
  833 hyphenation exceptions out of 8191
  63i,17n,70p,748b,988s stack positions out of 5000i,500n,10000p,200000b,50000s
-{/usr/share/texmf/fonts/enc/dvips/base/8r
-.enc}</usr/share/texmf/fonts/type1/bluesky/cm/cmr10.pfb></usr/share/texmf/fonts
-/type1/urw/palatino/uplb8a.pfb></usr/share/texmf/fonts/type1/urw/palatino/uplr8
-a.pfb></usr/share/texmf/fonts/type1/urw/times/utmr8a.pfb>
-Output written on poster_portrait.pdf (1 page, 2431462 bytes).
+{/usr/share/texmf/fonts/enc/dvips/base
+/8r.enc}</usr/share/texmf/fonts/type1/bluesky/cm/cmr10.pfb></usr/share/texmf/fo
+nts/type1/urw/palatino/uplb8a.pfb></usr/share/texmf/fonts/type1/urw/palatino/up
+lr8a.pfb></usr/share/texmf/fonts/type1/urw/times/utmr8a.pfb>
+Output written on poster_portrait.pdf (1 page, 641805 bytes).
 PDF statistics:
- 57 PDF objects out of 1000 (max. 8388607)
- 24 compressed objects within 1 object stream
+ 60 PDF objects out of 1000 (max. 8388607)
+ 26 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  145 words of extra memory for PDF output out of 10000 (max. 10000000)
 
