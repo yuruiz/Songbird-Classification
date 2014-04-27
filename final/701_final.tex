@@ -10,6 +10,8 @@
 \usepackage{amsmath} % Required for Math Stuff
 \usepackage{bm} 
 \usepackage{bbm}
+\usepackage{caption}
+\usepackage{subcaption}
 
 \newcommand{\specialcell}[2][c]{%
   \begin{tabular}[#1]{@{}c@{}}#2\end{tabular}}
@@ -233,18 +235,6 @@ Next, we show the results for applying SVM with polynomial kernel. Figure \ref{f
 The reason why random forest and naive Bayes failed is that the training example for each species is now limited to 80. From the predicted classification labels from the results of random forest, we found that the identities in some of the class are all mis-classified into another class, which means that the tree is ill-trained and biased such that many cases will be made to the same decision. 
 
 \input{ensemble2}
-
-Ensemble learning is then performed on 8 classifers, including $k$-NN with euclidean, $k$-NN with chi-square, SVM-linear (-t 0), SVM-$\chi^2$ (-t 5), SVM-RBF (-c 4000 -g 15 -t 2), linear SVM (-c 40), polynomial SVM (-c 1000 -g 1 -d 2 -t 1), sigmoid SVM (-c 1000 -g 1 -d 2 -t 3). 
-
-Figure \ref{fig:} gives 
-
-\begin{figure}[ht!]
-    \centering
-    {(a)\includegraphics[width=0.38\linewidth]{../Figure/Poly_cost_accuracy}
-    (b)\includegraphics[width=0.38\linewidth]{../Figure/Poly_degree_accuracy}}
-    \caption{(a) Accuracy to penalty term c. (b) Accuracy to parameter degree d}
-    \label{fig:poly}
-\end{figure}
 
 \bibliographystyle{abbrv}
 \bibliography{../bib/birds,../bib/ml}
