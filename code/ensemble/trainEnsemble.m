@@ -1,4 +1,4 @@
-function accuracy = trainEnsemble(WeiName, DevName, TYPE, k)
+function accuracy = trainEnsemble(WeiName, DevName, TYPE, k, usePrior)
 % Author: Xiao-Feng Xie (xfxie@cs.cmu.edu)
 % Created/Modified: Apr 24, 2014
 
@@ -29,16 +29,16 @@ else
 end
 weights = normalize(weights);
 
-CO = WeightedMajority(C, weights);
-%CO = PriorWeightedMajority(C, T, weights);
-%//csvwrite('majvotes.csv', CO);
+%CO = WeightedMajority(C, weights);
+[CO, MO] = PriorWeightedMajority(C, T, weights, usePrior);
 accuracy = PrintAccuracy(CO, T);
 fprintf('Accuracy is %0.2f\n', accuracy);
 
 results(1,:)= GetSubSubIndices(indices,subIndices);
 results(2,:)= weights;
 
-weightFileName = GetWeightFileName(WeiName, DevName, TYPE, k);
+weightFileName = GetWeightFileName(WeiName, DevName, TYPE, k, usePrior);
 csvwrite(weightFileName, results);
+%//csvwrite('majvotes.csv', CO);
 
 end

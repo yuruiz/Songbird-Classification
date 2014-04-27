@@ -8,6 +8,7 @@
 \usepackage{multirow}
 \usepackage{rotating}
 \usepackage{bm}
+\usepackage{bbm}
 \usepackage{url}
 
 \usepackage{graphicx}
@@ -111,11 +112,11 @@
   linewidth=2pt
   }
   % Eye Catcher
-  {\includegraphics[height=5em]{images/graph_occluded.pdf}}
+  {\includegraphics[height=5.5em]{images/graph_occluded.pdf}}
   % Title
-  {\bf\textsc{Identification of Songbird Species in Field Recordings}\vspace{0.5em}}
+  {\bf\textsc{Identification of Songbird Species \\ in Field Recordings}\vspace{0.5em}}
   % Authors
-  {\textsc{Hsiao-Yu Tung, De-An Huang, Yurui Zhou, Xiao-Feng Xie and Joseph Russino }}
+  {\textsc{Hsiao-Yu Tung, De-An Huang, Xiao-Feng Xie, Yurui Zhou, Joseph Russino }}
   % {\textsc{
   %   Hsiao-Yu Tung \\
   %   %Carnegie Mellon University\\
@@ -147,7 +148,7 @@
   %   }}
   % University logo
   {% The makebox allows the title to flow into the logo, this is a hack because of the L shaped logo.
-    \includegraphics[height=6.0em]{images/logo}
+    \includegraphics[height=8.0em]{images/logo}
   }
 
 
@@ -161,59 +162,36 @@
 %%% have to specify the top and bottom boxes before you specify the middle
 %%% box.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    %
-    % A coloured circle useful as a bullet with an adjustably strong filling
-    % \newcommand{\colouredcircle}{%
-    %   \tikz{\useasboundingbox (-0.2em,-0.32em) rectangle(0.2em,0.32em); \draw[draw=black,fill=lightblue,line width=0.03em] (0,0) circle(0.18em);}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \headerbox{Introduction}{name=Introduction,column=0,row=0}{
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-It is important to gain a better understanding about the climate and ecological changes in the world. One way to address this is to study seasonal migration patterns in songbird populations, since birds respond quickly to environmental changes
-During migratory periods, many species of songbirds use flight calls, which are species-specific and are distinct from other vocalizations. Therefore, flight calls information can be used to determine the relative abundance of species and is important to understand long-term population trends. Due to costly human effort to collect data about birds in traditional methods, using machine learing (ML) methods to identify bird species from continuous audio recordings has been a hot topic in in recent conference competitions. Although there are some recent advances  it is still an open ML problem to reliably identify bird sounds in field recordings data due to simultaneously vocalizing birds and various background noise.
+\input{introduction}
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \headerbox{Features}{name=Features,column=0, below=Introduction}{
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+\input{features}
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\headerbox{Preprocessing}{name=Preprocessing,column=1,row=0}{
+\headerbox{Preprocessing/Segmentation}{name=Preprocessing,column=1,row=0}{
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-We first convert audio files into spectrogram images, and for each segments we use Hanning windows with \%75 overlap. Notice the case that in a processed grayscale image most area was occupied by the random noise. What we want is to get rid of the background noise completely and increase the contrast between real signal and the background. Given the several different algorithm tested, the median clipping algorithm works best because it not only removes most background noise, but also capture the sound feature clearly and precisely.
-
-\begin{center}
-\begin{tabular}{cc}
-\begin{minipage}{1.5truein}
-\includegraphics[height=1truein]{images/original}
-\end{minipage}
-\begin{minipage}{1.5truein}
-\includegraphics[height=1truein]{images/Median_clipped}
-\end{minipage}\\
-\begin{minipage}{1truein}
-\includegraphics[height=1truein]{images/Eroded_and_propagated}
-\end{minipage}&
-\begin{minipage}{1.5truein}
-\includegraphics[height=1truein]{images/labeled}
-\end{minipage}\\
-\end{tabular}
-\end{center}
-
-% \begin{center}
-%   \fbox{}
-% \end{center}
+\input{preprocessing}
 }
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\headerbox{Classifiers}{name=Classifiers,column=1,below=Preprocessing}{
+\headerbox{Classifiers/Ensembles}{name=Classifiers,column=1,below=Preprocessing}{
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+\input{Classifiers}
+\input{Ensembles}
 }
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\headerbox{Experiment}{name=references,column=0,span=2, below=Classifiers, above=bottom}{
+\headerbox{Experiment}{name=references,column=0,span=2, below=Classifiers,below=Features, above=bottom}{
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  }
+\input{Experiment-Classifiers}
+\input{Experiment-Ensembles}
+}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \end{poster}
