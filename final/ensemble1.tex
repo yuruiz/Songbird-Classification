@@ -11,6 +11,7 @@ Then we train the belief matrix $B$, by only considering forms that are independ
 In real-world usages of songbird identification, people would prefer a very higher precision rate, among the classified results on a big amount of testing examples. We accommodate the real-world requirement at the ensemble level, by defining one label as ``UNKNOWN'', to include those instances that are not surely classified. This is also has an implication for scalability, as the labels might change over time, and studies can be mainly performed on ``UNKNOWN'' instances.
 
 The weight scheme is represented by a tuple $<F\text{-learning}, C\text{-learning}, B\text{-learning}, \bar{V}>$.
+
 %The basic idea is to assign a different weight (function) $w_i$ for each base classifier $h_i\in H$, based on training and true labels on training examples. For each testing instance $X$, the ensemble classifier predicts $\tilde{h}(X)$ outputs the class receiving the highest weighted votes, based on the labels obtained by the base classifiers.
 
 %\textbf{Bagging} Bagging is an abbreviated term of bootstrap aggregating, which trains each member classifier on a random redistribution of the training set, and using these to get
