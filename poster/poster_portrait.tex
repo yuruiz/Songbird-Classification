@@ -9,6 +9,7 @@
 \usepackage{rotating}
 \usepackage{bm}
 \usepackage{url}
+\usepackage{enumitem}% http://ctan.org/pkg/enumitem
 
 \usepackage{graphicx}
 \usepackage{multicol}
@@ -154,12 +155,18 @@
 \headerbox{Classifiers/Ensembles}{name=Classifiers,column=1,below=Preprocessing}{
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \input{Classifiers}
+\\
+
 \input{Ensembles}
 }
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\headerbox{Experiment}{name=references,column=0,span=2, below=Classifiers,below=Features, above=bottom}{
+\headerbox{Experiment: Classifiers}{name=references,column=0,span=1, below=Classifiers,below=Features, above=bottom}{
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \input{Experiment-Classifiers}
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\headerbox{Experiment: Ensembles}{name=references,column=1,span=1, below=Classifiers,below=Features, above=bottom}{
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \input{Experiment-Ensembles}
 }
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
