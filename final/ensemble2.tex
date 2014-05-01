@@ -6,15 +6,15 @@ $\tilde{K}=5$ for some measures of diversity.
 
 \begin{figure} [t]
 \centering
-\begin{subfigure}{.49\textwidth}
+\begin{subfigure}{.40\textwidth}
   \centering
-  \includegraphics[width=.95\linewidth]{../Figure/diversity_k_train}
+  \includegraphics[width=.90\linewidth]{../Figure/diversity_k_train}
   \caption{Training Accuracy}
   \label{fig:diversity_k_train}
 \end{subfigure}%
-\begin{subfigure}{.49\textwidth}
+\begin{subfigure}{.40\textwidth}
   \centering
-  \includegraphics[width=.95\linewidth]{../Figure/diversity_k_test}
+  \includegraphics[width=.90\linewidth]{../Figure/diversity_k_test}
   \caption{Testing Accuracy}
   \label{fig:diversity_k_test}
 \end{subfigure}
@@ -29,15 +29,15 @@ Figure \ref{fig:diversity_0.7_others} gives the training and testing accuracy fo
 
 \begin{figure} [t]
 \centering
-\begin{subfigure}{.49\textwidth}
+\begin{subfigure}{.40\textwidth}
   \centering
-  \includegraphics[width=.95\linewidth]{../Figure/diversity_7_others_train}
+  \includegraphics[width=.90\linewidth]{../Figure/diversity_7_others_train}
   \caption{Training Accuracy}
   \label{fig:diversity_0.7_others_train}
 \end{subfigure}%
-\begin{subfigure}{.49\textwidth}
+\begin{subfigure}{.40\textwidth}
   \centering
-  \includegraphics[width=.95\linewidth]{../Figure/diversity_7_others_test}
+  \includegraphics[width=.90\linewidth]{../Figure/diversity_7_others_test}
   \caption{Testing Accuracy}
   \label{fig:diversity_0.7_others_test}
 \end{subfigure}
@@ -46,21 +46,21 @@ Figure \ref{fig:diversity_0.7_others} gives the training and testing accuracy fo
 \end{figure}
 
 
-The search method using DEPSO is performed as $\tilde{K}=|K|$. For the basic and new forms of $B\text{-strategy}$, it respectively obtained 75.26\% and 71.82\% training and testing accuracy, and 75.26\% and 71.36\% training and testing accuracy. This gives the best training accuracy is 75.26\%, and it does not lead to higher test accuracy.
+The optimization method using DEPSO is performed as $\tilde{K}=|K|$. For the basic and new forms of $B\text{-strategy}$, it respectively obtained 75.26\% and 71.82\% training and testing accuracy, and 75.26\% and 71.36\% training and testing accuracy. This gives the best training accuracy is 75.26\%, and it does not lead to higher test accuracy.
 
 Figure \ref{fig:threshoulds} gives the classification accuracy and rates for different $C\text{-strategy}$ methods in different $\bar{V}$ values, where $\tilde{K}=|K|$, with the \emph{new form} of $B\text{-strategy}$, on testing examples. In general, the accuracy accuracy increases and classification rate decreases, as $\bar{V}$ increases. However, there is a drop at $\bar{V}=0.8$, which means the base classifers may reach agreements on some wrong labels. The optimizion method can keep the classification rate higher, especially in the high accuracy region, which is useful for real-world applications.
 
-\begin{figure} [ht]
+\begin{figure} [htb]
 \centering
-\begin{subfigure}{.49\textwidth}
+\begin{subfigure}{.40\textwidth}
   \centering
-  \includegraphics[width=.95\linewidth]{../Figure/threshould_accuracy}
+  \includegraphics[width=.90\linewidth]{../Figure/threshould_accuracy}
   \caption{Classification Accuracy}
   \label{fig:threshould_accuracy}
 \end{subfigure}%
-\begin{subfigure}{.49\textwidth}
+\begin{subfigure}{.40\textwidth}
   \centering
-  \includegraphics[width=.95\linewidth]{../Figure/threshould_rate}
+  \includegraphics[width=.90\linewidth]{../Figure/threshould_rate}
   \caption{Classification Rate}
   \label{fig:threshould_rate}
 \end{subfigure}
