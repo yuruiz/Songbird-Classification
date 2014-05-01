@@ -15,6 +15,14 @@ We learn the vocabulary, also called the codebook, by performing k-means cluster
 One limitation of BoW model on audio segment is that the temporal information are lost in the model. However, as shown in the experiments, BoW is able to achieve satisfactory classification result on single-label single-instance case. We build higher order N-gram model on the learned vocabulary to capture the temporal information.
 
 \textbf{N-gram model}
-
+One disadvantage of bag-of-words model is that the temporal information is ignored. We use the histogram of consecutive $N$ words, which is of length $K^N$. Only the N-grams occurring more than three times in the training data are considered. Therefore, the actual length of the histogram is much smaller than $K^N$ (4210 for $N=2$ and 2084 for $N=3$). 
 
 \textbf{Denoising}
+The first MFCC is the energy of the audio signal contained in the frame. Since the energy of noisy frames are lower than that of frames containing flight call signal. We can remove frames with lower energy and remove the noise.
+
+\textbf{Baseline}
+The spectrogram based approach in \cite{mlsp1} has been used as the baseline for the MLSP 2013 Bird Classification Challenge. We follow their approach and extract mask descriptors from the labelled regions shown in Figure \ref{fig:labeled} as our baseline.
+
+
+
+
