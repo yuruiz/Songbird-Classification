@@ -99,12 +99,6 @@ Many classification and ensemble methods can be obtained in \href{http://scikit-
 
 \subsection{Preprocessing}
 
-Similar to the methods used in \cite{Lasseck13}, we first convert audio files into spectrogram images, and for each segments we use Hanning windows with 75\% overlap. Notice the case that in a processed grayscale image most area was occupied by the random noise. What we want is to get rid of the background noise completely and increase the contrast between real signal and the background. Given the several different algorithm tested, the median clipping algorithm \cite{mlsp1} works best because it not only removes most background noise, but also capture the sound feature clearly and precisely.
-
-Such a algorithm, though perform well in noise removing and feature capturing, requires large amount of computation because the average and variance of each column of the row need to be calculated. Given the huge size of the processed grayscale image, we need a more efficient algorithm to segment the image. Further experiments is also needed to explore an balance point between noise reduction effectivity and efficiency.
-
-Finally, we apply standard image processing techniques to further reduce the residual noise dot. And then we would use find connected pixels from the image and label the segments, as in \cite{Lasseck13}.
-
 \begin{figure}[p]
     \centering
     \includegraphics[width=0.8\linewidth, height=0.3\linewidth]{../Figure/Cropped}
@@ -133,9 +127,15 @@ Finally, we apply standard image processing techniques to further reduce the res
     \centering
     \includegraphics[width=0.8\linewidth, height=0.3\linewidth]{../Figure/labeled}
      \centering
-    \caption{labeled}
+    \caption{Segmentation}
     \label{fig:labeled}
 \end{figure}
+
+Figures \ref{fig:original} to \ref{fig:labeled} show the preprocessing steps. Similar to the methods used in \cite{Lasseck13}, we first convert audio files into spectrogram images, and for each segments we use Hanning windows with 75\% overlap. Notice the case that in a processed grayscale image most area was occupied by the random noise. What we want is to get rid of the background noise completely and increase the contrast between real signal and the background. Given the several different algorithm tested, the median clipping algorithm \cite{mlsp1} works best because it not only removes most background noise, but also capture the sound feature clearly and precisely.
+
+Such a algorithm, though perform well in noise removing and feature capturing, requires large amount of computation because the average and variance of each column of the row need to be calculated. Given the huge size of the processed grayscale image, we need a more efficient algorithm to segment the image. Further experiments is also needed to explore an balance point between noise reduction effectivity and efficiency.
+
+Finally, we apply standard image processing techniques to further reduce the residual noise dot. And then we would use find connected pixels from the image and label the segments, as in \cite{Lasseck13}.
 
 \subsection{Features}
 \label{sec:Features}
