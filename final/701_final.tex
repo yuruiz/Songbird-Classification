@@ -190,71 +190,72 @@ We first evaluate our system on single-label data to see if the data are separab
 Since the flight call segments are already manually identified, we do not perform segmentation in this experiment.
 
 \textbf{Features.}
-We use the BoW over MFCCs in Section \ref{sec:Features} as the features for this experiment. The size of the code book is 200, and the MFCCs consider the frequencies from 1500 Hz to 22000Hz.
+We use the Mel-Frequency Cepstral Coefficient, BoW over MFCCs, denoised BoW over MFCCs, 2-Gram and 3-Gram in Section \ref{sec:Features} as the features for this experiment. The size of the code book is 200, and the MFCCs consider the frequencies from 1500 Hz to 22000Hz.
 
-\textbf{Classifiers.}
-Before beginning with the training process, we first examine the property of the data. We can see that most of the value in the original data is zero. After taking the log value of the data, we can find that a small group of the data is separated from the others. In some of the dimension, this small contains only a number of specific species of birds, which might be helpful in the classification.
+\textbf{Feature Analysis.}
+Before beginning with the training process, we first examine the property of the features of BoW over MFCC. We can see that most of the value in the original data is zero. After taking the log value of the data, we can find that a small group of the data is separated from the others (see Figure \ref{fig:hist}). In some of the dimension, this small region contains only a number of specific species of birds, which might be helpful in the classification. 
+
+In the denoised version of BoW over MFCC and 2-Gram features, the features in some of the dimension can clearly separate a specific number of species only by zero and non-zero value. Figure \ref{fig:features} shows the $180^th$ features of denoised BoW over MFCC and the second feature in 2-Gram. In our experiments, we find that the species which can be separated very well by some of the dimensions of these features are classified more accurately than the others. 
+
+\textbf{Feature Selection.}
+Due to the limited size of our data, using all the features at the same time will lead to serious overfitting problem. So here feature selection is done by cross validation. After the process, we find that most of the classifiers have higher performance using the denoised version of BoW over MFCC and 2-Gram features. Taking a portion of the features does not help in increasing the performance. To demonstrate the difference between BoW over MFCC and denoised version of BoW over MFCC, we also report the performance of using the former. 
 
 \begin{figure}[b!]
     \centering
-    {(a)\includegraphics[width=0.38\linewidth]{../Figure/Train_features}
-    (b)\includegraphics[width=0.38\linewidth]{../Figure/Train_features_log}}
-    \caption{(a) is the histogram of second feature. Most of the values are close to zero. (b) is the histogram of the log value of the original data.}
+    {(a)\includegraphics[width=0.40\linewidth]{../Figure/Train_features}
+    (b)\includegraphics[width=0.40\linewidth]{../Figure/Train_features_log}}
+    \caption{(a) is the histogram of second feature. Most of the values are close to zero. (b) is the histogram of the original data after taking log.}
     \label{fig:hist}
 \end{figure}
 
 
-In Table \ref{tbl:classifers}, we compare the results using $k$-NN, SVM, random forest and naive Bayes classifier.
+\begin{figure}[b!]
+    \centering
+    {(a)\includegraphics[width=0.40\linewidth]{../Figure/mfcc_180.png}
+    (b)\includegraphics[width=0.43\linewidth]{../Figure/ngram_202.png}}
+    \caption{(a) is the $180^th$ features of denoised BoW over MFCC. Most of the high values are around 2 species of birds. (b) shows the second dimension of the 2-Gram features. All the non-zero values appear only whithin one species.}
+    \label{fig:features}
+\end{figure}
+\textbf{Baseline.}
+The accuarcy (using Random Forest) on mask descriptors by \cite{mlsp1} is 0.25. 
+
+\textbf{Classifiers.}
+In Table \ref{tbl:classifers}, we compare the results using $k$-NN, SVM and random forest classifier. 
+
+First, taking the log over the features of BoW of MFCC decreases the accuracy in rbf SVM classifier. The features are expected to be more of a Gaussian distribution after taking log and can be separated better using rbf kernel. However, the performance decreases. The reason is that the transformed features are distributed in a skrewed Gaussian so that it can not be separated perfectly as well.
+
+Second, the performance of all kinds of classifier increases using the denoised features extracted from BoW of MFCC. Examine the features in images (see Figure \ref{fig:features}) help us understand the properties of them. The denoised features concentrate on a small number of specific species. 
+
+Besides, among all the classifier, SVM classifiers have the highest performance in accuracy and random forest has the lowest performace. The reason why random forest does not perform well on our data is that the sample size is small. SVM with rbf kernel has the highest performance (accuracy: 0.7682) using denoised BoW. The accuracy reaches $0.7818$ with denoised BoW and 2-Gram features. NN has higer performance using chisquare distance with denoised BoW (accuracy: 0.7182).
 
 
 \begin{table}[t]
 \caption{Accuracy of different classifier}
 \begin{center}
 \label{tbl:classifers}
-\begin{tabular}{|c|c|c|c|c|c|}
-\hline
-   classifier  & setting      &accuracy   & classifier    & setting      & accuracy\\
-\hline
-Naive Bayes  & kernel density  & 15.91       &     &$\chi^2$  &72.73\\ \cline{1-3} \cline{5-6}
-Random Forest &                & 7.27     &   SVM    & RBF               &70\\ \cline{1-3} \cline{5-6}
-$k$-NN     & chi-square        & 62.27    &    (kernel types)    & linear            &67.7273\\ \cline{2-3} \cline{5-6}
-(distance) & euclidean         & 54.09   &       & polynomial        &69.0909\\ \cline{1-3} \cline{5-6}
-SVM& Linear  &49.09   &    & Sigmoid           &70.9091\\ \hline
+\begin{tabular}{cccc}
+\multicolumn{1}{c}{\bf Classifier }&\multicolumn{1}{c}{\bf Accuracy(\%)}  &\multicolumn{1}{c}{\bf Features} &\multicolumn{1}{c}{\bf Settings}
+\\ \hline \\
+linear SVM		&67.7273/ 70.4545 		&BoW/ denoised 		&  \\
+poly SVM		&69.0909/ 70.4545  	&BoW/ denoised  	& degree: 1  \\
+			& 70 			& denoised BoW 	& degree: 2  \\
+			& 70.4545  	& denoised BoW 	& degree: 3  \\
+rbf SVM       	&70/ 	70.4545  	&BoW/ denoised 		&  \\
+                     	&68  			&  BoW (log) 	&  \\
+          		&76.8182  		&  denoised BoW 	&  $\gamma = 7.9433$ \\
+          		&{\bf 78.1818}  	&  denoised BoW + 2gram 	&    \\
+sigmoid SVM     	&70.9091/70.4545	&BoW/ denoised 		&  \\
+random forest    	&57/63 			& BoW/ denoised 	& 100 trees; 5 splits \\
+       			&63  			& denoised BoW 	& 100 trees; 2 splits \\
+NN-euclidean   	&54.09/62.73		& BoW/ denoised 	&  \\
+NN-chisquare	&62.27/71.82		& BoW/ denoised 	&  \\
+
 \end{tabular}
 \end{center}
 \end{table}
 
-We can see from our results that kernel SVM has better performance than the other method. First we show the parameter selection in using RBF kernel. Figure \ref{fig:RBF} shows the accuracy to the penalty term $C$ and the parameter $\gamma$. The parameter we selected are $\gamma = 15$ and $C = 4000$.
-
-\begin{figure}[ht!]
-    \centering
-    {(a)\includegraphics[width=0.38\linewidth]{../Figure/RBF_cost_accuracy}
-    (b)\includegraphics[width=0.38\linewidth]{../Figure/RBF_gamma_accuracy}}
-    \caption{(a) Accuracy to penalty term c. (b) Accuracy to parameter $\gamma$. }
-    \label{fig:RBF}
-\end{figure}
-
-In considering that original feature distribution is not a Gaussian distribution, for $x_i,j$ representing the $j^{th}$ feature in the object $i$, we first use a log transformation such that $x_{i,j} = log(x_{i,j} + 0.0001)$ to make the feature distribution more like a combination of Gaussian distribution (see \ref{fig:hist}(b)). The operation leads to a 1.27 improvement in the accuracy after parameter selection process.
 
 
-\begin{figure}[ht!]
-    \centering
-    \includegraphics[width=0.38\linewidth]{../Figure/RBF_cost_accuracy_log}
-     \centering
-    \caption{Accuracy to penalty C after log transformation on the original feature.}
-\end{figure}
-
-Next, we show the results for applying SVM with polynomial kernel. Figure \ref{fig:poly} shows that the performance of accuracy to penalty C is similar to RBF kernel and the optimal value of this parameter is 16000. Besides, according to the experiment results, the optimal degree for the data is around 2. The reason might due to small data size that we use recently so that increasing model complexity will lead to overfitting problem. So we focus on simple model for recent data.
-
-\begin{figure}[ht!]
-    \centering
-    {(a)\includegraphics[width=0.38\linewidth]{../Figure/Poly_cost_accuracy}
-    (b)\includegraphics[width=0.38\linewidth]{../Figure/Poly_degree_accuracy}}
-    \caption{(a) Accuracy to penalty term c. (b) Accuracy to parameter degree d}
-    \label{fig:poly}
-\end{figure}
-
-The reason why random forest and naive Bayes failed is that the training example for each species is now limited to 80. From the predicted classification labels from the results of random forest, we found that the identities in some of the class are all mis-classified into another class, which means that the tree is ill-trained and biased such that many cases will be made to the same decision.
 
 \input{ensemble2}
 

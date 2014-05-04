@@ -1,0 +1,186 @@
+\begin{thebibliography}{10}
+
+\bibitem{breiman1996bagging}
+L.~Breiman.
+\newblock Bagging predictors.
+\newblock {\em Machine learning}, 24(2):123--140, 1996.
+
+\bibitem{breiman2001random}
+L.~Breiman.
+\newblock Random forests.
+\newblock {\em Machine Learning}, 45(1):5--32, 2001.
+
+\bibitem{mlsp2}
+F.~Briggs, X.~Z. Fern, and J.~Irvine.
+\newblock Multi-label classifier chains for bird sound.
+\newblock {\em arXiv:1304.5862}, (abs/1304.5862), 2013.
+
+\bibitem{briggs2013instance}
+F.~Briggs, X.~Z. Fern, R.~Raich, and Q.~Lou.
+\newblock Instance annotation for multi-instance multi-label learning.
+\newblock {\em ACM Transactions on Knowledge Discovery from Data}, 7(3):14,
+  2013.
+
+\bibitem{mlsp1}
+F.~Briggs, B.~Lakshminarayanan, L.~Neal, X.~Fern, R.~Raich, S.~J.~K. Hadley,
+  A.~S. Hadley, and M.~G. Betts.
+\newblock Acoustic classification of multiple simultaneous bird species: a
+  multi-instance multi-label approach.
+\newblock {\em Journal of the Acoustical Society of America}, 131:4640--4650,
+  2012.
+
+\bibitem{BriggsMLSP13}
+F.~Briggs, R.~Raich, K.~Eftaxias, Z.~Lei, and Y.~Huang.
+\newblock The ninth annual mlsp competition: Overview.
+\newblock In {\em IEEE International Workshop on Machine Learning for Signal
+  Processing}, 2013.
+
+\bibitem{chennovel13}
+W.~Chen, G.~Zhao, and X.~Li.
+\newblock A novel approach based on ensemble learning to nips4b challenge.
+\newblock In {\em Workshop on Neural Information Processing Scaled for
+  Bioacoustics}, pages 195--197, 2013.
+
+\bibitem{cortes1995support}
+C.~Cortes and V.~Vapnik.
+\newblock Support-vector networks.
+\newblock {\em Machine learning}, 20(3):273--297, 1995.
+
+\bibitem{cover1967nearest}
+T.~Cover and P.~Hart.
+\newblock Nearest neighbor pattern classification.
+\newblock {\em IEEE Transactions on Information Theory}, 13(1):21--27, 1967.
+
+\bibitem{dufour2013clusterized}
+O.~Dufour, T.~Artieres, H.~Glotin, and P.~Giraudet.
+\newblock Clusterized mel filter cepstral coefficients and support vector
+  machines for bird song idenfication.
+\newblock In {\em Workshop on Machine Learning for Bioacoustics}, pages 89--92,
+  2013.
+
+\bibitem{Dufour_NIPSW13}
+O.~Dufour, H.~Glotin, T.~Artières, Y.~Bas, and P.~Giraudet.
+\newblock Multi-instance multi-label acoustic classification of plurality of
+  animals : birds, insects \& amphibian.
+\newblock In {\em Workshop on Neural Information Processing Scaled for
+  Bioacoustics}, pages 164--174, 2013.
+
+\bibitem{Li_CVPR05}
+L.~Fei-Fei and P.~Perona.
+\newblock A bayesian hierarchical model for learning natural scene categories.
+\newblock In {\em IEEE Conference on Computer Vision and Pattern Recognition},
+  pages 524--531. IEEE, 2005.
+
+\bibitem{fodor2013ninth}
+G.~Fodor.
+\newblock The ninth annual mlsp competition: First place.
+\newblock In {\em IEEE International Workshop on Machine Learning for Signal
+  Processing}, pages 1--2. IEEE, 2013.
+
+\bibitem{freund1997decision}
+Y.~Freund and R.~E. Schapire.
+\newblock A decision-theoretic generalization of on-line learning and an
+  application to boosting.
+\newblock {\em Journal of Computer and System Sciences}, 55(1):119--139, 1997.
+
+\bibitem{friedman2001greedy}
+J.~H. Friedman.
+\newblock Greedy function approximation: a gradient boosting machine.
+\newblock {\em Annals of Statistics}, pages 1189--1232, 2001.
+
+\bibitem{geurts2006extremely}
+P.~Geurts, D.~Ernst, and L.~Wehenkel.
+\newblock Extremely randomized trees.
+\newblock {\em Machine learning}, 63(1):3--42, 2006.
+
+\bibitem{hoeting1999bayesian}
+J.~A. Hoeting, D.~Madigan, A.~E. Raftery, and C.~T. Volinsky.
+\newblock Bayesian model averaging: A tutorial.
+\newblock {\em Statistical science}, pages 382--401, 1999.
+
+\bibitem{jolliffe2005principal}
+I.~Jolliffe.
+\newblock {\em Principal component analysis}.
+\newblock Wiley Online Library, 2005.
+
+\bibitem{kuncheva2003measures}
+L.~I. Kuncheva and C.~J. Whitaker.
+\newblock Measures of diversity in classifier ensembles and their relationship
+  with the ensemble accuracy.
+\newblock {\em Machine learning}, 51(2):181--207, 2003.
+
+\bibitem{Lasseck13}
+M.~Lasseck.
+\newblock Bird song classification in field recordings: Winning solution for
+  {NIPS4B} 2013 competition.
+\newblock In {\em Workshop on Neural Information Processing Scaled for
+  Bioacoustics}, pages 176--181, 2013.
+
+\bibitem{Massaron13}
+L.~Massaron.
+\newblock Ensemble logistic regression and gradient boosting classifiers for
+  multilabel bird song classification in noise.
+\newblock In {\em Workshop on Neural Information Processing Scaled for
+  Bioacoustics}, pages 190--194, 2013.
+
+\bibitem{Mencia_NIPSW13}
+E.~L. Menc\'ia, J.~Nam, and D.-H. Lee.
+\newblock Learning multi-labeled bioacoustic samples with an unsupervised
+  feature learning approach.
+\newblock In {\em Workshop on Neural Information Processing Scaled for
+  Bioacoustics}, pages 184--189, 2013.
+
+\bibitem{opitz1996generating}
+D.~W. Opitz and J.~W. Shavlik.
+\newblock Generating accurate and diverse members of a neural-network ensemble.
+\newblock {\em Advances in neural information processing systems}, pages
+  535--541, 1996.
+
+\bibitem{read2011classifier}
+J.~Read, B.~Pfahringer, G.~Holmes, and E.~Frank.
+\newblock Classifier chains for multi-label classification.
+\newblock {\em Machine learning}, 85(3):333--359, 2011.
+
+\bibitem{rokach2010ensemble}
+L.~Rokach.
+\newblock Ensemble-based classifiers.
+\newblock {\em Artificial Intelligence Review}, 33(1-2):1--39, 2010.
+
+\bibitem{stattnersong13}
+E.~Stattner, W.~Segretier, M.~Collard, P.~Hunel, and N.~Vidot.
+\newblock Song-based classification techniques for endangered bird
+  conservation.
+\newblock In {\em Workshop on Machine Learning for Bioacoustics}, pages 67--73,
+  2013.
+
+\bibitem{Stowell_NIPSW13}
+D.~Stowell and M.~D. Plumbley.
+\newblock Feature design for multilabel bird song classification in noise.
+\newblock In {\em Workshop on Neural Information Processing Scaled for
+  Bioacoustics}, pages 182--183, 2013.
+
+\bibitem{tyagi2005desensitizing}
+V.~Tyagi and C.~Wellekens.
+\newblock On desensitizing the mel-cepstrum to spurious spectral components for
+  robust speech recognition.
+\newblock In {\em IEEE International Conference on Acoustics, Speech, and
+  Signal Processing}, pages 529--532. IEEE, 2005.
+
+\bibitem{walther2002ecological}
+G.-R. Walther, E.~Post, P.~Convey, A.~Menzel, C.~Parmesan, T.~J. Beebee, J.-M.
+  Fromentin, O.~Hoegh-Guldberg, and F.~Bairlein.
+\newblock Ecological responses to recent climate change.
+\newblock {\em Nature}, 416(6879):389--395, 2002.
+
+\bibitem{xie2014cooperative}
+X.-F. Xie, J.~Liu, and Z.-J. Wang.
+\newblock A cooperative group optimization system.
+\newblock {\em Soft Computing}, 18(3):469--495, 2014.
+
+\bibitem{Zhang_SDM2010}
+X.~Zhang, Q.~Yuan, S.~Zhao, W.~Fan, W.~Zheng, and Z.~Wang.
+\newblock Multi-label classification without the multi-label cost.
+\newblock In {\em SIAM International Conference on Data Mining}, pages
+  778--789. SIAM, 2010.
+
+\end{thebibliography}
